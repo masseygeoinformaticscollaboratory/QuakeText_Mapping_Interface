@@ -1,18 +1,25 @@
 import pandas as pd
 import psycopg2
-from handleDB import connect
+from handleDB import connect, create_table
 from cleanData import clean_df
+from sqlalchemy import create_engine
 
 cursor = None
 connection = None
 try:
-    connection, cursor = connect()
+    connection, cursor, url = connect()
+    engine = create_engine(url)
+    conn_engine = engine.connect()
     connection.autocommit = True
+
+    table = create_table()
+    cursor.execute(table)
 
     data = pd.read_csv('../data/10RowData.csv')
 
     cleaned_data = clean_df(data)
 
+    cleaned_data.to_sql('QuakeText', conn_engine, if_exists='replace')
 
 except(Exception, psycopg2.DatabaseError) as error:
     print(error)
@@ -21,7 +28,6 @@ finally:
     if cursor is not None:
         cursor.close()
         print('Cursor connection Terminated')
-
     if connection is not None:
         connection.close()
         print('Database connection Terminated')

@@ -5,10 +5,6 @@ import pandas as pd
 def clean_df(data: pd.DataFrame) -> pd.DataFrame:
     """
     A function to prepare the dataframe before converting to PostgresDB
-    Args:
-        data (pd.DataFrame): dataframe to clean
-    Returns:
-        pd.DataFrame: cleaned dataframe
     """
     data = data[['label', 'instance', 'tweetText', 'tweetId']].copy()
     place_name_df = data[data.label == 'place name']
