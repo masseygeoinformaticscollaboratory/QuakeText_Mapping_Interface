@@ -1,24 +1,27 @@
+import pandas as pd
 import psycopg2
-from configDB import config
+from handleDB import connect
+from cleanData import clean_df
 
-def connect():
-    connection = None
-    try:
-        params = config()
-        print('Connecting to PostgreSQL Database')
-        connection = psycopg2.connect(**params)
-        cursor = connection.cursor()
-        print('PostgreSQL data vase version: ')
-        cursor.execute('SELECT version()')
-        db_version = cursor.fetchone()
-        print(db_version)
+cursor = None
+connection = None
+try:
+    connection, cursor = connect()
+    connection.autocommit = True
+
+    data = pd.read_csv('../data/10RowData.csv')
+
+    cleaned_data = clean_df(data)
+
+
+except(Exception, psycopg2.DatabaseError) as error:
+    print(error)
+
+finally:
+    if cursor is not None:
         cursor.close()
-    except(Exception, psycopg2.DatabaseError) as error:
-        print(error)
+        print('Cursor connection Terminated')
 
-    finally:
-        if connection is not None:
-            connection.close()
-            print('Database connection Terminated')
-
-connect()
+    if connection is not None:
+        connection.close()
+        print('Database connection Terminated')
