@@ -12,14 +12,12 @@ def connect():
 
 def create_table():
     create_script = ''' 
-        CREATE TABLE IF NOT EXISTS data(
+        CREATE TABLE IF NOT EXISTS quake_text(
         id          int PRIMARY KEY,
         label       varchar(70),
         instance    varchar(100),
         tweetText   varchar(500),
-        latitude    float,
-        longitude   float
-    
+        geom        geometry(Point, 4326)
         )
         '''
 

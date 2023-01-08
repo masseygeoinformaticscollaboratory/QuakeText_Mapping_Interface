@@ -15,11 +15,10 @@ try:
     table = create_table()
     cursor.execute(table)
 
-    data = pd.read_csv('../data/10RowData.csv')
+    df = pd.read_csv('../data/10RowData.csv')
 
-    cleaned_data = clean_df(data)
-
-    cleaned_data.to_sql('QuakeText', conn_engine, if_exists='replace')
+    gdf = clean_df(df)
+    gdf.to_postgis("quake_text",conn_engine,if_exists="replace")
 
 except(Exception, psycopg2.DatabaseError) as error:
     print(error)
