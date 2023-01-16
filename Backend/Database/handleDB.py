@@ -17,7 +17,7 @@ def create_table():
         label       varchar(70),
         instance    varchar(100),
         tweetText   varchar(500),
-        geom        geometry(Point, 4326)
+        geom        geometry(Point, 4326) 
         )
         '''
 
