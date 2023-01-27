@@ -13,6 +13,7 @@ def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
     place_name_df = get_coords(place_name_df)
 
     result = pd.concat([place_name_df, new_df])
+    result = result.fillna(0)
     result.sort_values(by=['tweetId'])
     result = result.reset_index(drop=True)
     gdf = create_gdf(result)

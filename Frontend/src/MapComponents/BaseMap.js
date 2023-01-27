@@ -7,9 +7,12 @@ import View from 'ol/View';
 import 'ol/ol.css';
 import OSM from 'ol/source/OSM';
 import {Tile as TileLayer} from 'ol/layer';
-import {ImageWMS} from "ol/source";
+//import {ImageWMS} from "ol/source";
 import {Group} from "ol/layer";
-import {Image} from "ol/layer"
+//import {Image} from "ol/layer"
+import VectorLayer from "ol/layer/Vector";
+import VectorSource from "ol/source/Vector";
+import {GeoJSON} from "ol/format";
 
 const base = new Group({
     'title': 'Base maps',
@@ -22,8 +25,8 @@ const base = new Group({
         })
     ]
 });
-
-
+/*
+For use with WMS Layer:
 const overlays = new Group({
     'title': 'Overlays',
     layers: [
@@ -40,6 +43,16 @@ const overlays = new Group({
     ]
 });
 
+*/
+
+const vectorLayer = new VectorLayer({
+    source: new VectorSource({
+        url: 'http://localhost:8080/geoserver/quaketext/ows?service=' +
+            'WFS&version=1.0.0&request=GetFeature&typeName=quaketext:quake_text' +
+            '&maxFeatures=50&outputFormat=application/json',
+        format: new GeoJSON(),
+    })
+});
 
 function BaseMap() {
     const [map, setMap] = useState();
@@ -50,11 +63,11 @@ function BaseMap() {
     useEffect(() => {
         const initialMap = new Map({
             target: mapElement.current,
-            layers: [base, overlays],
+            layers: [base, vectorLayer],
             view: new View({
                 projection: 'EPSG:4326',
                 center: [78.0, 23.0],
-                zoom: 2,
+                zoom: 3,
                 minZoom: 2,
                 maxZoom: 18,
             }),

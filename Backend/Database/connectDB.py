@@ -15,7 +15,7 @@ try:
     table = create_table()
     cursor.execute(table)
 
-    df = pd.read_csv('../data/1000RowData.csv')
+    df = pd.read_csv('../data/10RowData.csv')
 
     gdf = clean_df(df)
     gdf.to_postgis("quake_text",conn_engine,if_exists="replace")
