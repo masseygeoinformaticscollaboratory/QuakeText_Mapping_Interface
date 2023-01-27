@@ -28,39 +28,15 @@ const overlays = new Group({
     'title': 'Overlays',
     layers: [
         new Image({
-            title: 'aus1',
+            title: 'countries',
             visible: true,
-            // extent: [-180, -90, -180, 90],
             source: new ImageWMS({
                 url: 'http://localhost:8080/geoserver/wms',
-                params: {'LAYERS': 'aussie:aus1'},
-                ratio: 1,
-                serverType: 'geoserver'
-            })
-        }),
-        new Image({
-            title: 'aus2',
-            visible: true,
-            // extent: [-180, -90, -180, 90],
-            source: new ImageWMS({
-                url: 'http://localhost:8080/geoserver/wms',
-                params: {'LAYERS': 'aussie:aus2'},
-                ratio: 1,
-                serverType: 'geoserver'
-            })
-        }),
-        new Image({
-            title: 'aus3',
-            visible: true,
-            // extent: [-180, -90, -180, 90],
-            source: new ImageWMS({
-                url: 'http://localhost:8080/geoserver/wms',
-                params: {'LAYERS': 'aussie:aus3'},
+                params: {'LAYERS': 'quaketext:quake_text'},
                 ratio: 1,
                 serverType: 'geoserver'
             })
         })
-
     ]
 });
 
@@ -78,7 +54,7 @@ function BaseMap() {
             view: new View({
                 projection: 'EPSG:4326',
                 center: [78.0, 23.0],
-                zoom: 5,
+                zoom: 2,
                 minZoom: 2,
                 maxZoom: 18,
             }),

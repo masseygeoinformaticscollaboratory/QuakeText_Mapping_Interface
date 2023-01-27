@@ -20,7 +20,6 @@ def create_table():
         geom        geometry(Point, 4326) 
         )
         '''
-
     return create_script
 
 def create_url(params):
