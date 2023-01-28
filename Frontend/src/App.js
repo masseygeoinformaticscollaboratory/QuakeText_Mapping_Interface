@@ -1,4 +1,4 @@
-import Map from "./MapComponents/BaseMap";
+import Map from "./MapComponents/Map";
 import './App.css';
 
 function App() {
@@ -10,8 +10,6 @@ function App() {
             <div className="map">
                 <Map/>
             </div>
-
-
         </div>
     );
 }
