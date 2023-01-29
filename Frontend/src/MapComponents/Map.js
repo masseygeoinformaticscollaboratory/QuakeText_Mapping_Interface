@@ -5,8 +5,7 @@ import vectorLayer from "./Layers/VectorLayer";
 import view from "./MapStyle/mapView";
 import './MapStyle/MapStyle.css';
 import 'ol/ol.css';
-import hover from "./Functionality/Hover";
-
+import popup from "./Functionality/popupInfo";
 
 function BaseMap() {
     const [map, setMap] = useState();
@@ -20,7 +19,7 @@ function BaseMap() {
             layers: [base, vectorLayer],
             view: view
         });
-        //hover(initialMap);
+        popup(initialMap);
         setMap(initialMap)
     }, []);
     return (

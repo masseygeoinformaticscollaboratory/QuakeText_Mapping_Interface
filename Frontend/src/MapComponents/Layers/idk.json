@@ -1,0 +1,195 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71ed",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71,
+          -30
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "place name",
+        "instance": "Chile",
+        "tweetText": "RT @AlexandraUlmer: Now for the bad news.... Seismologist says Tuesday's 8.2 quake in #Chile was likely not 'the big one' http://t.co/wHwiX�??",
+        "tweetId": "'451459804704567297'"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71ec",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71,
+          -30
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "place name",
+        "instance": "Chile",
+        "tweetText": "RT @PFourDigital: A powerful earthquake hit Chile last night. Magnitude 8.2 that produced tsunamis that are already hitting the coast. #Fue�??",
+        "tweetId": "'451411290951782400'"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71eb",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          65.64355,
+          28.47849
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "place name",
+        "instance": "Balochistan",
+        "tweetText": "@PatriciaLMalik The 7.8 magnitude #earthquake in #Pakistan creates island off the coast of Balochistan http://t.co/O6Y6ilAu9o #jetlagged",
+        "tweetId": "'382861569442713600'"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71ea",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70,
+          30
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "place name",
+        "instance": "Pakistan",
+        "tweetText": "@PatriciaLMalik The 7.8 magnitude #earthquake in #Pakistan creates island off the coast of Balochistan http://t.co/O6Y6ilAu9o #jetlagged",
+        "tweetId": "'382861569442713600'"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71e9",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "location modifier",
+        "instance": "in",
+        "tweetText": "RT @AlexandraUlmer: Now for the bad news.... Seismologist says Tuesday's 8.2 quake in #Chile was likely not 'the big one' http://t.co/wHwiX�??",
+        "tweetId": "'451459804704567297'"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71e8",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "location modifier",
+        "instance": "the coast",
+        "tweetText": "RT @PFourDigital: A powerful earthquake hit Chile last night. Magnitude 8.2 that produced tsunamis that are already hitting the coast. #Fue�??",
+        "tweetId": "'451411290951782400'"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71e7",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "type of impact",
+        "instance": "tsunamis",
+        "tweetText": "RT @PFourDigital: A powerful earthquake hit Chile last night. Magnitude 8.2 that produced tsunamis that are already hitting the coast. #Fue�??",
+        "tweetId": "'451411290951782400'"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71e6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "location modifier",
+        "instance": "in",
+        "tweetText": "@PatriciaLMalik The 7.8 magnitude #earthquake in #Pakistan creates island off the coast of Balochistan http://t.co/O6Y6ilAu9o #jetlagged",
+        "tweetId": "'382861569442713600'"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71e5",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "type of impact",
+        "instance": "creates",
+        "tweetText": "@PatriciaLMalik The 7.8 magnitude #earthquake in #Pakistan creates island off the coast of Balochistan http://t.co/O6Y6ilAu9o #jetlagged",
+        "tweetId": "'382861569442713600'"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "quake_text.fid-4efbd4f8_185f13af95d_-71e4",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "geometry_name": "geometry",
+      "properties": {
+        "label": "location modifier",
+        "instance": "off the coast of",
+        "tweetText": "@PatriciaLMalik The 7.8 magnitude #earthquake in #Pakistan creates island off the coast of Balochistan http://t.co/O6Y6ilAu9o #jetlagged",
+        "tweetId": "'382861569442713600'"
+      }
+    }
+  ],
+  "totalFeatures": 10,
+  "numberMatched": 10,
+  "numberReturned": 10,
+  "timeStamp": "2023-01-28T02:21:04.636Z",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  }
+}
