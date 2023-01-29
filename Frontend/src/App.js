@@ -1,6 +1,5 @@
 import Map from "./MapComponents/Map";
 import './App.css';
-import Popup from "./MapComponents/Functionality/displayPopUp";
 function App() {
     return (
         <div className="App">
@@ -9,9 +8,6 @@ function App() {
             </div>
             <div className="map">
                 <Map/>
-            </div>
-            <div className="pop">
-                <Popup/>
             </div>
 
         </div>

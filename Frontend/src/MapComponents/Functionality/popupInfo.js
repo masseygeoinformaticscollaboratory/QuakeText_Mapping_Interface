@@ -1,6 +1,7 @@
-function addHover(map) {
+function getInfo(map) {
 
     map.on("click", (event) => {
+
         let features = map.getFeaturesAtPixel(event.pixel);
         if (features && features.length > 0) {
             if (features[0].get("label") === "place name") {
@@ -9,7 +10,6 @@ function addHover(map) {
             }
         }
     });
-
 }
 
-export default addHover;
+export default getInfo;
