@@ -1,6 +1,11 @@
-import Map from "./MapComponents/Map";
 import './App.css';
+
+import React from "react";
+import Map from "./MapComponents/Map";
+
+
 function App() {
+
     return (
         <div className="App">
             <div className="header">
@@ -15,3 +20,15 @@ function App() {
 }
 
 export default App;
+
+
+//  <div className="map"
+//                  onMouseEnter={() => setIsShown(true)}
+//                  onMouseLeave={() => setIsShown(false)}>
+//                 <Map/>
+//             </div>
+//             {isShown && (
+//                 <div>
+//                     Some stuff appears
+//                 </div>
+//             )}
