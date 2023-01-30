@@ -13,6 +13,7 @@ function MapComponent() {
     const mapElement = useRef();
     const mapRef = useRef();
     const popupRef = useRef(null);
+    const popupContentRef = useRef(null);
     mapRef.current = map;
 
     useEffect(() => {
@@ -32,12 +33,33 @@ function MapComponent() {
         });
 
         map.addOverlay(popup);
+        const allDaFeatures = function(pixel) {
+            let features = [];
+            map.forEachFeatureAtPixel(pixel, function(feature, layer){
+                features.push(feature);
+                console.log(feature)
+            })
+        }
 
-        map.on('click', event => {
-            const { coordinate } = event;
-            popup.setPosition(coordinate);
-            popupRef.current.innerHTML = coordinate;
+        map.on("click", (event) => {
+
+            allDaFeatures(event.pixel);
+
+            let features = map.getFeaturesAtPixel(event.pixel);
+
+
+            if (features && features.length > 0) {
+               // if (features[0].get("label") === "place name") {
+                    popup.setPosition(features[0].get("geometry").flatCoordinates);
+                    popupContentRef.current.innerHTML =
+                        "Location: " + features[0].get("instance") + "\n" +
+                        "Coordinates: " + features[0].get("geometry").flatCoordinates + "\n" +
+                        "Impact: "
+
+               // }
+            }
         });
+
 
     }, []);
 
@@ -45,12 +67,12 @@ function MapComponent() {
     return (
         <div>
             <div ref={mapElement} className="map-container"/>
-            <div
-                ref={popupRef}
-                className= "coord-popup"
-                style={{ position: 'absolute', bottom: '20px', left: '20px' }} >
+            <div ref={popupRef} className="popupContainer">
+                <div ref={popupContentRef} className="popup-content"/>
             </div>
+
         </div>
     );
 }
+
 export default MapComponent;
