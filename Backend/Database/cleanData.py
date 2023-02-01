@@ -7,31 +7,28 @@ import time
 
 # Prepares the data to go into PostGreSQL PostGIS database
 def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
+
     data = data[['label', 'instance', 'tweetText', 'tweetId']].copy()
+    data = data[data.label == "place name"]
 
     get_coordinates(data)
     data.sort_values(by=['tweetId'])
+    data.dropna(inplace=True)
     data = data.reset_index(drop=True)
+
     return create_gdf(data)
 
 def get_coordinates(data):
     data["latitude"] = np.nan
     data["longitude"] = np.nan
-    coordinates = {}
 
     for index, row in data.iterrows():
         if row['label'] == 'place name':
             g = geocoder.geonames(row['instance'], key='QuakeText')
             if g.current_result:
-                lat = g.lat
-                lng = g.lng
-                coordinates[row['tweetId']] = [lat, lng]
+                data.loc[[index], 'latitude'] = g.lat
+                data.loc[[index], 'longitude'] = g.lng
 
-    for index, row in data.iterrows():
-        for i in coordinates:
-            if row['tweetId'] == i:
-                data.loc[[index], 'latitude'] = coordinates[i][0]
-                data.loc[[index], 'longitude'] = coordinates[i][1]
 
 # Creates GeoDataframe with relevant information
 def create_gdf(data: pd.DataFrame) -> gpd.GeoDataFrame:
