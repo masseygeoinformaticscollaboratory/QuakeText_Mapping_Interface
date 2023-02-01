@@ -20,6 +20,7 @@
     bottom: 12px;
     left: -49px;
     min-width: 190px;
+    min-height: 50px;
 }
 .popupContainer:after, .popupContainer:before {
     top: 100%;

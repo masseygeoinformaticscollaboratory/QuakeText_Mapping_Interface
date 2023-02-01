@@ -1,9 +1,8 @@
-from collections import defaultdict
-
 import geocoder
 import pandas as pd
 import geopandas as gpd
 import numpy as np
+import time
 
 
 # Prepares the data to go into PostGreSQL PostGIS database
@@ -23,7 +22,10 @@ def get_coordinates(data):
     for index, row in data.iterrows():
         if row['label'] == 'place name':
             g = geocoder.geonames(row['instance'], key='QuakeText')
-            coordinates[row['tweetId']] = [g.lat, g.lng]
+            if g.current_result:
+                lat = g.lat
+                lng = g.lng
+                coordinates[row['tweetId']] = [lat, lng]
 
     for index, row in data.iterrows():
         for i in coordinates:

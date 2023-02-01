@@ -7,7 +7,6 @@ import './MapStyle/MapStyle.css';
 import 'ol/ol.css';
 import {Overlay} from "ol";
 
-
 function MapComponent() {
     const [map, setMap] = useState();
     const mapElement = useRef();
@@ -33,31 +32,38 @@ function MapComponent() {
         });
 
         map.addOverlay(popup);
-        const allDaFeatures = function(pixel) {
-            let features = [];
-            map.forEachFeatureAtPixel(pixel, function(feature, layer){
-                features.push(feature);
-                console.log(feature)
-            })
-        }
+
 
         map.on("click", (event) => {
-
-            allDaFeatures(event.pixel);
 
             let features = map.getFeaturesAtPixel(event.pixel);
 
 
             if (features && features.length > 0) {
-               // if (features[0].get("label") === "place name") {
-                    popup.setPosition(features[0].get("geometry").flatCoordinates);
-                    popupContentRef.current.innerHTML =
-                        "Location: " + features[0].get("instance") + "\n" +
-                        "Coordinates: " + features[0].get("geometry").flatCoordinates + "\n" +
-                        "Impact: "
 
-               // }
+                let coordinates, location, impact, count_place = 0;
+                for (let i = 0; i < features.length; i++) {
+
+                    if (features[i].get("label") === "place name" && count_place === 0) {
+                        location = features[i].get("instance")
+                        coordinates = features[i].get("geometry").flatCoordinates
+                        count_place++;
+                    }
+                    /*
+                    if (features[i].get("label") === "type of impact") {
+                        impact = features[i].get("instance")
+                    }
+                     */
+                }
+                console.log(features)
+                popup.setPosition(coordinates);
+                popupContentRef.current.innerHTML =
+                    "Location: " + location + "\n" +
+                    "Coordinates: " + coordinates + "\n" +
+                   // "Impact: " + impact + "\n" +
+                    "Tweet: " + features[0].get("tweetText")
             }
+
         });
 
 
