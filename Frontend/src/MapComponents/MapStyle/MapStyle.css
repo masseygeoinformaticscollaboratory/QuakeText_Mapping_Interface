@@ -9,8 +9,6 @@
     height: 90vh;
     --contentHeight: 95vh;
     position: relative;
-    border-radius: 10px;
-    border: 1px solid black;
     overflow: hidden
 }
 
@@ -23,18 +21,19 @@
     border: 1px solid black;
     bottom: 12px;
     left: -49px;
-    min-width: 200px;
+    min-width: 300px;
     overflow: auto;
 }
 
-/*
+
 .popupContainer:after, .popupContainer:before {
     top: 100%;
     border: solid transparent;
     content: " ";
     height: 0;
     width: 0;
-    position: absolute;
+    left: -10px;
+    position: fixed ;
     pointer-events: none;
 }
 
@@ -42,16 +41,19 @@
     border-top-color: white;
     border-width: 10px;
     left: 48px;
-    margin-left: -10px;
+    margin-left: -60px;
+    margin-top: -13px;
 }
 
 .popupContainer:before {
     border-top-color: black;
-    border-width: 11px;
+    border-width: 10px;
     left: 48px;
-    margin-left: -11px;
+    margin-left: -60px;
+    margin-top: -12px;
+
 }
-*/
+
 .popup-content {
     font-size: 15px;
     white-space: pre-wrap;

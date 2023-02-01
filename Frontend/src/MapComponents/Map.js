@@ -6,6 +6,7 @@ import view from "./MapStyle/mapView";
 import './MapStyle/MapStyle.css';
 import 'ol/ol.css';
 import {Overlay} from "ol";
+import {setText,formatPopup} from "./MapStyle/PopUpStyle";
 
 function MapComponent() {
     const [map, setMap] = useState();
@@ -42,9 +43,7 @@ function MapComponent() {
 
                 if (features && features.length > 0) {
                     let text = "";
-                    let location = '<span class= "bold">Location: </span>';
-                    let coordinates = '<span class= "bold">Coordinates: </span>';
-                    let tweet = '<span class= "bold">Tweet: </span>';
+                    let {location,coordinates,tweet} = setText()
 
                     for (let i = 0; i < features.length; i++) {
                         console.log(features[i]);
@@ -58,15 +57,7 @@ function MapComponent() {
 
                     popup.setPosition(features[0].get("geometry").flatCoordinates);
                     popupContentRef.current.innerHTML = text;
-                    const mapHeight = mapElement.current.getBoundingClientRect();
-                    const popRect = popupRef.current.getBoundingClientRect();
-
-                    const topMap = mapHeight.top;
-                    const bottomPop = popRect.bottom;
-                    const maxHeight =  bottomPop - (topMap+20);
-
-                    popupRef.current.style.maxHeight = `${maxHeight}px`;
-
+                    formatPopup(mapElement, popupRef);
 
 
                 }
