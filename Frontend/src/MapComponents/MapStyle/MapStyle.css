@@ -59,6 +59,19 @@
     white-space: pre-wrap;
 }
 
+.popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    border-width: 0;
+    background-color: white;
+
+}
+.popup-closer:after {
+    content: "✖";
+    font-size: 15px;
+}
 
 .bold {
     font-weight: bold;

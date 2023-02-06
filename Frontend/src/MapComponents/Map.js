@@ -8,6 +8,8 @@ import 'ol/ol.css';
 import {Overlay} from "ol";
 import {setText, formatPopup} from "./MapStyle/PopUpStyle";
 
+
+
 function MapComponent() {
     const [map, setMap] = useState();
     const mapElement = useRef(null);
@@ -42,6 +44,8 @@ function MapComponent() {
 
 
                 if (features && features.length > 0) {
+                    popupRef.current.style.display = "block"
+
                     let text = "";
                     let {location, coordinates, tweet} = setText()
 
@@ -61,15 +65,23 @@ function MapComponent() {
 
 
                 }
+
+
+
             });
         },
         []);
 
 
+    function closePopup() {
+        popupRef.current.style.display = "none";
+    }
+
     return (
         <div>
             <div ref={mapElement} className="map-container">
                 <div ref={popupRef} className="popupContainer">
+                    <button className="popup-closer" onClick={closePopup} ></button>
                     <div ref={popupContentRef} className="popup-content"/>
                 </div>
             </div>

@@ -6,7 +6,7 @@ const vectorLayer = new VectorLayer({
     source: new VectorSource({
         url: 'http://localhost:8080/geoserver/quaketext/ows?service=' +
             'WFS&version=1.0.0&request=GetFeature&typeName=quaketext:quake_text' +
-            '&maxFeatures=50&outputFormat=application/json',
+            '&maxFeatures=1000&outputFormat=application/json',
         format: new GeoJSON(),
     })
 
