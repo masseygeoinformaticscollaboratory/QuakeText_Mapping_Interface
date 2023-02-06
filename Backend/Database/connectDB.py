@@ -1,24 +1,25 @@
-import pandas as pd
 import psycopg2
-from handleDB import connect, create_table
-from cleanData import clean_df
+from handleDB import connect, create_table, insert_to_database, remove_duplicates
 from sqlalchemy import create_engine
+from readData import read_data
 
 cursor = None
 connection = None
+
 try:
     connection, cursor, url = connect()
     engine = create_engine(url)
     conn_engine = engine.connect()
     connection.autocommit = True
 
-    table = create_table()
-    cursor.execute(table)
+    gdf = read_data()
+    if not gdf.empty:
+        cursor.execute(create_table())
+        for index, row in gdf.iterrows():
+            query, data = insert_to_database(row)
+            cursor.execute(query, data)
 
-    df = pd.read_csv('../data/1000RowData.csv')
-
-    gdf = clean_df(df)
-    gdf.to_postgis("quake_text",conn_engine,if_exists="replace")
+    cursor.execute(remove_duplicates())
 
 except(Exception, psycopg2.DatabaseError) as error:
     print(error)
@@ -29,4 +30,4 @@ finally:
         print('Cursor connection Terminated')
     if connection is not None:
         connection.close()
-        print('Database connection Terminated')
+    print('Database connection Terminated')

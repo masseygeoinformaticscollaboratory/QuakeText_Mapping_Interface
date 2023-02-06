@@ -1,3 +1,5 @@
+import csv
+from pathlib import Path
 import geocoder
 import pandas as pd
 import geopandas as gpd
@@ -5,9 +7,32 @@ import numpy as np
 import time
 
 
-# Prepares the data to go into PostGreSQL PostGIS database
-def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
+# Reads in the data and Prepares it to go into PostGreSQL PostGIS database
+def read_data():
+    path = '../dataFiles'
+    files = Path(path).glob('*.csv')
+    dfs = list()
+    for f in files:
+        file = open(f, "r")
+        if file.readline() != 'read\n':
+            data = pd.read_csv(f)
+            data['file'] = f.stem
+            dfs.append(data)
+            line_prepender(f)
+    if len(dfs) < 1:
+        return pd.DataFrame(dfs)
+    else:
+        return clean_df(pd.concat(dfs, ignore_index=True))
 
+
+def line_prepender(filename):
+    with open(filename, 'r+') as f:
+        content = f.read()
+        f.seek(0, 0)
+        f.write('read' + '\n' + content)
+
+
+def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
     data = data[['label', 'instance', 'tweetText', 'tweetId']].copy()
     data = data[data.label == "place name"]
 
@@ -18,6 +43,7 @@ def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
 
     return create_gdf(data)
 
+# Gets the coordinates from geonames and adds them to the data frame
 def get_coordinates(data):
     data["latitude"] = np.nan
     data["longitude"] = np.nan
