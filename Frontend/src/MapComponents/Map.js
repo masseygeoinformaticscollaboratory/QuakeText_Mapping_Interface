@@ -39,24 +39,23 @@ function MapComponent() {
 
             map.on("click", (event) => {
 
-
                 let features = map.getFeaturesAtPixel(event.pixel);
-
 
                 if (features && features.length > 0) {
                     popupRef.current.style.display = "block"
 
                     let text = "";
-                    let {location, coordinates, tweet} = setText()
+                    let {location, coordinates, tweet, impact} = setText()
 
                     for (let i = 0; i < features.length; i++) {
-                        console.log(features[i]);
-                        features[i].get()
-
+                        //features[i].get("placename") for JSON
+                        //features[i].get("instance") for CSV
                         text = text +
-                            location + features[i].get("instance") + "\n" +
+                            location + features[i].get("placename") + "\n" +
                             coordinates + features[i].get("geometry").flatCoordinates + "\n" +
-                            tweet + features[i].get("tweet_text") + "\n \n"
+                            tweet + features[i].get("tweet_text") + "\n" +
+                            impact + features[i].get("impact_type") +
+                            "\n \n"
                     }
 
                     popup.setPosition(features[0].get("geometry").flatCoordinates);
@@ -92,18 +91,3 @@ function MapComponent() {
 
 export default MapComponent;
 
-/*if (features && features.length > 0) {
-
-                console.log(features)
-                popup.setPosition(event.coordinates);
-                let text = "";
-                for (let i = 0; i < features.length; i++) {
-                    text = text + "\n" +
-                        "Location: " + features[i].get("instance") + "\n" +
-                        "Coordinates: " + features[i].get("geometry").flatCoordinates + "\n" +
-                        "Tweet: " + features[0].get("tweetText")
-                }
-
-                popupContentRef.current.innerHTML = text;
-
-            }*/

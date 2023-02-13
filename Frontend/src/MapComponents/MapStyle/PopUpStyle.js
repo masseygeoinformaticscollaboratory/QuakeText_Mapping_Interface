@@ -13,6 +13,8 @@ export function setText(){
     let location = '<span class= "bold">Location: </span>';
     let coordinates = '<span class= "bold">Coordinates: </span>';
     let tweet = '<span class= "bold">Tweet: </span>';
+    let impact ='<span class= "bold">Impact Type: </span>';
 
-    return {location, coordinates, tweet}
+
+    return {location, coordinates, tweet,impact}
 }
