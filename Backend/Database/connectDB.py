@@ -1,7 +1,10 @@
 import psycopg2
-from handleDB import connect, create_table, insert_to_database, remove_duplicates
+#from handleDBForCSV import connect, create_table, insert_to_database, remove_duplicates
 from sqlalchemy import create_engine
-from readData import read_data
+#from readData import read_data
+from handleDBForJSON import connect, create_table, insert_to_database, remove_duplicates
+
+from readJSONData import get_json_data
 
 cursor = None
 connection = None
@@ -12,7 +15,7 @@ try:
     conn_engine = engine.connect()
     connection.autocommit = True
 
-    gdf = read_data()
+    gdf = get_json_data()
     if not gdf.empty:
         cursor.execute(create_table())
         for index, row in gdf.iterrows():
