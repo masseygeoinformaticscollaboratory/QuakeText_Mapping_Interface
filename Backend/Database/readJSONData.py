@@ -5,7 +5,7 @@ import pandas as pd
 
 
 def get_json_data():
-    data = pd.read_json('../jsonData/strangePlace.json', lines=True)
+    data = pd.read_json('../jsonData/pred1.json', lines=True)
     relations = data.get("relations")
     sentences = data.get("sentences")
     df = pd.DataFrame(
@@ -20,6 +20,7 @@ def get_json_data():
 
     df = get_coordinates(df.reset_index(drop=True))
     df.dropna(inplace=True)
+    df['type of impact'] = df['type of impact'].apply(str.title)
 
     return create_gdf(df)
 
@@ -62,3 +63,5 @@ def create_gdf(data: pd.DataFrame) -> gpd.GeoDataFrame:
         data, crs='EPSG:4326', geometry=gpd.points_from_xy(data.longitude, data.latitude))
     gdf = gdf.drop(columns=["latitude", "longitude"])
     return gdf
+
+

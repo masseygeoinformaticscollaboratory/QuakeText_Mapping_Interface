@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import Map from "ol/Map";
 import base from "./Layers/BaseLayer"
-import vectorLayer from "./Layers/VectorLayer";
+import allImpacts from "./Layers/ImpactLayers/AllImpacts";
 import view from "./MapStyle/mapView";
 import './MapStyle/MapStyle.css';
 import 'ol/ol.css';
@@ -21,7 +21,7 @@ function MapComponent() {
     useEffect(() => {
             const map = new Map({
                 target: mapElement.current,
-                layers: [base, vectorLayer],
+                layers: [base, allImpacts],
                 view: view
             });
             setMap(map)
