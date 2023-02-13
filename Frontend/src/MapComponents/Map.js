@@ -1,12 +1,16 @@
 import React, {useEffect, useRef, useState} from "react";
 import Map from "ol/Map";
 import base from "./Layers/BaseLayer"
-import allImpacts from "./Layers/ImpactLayers/AllImpacts";
 import view from "./MapStyle/mapView";
 import './MapStyle/MapStyle.css';
 import 'ol/ol.css';
+import 'ol-layerswitcher/dist/ol-layerswitcher.css';
+
 import {Overlay} from "ol";
 import {setText, formatPopup} from "./MapStyle/PopUpStyle";
+
+import LayerSwitcher from 'ol-layerswitcher';
+import impactLayers from "./Layers/AllImpacts"
 
 
 
@@ -19,13 +23,13 @@ function MapComponent() {
     mapRef.current = map;
 
     useEffect(() => {
+
             const map = new Map({
                 target: mapElement.current,
-                layers: [base, allImpacts],
+                layers: [base,impactLayers],
                 view: view
             });
             setMap(map)
-
             const popup = new Overlay({
                 element: popupRef.current,
                 autoPan: true,
@@ -36,6 +40,15 @@ function MapComponent() {
 
             map.addOverlay(popup);
 
+
+
+
+
+            const layerSwitcher = new LayerSwitcher({
+                reverse: true,
+                groupSelectStyle: 'group'
+            });
+            map.addControl(layerSwitcher)
 
             map.on("click", (event) => {
 
@@ -66,7 +79,6 @@ function MapComponent() {
                 }
 
 
-
             });
         },
         []);
@@ -80,7 +92,7 @@ function MapComponent() {
         <div>
             <div ref={mapElement} className="map-container">
                 <div ref={popupRef} className="popupContainer">
-                    <button className="popup-closer" onClick={closePopup} ></button>
+                    <button className="popup-closer" onClick={closePopup}></button>
                     <div ref={popupContentRef} className="popup-content"/>
                 </div>
             </div>
