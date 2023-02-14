@@ -82,7 +82,7 @@ function MapComponent() {
                     <button className="popup-closer" onClick={closePopup}></button>
                     <div ref={popupContentRef} className="popup-content"/>
                 </div>
-                <LayerSwitcher className = "layer-switcher"/>
+                <LayerSwitcher className = "layer-switcher" impactLayers ={impactLayers}/>
             </div>
 
 

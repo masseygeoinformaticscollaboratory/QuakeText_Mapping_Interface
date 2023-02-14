@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {impactLabels} from "./LayerStyle/labels";
 import "./LayerStyle/labels.css"
 
-function LayerSwitcher() {
+function LayerSwitcher(props) {
 
     const [checkedState, setCheckedState] = useState(
         new Array(impactLabels.length).fill(true)
@@ -14,11 +14,10 @@ function LayerSwitcher() {
         );
         setCheckedState(updatedCheckedState);
 
-        let impact = impactLabels[position].get("impact");
+       // let impact = impactLabels[position].get("impact");
 
-
-
-
+       const impact = props.impactLayers.getLayers();
+       
     }
 
     return (
@@ -48,7 +47,7 @@ function LayerSwitcher() {
     );
 }
 
-    export default LayerSwitcher;
+export default LayerSwitcher;
 
 /*
  return (
