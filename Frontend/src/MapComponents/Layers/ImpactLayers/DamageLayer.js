@@ -8,7 +8,8 @@ const damageLayer = new VectorLayer({
             '&request=GetFeature&typeName=quaketext:Damage&maxFeatures=1000&output' +
             'Format=application/json',
         format: new GeoJSON(),
-    })
+    }),
+    title: "Damage",
 
 });
 

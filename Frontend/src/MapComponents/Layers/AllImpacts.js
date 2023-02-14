@@ -9,7 +9,8 @@ const allImpacts = new VectorLayer({
             'WFS&version=1.0.0&request=GetFeature&typeName=quaketext:quake_text' +
             '&maxFeatures=1000&outputFormat=application/json',
         format: new GeoJSON(),
-    })
+    }),
+    title: 'Impact Layer'
 
 });
 

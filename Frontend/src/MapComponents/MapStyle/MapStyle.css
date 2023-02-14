@@ -4,12 +4,28 @@
     box-sizing: border-box;
 }
 
-.map-container {
-    width: 95vw;
+.map {
+    width: 100vw;
     height: 90vh;
     --contentHeight: 95vh;
     position: relative;
-    overflow: hidden
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+
+
+}
+
+.layer-switcher {
+    position: absolute;
+    z-index: 100;
+    width: 150px;
+    height: 120px;
+    background-color: white;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    right: 20px;
 }
 
 .popupContainer {
@@ -33,7 +49,7 @@
     height: 0;
     width: 0;
     left: -10px;
-    position: fixed ;
+    position: fixed;
     pointer-events: none;
 }
 
@@ -68,6 +84,7 @@
     background-color: white;
 
 }
+
 .popup-closer:after {
     content: "✖";
     font-size: 15px;

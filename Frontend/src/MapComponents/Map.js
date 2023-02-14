@@ -4,14 +4,10 @@ import base from "./Layers/BaseLayer"
 import view from "./MapStyle/mapView";
 import './MapStyle/MapStyle.css';
 import 'ol/ol.css';
-import 'ol-layerswitcher/dist/ol-layerswitcher.css';
-
 import {Overlay} from "ol";
 import {setText, formatPopup} from "./MapStyle/PopUpStyle";
 
-import LayerSwitcher from 'ol-layerswitcher';
 import impactLayers from "./Layers/AllImpacts"
-
 
 
 function MapComponent() {
@@ -26,7 +22,7 @@ function MapComponent() {
 
             const map = new Map({
                 target: mapElement.current,
-                layers: [base,impactLayers],
+                layers: [base, impactLayers],
                 view: view
             });
             setMap(map)
@@ -40,15 +36,6 @@ function MapComponent() {
 
             map.addOverlay(popup);
 
-
-
-
-
-            const layerSwitcher = new LayerSwitcher({
-                reverse: true,
-                groupSelectStyle: 'group'
-            });
-            map.addControl(layerSwitcher)
 
             map.on("click", (event) => {
 
@@ -89,16 +76,37 @@ function MapComponent() {
     }
 
     return (
-        <div>
-            <div ref={mapElement} className="map-container">
+        <main style={{display: "flex"}}>
+            <div ref={mapElement} className="map">
                 <div ref={popupRef} className="popupContainer">
                     <button className="popup-closer" onClick={closePopup}></button>
                     <div ref={popupContentRef} className="popup-content"/>
                 </div>
+
+                    <fieldset className="layer-switcher">
+                        <legend>Select Layers:</legend>
+                        <div>
+                            <input type="radio" id="huey" name="drone" value="huey" checked/>
+                                <label htmlFor="huey">Huey</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="dewey" name="drone" value="dewey"/>
+                                <label htmlFor="dewey">Dewey</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="louie" name="drone" value="louie"/>
+                                <label htmlFor="louie">Louie</label>
+                        </div>
+                    </fieldset>
+
+
             </div>
 
-        </div>
-    );
+
+        </main>
+);
 }
 
 export default MapComponent;
