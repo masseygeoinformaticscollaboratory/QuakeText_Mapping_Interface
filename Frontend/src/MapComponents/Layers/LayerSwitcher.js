@@ -12,8 +12,13 @@ function LayerSwitcher() {
         const updatedCheckedState = checkedState.map((item, index) =>
             index === position ? !item : item
         );
-
         setCheckedState(updatedCheckedState);
+
+        let impact = impactLabels[position].get("impact");
+
+
+
+
     }
 
     return (

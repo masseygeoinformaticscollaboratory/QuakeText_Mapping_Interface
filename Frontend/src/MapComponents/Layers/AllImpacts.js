@@ -1,18 +1,26 @@
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import {GeoJSON} from "ol/format";
+import LayerGroup from "ol/layer/Group";
+import DamageLayer from "./ImpactLayers/DamageLayer";
+import DeathLayer from "./ImpactLayers/DeathLayer";
+import FireLayer from "./ImpactLayers/FireLayer";
+import FloodLayer from "./ImpactLayers/FloodLayer";
+import InjuryLayer from "./ImpactLayers/InjuryLayer";
+import MissingLayer from "./ImpactLayers/MissingLayer";
+import OtherLayer from "./ImpactLayers/OtherLayer";
+import TerrorismLayer from "./ImpactLayers/TerrorismLayer";
+import TrappedLayer from "./ImpactLayers/TrappedLayer";
 
 
-const allImpacts = new VectorLayer({
-    source: new VectorSource({
-        url: 'http://localhost:8080/geoserver/quaketext/ows?service=' +
-            'WFS&version=1.0.0&request=GetFeature&typeName=quaketext:quake_text' +
-            '&maxFeatures=1000&outputFormat=application/json',
-        format: new GeoJSON(),
-    }),
-    title: 'Impact Layer'
 
+
+const impactLayers = new LayerGroup({
+    layers:[
+        DamageLayer,DeathLayer,FireLayer,
+        FloodLayer, InjuryLayer,MissingLayer,
+        OtherLayer,TerrorismLayer,TrappedLayer
+    ]
 });
 
-
-export default allImpacts;
+export default impactLayers;
