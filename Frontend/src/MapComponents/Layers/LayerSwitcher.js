@@ -17,7 +17,7 @@ function LayerSwitcher(props) {
        // let impact = impactLabels[position].get("impact");
 
        const impact = props.impactLayers.getLayers();
-       
+       //TODO: https://openlayers.org/en/latest/apidoc/module-ol_layer_Group-LayerGroup.html this will be handy
     }
 
     return (
