@@ -16,17 +16,17 @@
 
 }
 
-.layer-switcher {
-    position: absolute;
-    z-index: 100;
-    width: 150px;
-    height: 120px;
-    background-color: white;
-    border-color: black;
-    border-width: 1px;
-    border-style: solid;
-    right: 20px;
+p,
+label {
+    font: 1rem 'Fira Sans', sans-serif;
 }
+
+input {
+    margin: 0.4rem;
+}
+
+
+
 
 .popupContainer {
     position: absolute;

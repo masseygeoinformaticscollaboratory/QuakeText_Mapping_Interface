@@ -8,6 +8,7 @@ import {Overlay} from "ol";
 import {setText, formatPopup} from "./MapStyle/PopUpStyle";
 
 import impactLayers from "./Layers/AllImpacts"
+import LayerSwitcher from "./Layers/LayerSwitcher";
 
 
 function MapComponent() {
@@ -70,7 +71,6 @@ function MapComponent() {
         },
         []);
 
-
     function closePopup() {
         popupRef.current.style.display = "none";
     }
@@ -82,31 +82,12 @@ function MapComponent() {
                     <button className="popup-closer" onClick={closePopup}></button>
                     <div ref={popupContentRef} className="popup-content"/>
                 </div>
-
-                    <fieldset className="layer-switcher">
-                        <legend>Select Layers:</legend>
-                        <div>
-                            <input type="radio" id="huey" name="drone" value="huey" checked/>
-                                <label htmlFor="huey">Huey</label>
-                        </div>
-
-                        <div>
-                            <input type="radio" id="dewey" name="drone" value="dewey"/>
-                                <label htmlFor="dewey">Dewey</label>
-                        </div>
-
-                        <div>
-                            <input type="radio" id="louie" name="drone" value="louie"/>
-                                <label htmlFor="louie">Louie</label>
-                        </div>
-                    </fieldset>
-
-
+                <LayerSwitcher className = "layer-switcher"/>
             </div>
 
 
         </main>
-);
+    );
 }
 
 export default MapComponent;
