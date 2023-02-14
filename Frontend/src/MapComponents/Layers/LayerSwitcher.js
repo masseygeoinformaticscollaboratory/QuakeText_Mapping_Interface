@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {impactLabels} from "./LayerStyle/labels";
 import "./LayerStyle/labels.css"
+import DamageLayer from "./ImpactLayers/DamageLayer";
 
 function LayerSwitcher(props) {
 
@@ -15,8 +16,14 @@ function LayerSwitcher(props) {
         setCheckedState(updatedCheckedState);
 
        // let impact = impactLabels[position].get("impact");
-
-       const impact = props.impactLayers.getLayers();
+       const impact = props.impactLayers.getLayers().getArray()[position];
+      // console.log(impact.isVisible())
+     //  impact.setVisible(impact.getVisible());
+        if(impact.getVisible()){
+            impact.setVisible(false)
+        } else{
+            impact.setVisible(true)
+        }
        //TODO: https://openlayers.org/en/latest/apidoc/module-ol_layer_Group-LayerGroup.html this will be handy
     }
 
