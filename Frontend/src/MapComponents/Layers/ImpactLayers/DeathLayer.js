@@ -1,17 +1,26 @@
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import {GeoJSON} from "ol/format";
+import {Fill, Icon, Stroke, Style} from "ol/style";
 
-const damageLayer = new VectorLayer({
+
+
+
+const death_layer = new VectorLayer({
     source: new VectorSource({
         url: 'http://localhost:8080/geoserver/quaketext/ows?service=WFS&version=1.0.0' +
             '&request=GetFeature&typeName=quaketext:Death&maxFeatures=1000&output' +
             'Format=application/json',
         format: new GeoJSON(),
-    })
+    }),
+
+
 
 });
 
 
-export default damageLayer;
+export default death_layer;
+
+
+
 

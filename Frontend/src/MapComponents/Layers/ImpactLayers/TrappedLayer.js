@@ -2,10 +2,10 @@ import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import {GeoJSON} from "ol/format";
 
-const damageLayer = new VectorLayer({
+const trapped_layer = new VectorLayer({
     source: new VectorSource({
         url: 'http://localhost:8080/geoserver/quaketext/ows?service=WFS&version=1.0.0' +
-            '&request=GetFeature&typeName=quaketext:Trapped&maxFeatures=1000&output' +
+            '&request=GetFeature&typeName=quaketext:Trapped`&maxFeatures=1000&output' +
             'Format=application/json',
         format: new GeoJSON(),
     })
@@ -13,5 +13,5 @@ const damageLayer = new VectorLayer({
 });
 
 
-export default damageLayer;
+export default trapped_layer;
 

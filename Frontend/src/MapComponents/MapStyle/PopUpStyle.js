@@ -1,3 +1,5 @@
+import {Overlay} from "ol";
+
 export function formatPopup(mapElement, popupRef) {
     const mapHeight = mapElement.current.getBoundingClientRect();
     const popRect = popupRef.current.getBoundingClientRect();
@@ -17,4 +19,14 @@ export function setText(){
 
 
     return {location, coordinates, tweet,impact}
+}
+
+export function createPopUpOverlay(popupRef) {
+    return new Overlay({
+        element: popupRef.current,
+        autoPan: true,
+        autoPanAnimation: {
+            duration: 250
+        }
+    });
 }

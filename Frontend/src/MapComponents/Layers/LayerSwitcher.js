@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {impactLabels} from "./LayerStyle/labels";
 import "./LayerStyle/labels.css"
-import DamageLayer from "./ImpactLayers/DamageLayer";
+import {switcherDiv} from "./LayerStyle/LayerSwitcherStyle";
 
 function LayerSwitcher(props) {
 
@@ -15,16 +15,15 @@ function LayerSwitcher(props) {
         );
         setCheckedState(updatedCheckedState);
 
-       // let impact = impactLabels[position].get("impact");
-       const impact = props.impactLayers.getLayers().getArray()[position];
-      // console.log(impact.isVisible())
-     //  impact.setVisible(impact.getVisible());
-        if(impact.getVisible()){
+        const impact = props.impactLayers.getLayers().getArray()[position];
+
+
+        if (impact.getVisible()) {
             impact.setVisible(false)
-        } else{
+        } else {
             impact.setVisible(true)
         }
-       //TODO: https://openlayers.org/en/latest/apidoc/module-ol_layer_Group-LayerGroup.html this will be handy
+        props.popup.current.style.display = "none";
     }
 
     return (
@@ -43,62 +42,14 @@ function LayerSwitcher(props) {
                                 onChange={() => handleOnChange(index)}
                             />
                             <label htmlFor={`custom-checkbox-${index}`}>{impact}</label>
-
                         </div>
-
                     );
                 })}
 
             </ul>
         </div>
     );
+
 }
 
 export default LayerSwitcher;
-
-/*
- return (
-
-        <div className="layer-switcher">
-            Filter by Impact:
-            <div>
-                <input type="checkbox" name="damage" value="damage" id="damage" defaultChecked={true}/>
-                <label htmlFor="damage">Damage</label>
-            </div>
-            <div><
-                input type="checkbox" name="death" value="death" id="death" defaultChecked={true}/>
-                <label htmlFor="death">Deaths</label>
-            </div>
-            <div>
-                <input type="checkbox" name="fire" value="fire" id="fire" defaultChecked={true}/>
-                <label htmlFor="fire">Fire</label>
-            </div>
-            <div>
-                <input type="checkbox" name="flood" value="flood" id="flood" defaultChecked={true}/>
-                <label htmlFor="flood">Flooding</label>
-            </div>
-            <div>
-                <input type="checkbox" name="injury" value="injury" id="injury" defaultChecked={true}/>
-                <label htmlFor="injury">Injuries</label>
-            </div>
-            <div>
-                <input type="checkbox" name="missing" value="missing" id="missing" defaultChecked={true}/>
-                <label htmlFor="missing">Missing Persons</label>
-            </div>
-            <div>
-                <input type="checkbox" name="other" value="other" id="other" defaultChecked={true}/>
-                <label htmlFor="other">Other</label>
-            </div>
-            <div>
-                <input type="checkbox" name="terrorism" value="terrorism" id="terrorism" defaultChecked={true}/>
-                <label htmlFor="terrorism">Terrorism</label>
-            </div>
-            <div>
-                <input type="checkbox" name="trap" value="trap" id="trap" defaultChecked={true}/>
-                <label htmlFor="trap">Trapped</label>
-            </div>
-
-        </div>
-
-    );
- */

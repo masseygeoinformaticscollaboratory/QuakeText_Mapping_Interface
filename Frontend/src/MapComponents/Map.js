@@ -4,11 +4,11 @@ import base from "./Layers/BaseLayer"
 import view from "./MapStyle/mapView";
 import './MapStyle/MapStyle.css';
 import 'ol/ol.css';
-import {Overlay} from "ol";
-import {setText, formatPopup} from "./MapStyle/PopUpStyle";
-
+import {setText, formatPopup, createPopUpOverlay} from "./MapStyle/PopUpStyle";
 import impactLayers from "./Layers/AllImpacts"
 import LayerSwitcher from "./Layers/LayerSwitcher";
+import {setSwitcherHeight} from "./Layers/LayerStyle/LayerSwitcherStyle";
+import {impactLabels} from "./Layers/LayerStyle/labels";
 
 
 function MapComponent() {
@@ -27,16 +27,11 @@ function MapComponent() {
                 view: view
             });
             setMap(map)
-            const popup = new Overlay({
-                element: popupRef.current,
-                autoPan: true,
-                autoPanAnimation: {
-                    duration: 250
-                }
-            });
+
+            const popup = createPopUpOverlay(popupRef);
+            setSwitcherHeight(impactLabels.length);
 
             map.addOverlay(popup);
-
 
             map.on("click", (event) => {
 
@@ -82,7 +77,7 @@ function MapComponent() {
                     <button className="popup-closer" onClick={closePopup}></button>
                     <div ref={popupContentRef} className="popup-content"/>
                 </div>
-                <LayerSwitcher className = "layer-switcher" impactLayers ={impactLayers}/>
+                <LayerSwitcher className="layer-switcher" impactLayers={impactLayers} popup={popupRef}/>
             </div>
 
 

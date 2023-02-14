@@ -20,15 +20,3 @@ function App() {
 }
 
 export default App;
-
-
-//  <div className="map"
-//                  onMouseEnter={() => setIsShown(true)}
-//                  onMouseLeave={() => setIsShown(false)}>
-//                 <Map/>
-//             </div>
-//             {isShown && (
-//                 <div>
-//                     Some stuff appears
-//                 </div>
-//             )}
