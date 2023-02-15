@@ -23,6 +23,8 @@ function LayerSwitcher(props) {
         } else {
             impact.setVisible(true)
         }
+
+        console.log(impact.getStyle().getImage());
         props.popup.current.style.display = "none";
     }
 

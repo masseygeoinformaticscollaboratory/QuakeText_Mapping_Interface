@@ -10,7 +10,6 @@ import LayerSwitcher from "./Layers/LayerSwitcher";
 import {setSwitcherHeight} from "./Layers/LayerStyle/LayerSwitcherStyle";
 import {impactLabels} from "./Layers/LayerStyle/labels";
 
-
 function MapComponent() {
     const [map, setMap] = useState();
     const mapElement = useRef(null);

@@ -1,6 +1,9 @@
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import {GeoJSON} from "ol/format";
+import {Icon, Style} from "ol/style";
+import iconImage from "./icons/damageLayer.png";
+
 
 const damageLayer = new VectorLayer({
     source: new VectorSource({
@@ -10,6 +13,14 @@ const damageLayer = new VectorLayer({
         format: new GeoJSON(),
     }),
     title: "Damage",
+
+    style: new Style({
+        image: new Icon({
+            src: iconImage,
+            scale: 0.06,
+            anchor: [0.6, 1],
+        }),
+    }),
 
 });
 

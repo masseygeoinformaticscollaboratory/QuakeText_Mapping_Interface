@@ -1,9 +1,8 @@
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import {GeoJSON} from "ol/format";
-import {Fill, Icon, Stroke, Style} from "ol/style";
-
-
+import {Icon, Style} from "ol/style";
+import iconImage from './icons/deathLayer.png';
 
 
 const death_layer = new VectorLayer({
@@ -13,11 +12,14 @@ const death_layer = new VectorLayer({
             'Format=application/json',
         format: new GeoJSON(),
     }),
-
-
-
+    style: new Style({
+        image: new Icon({
+            src: iconImage,
+            scale: 0.06,
+            anchor: [0.5, 1],
+        }),
+    }),
 });
-
 
 export default death_layer;
 
