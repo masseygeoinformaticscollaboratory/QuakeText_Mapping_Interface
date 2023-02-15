@@ -1,7 +1,38 @@
-import {impactLabels} from "./labels";
 import React from "react";
+import damageIcon from "./icons/damageIcon.png"
+import deathIcon from "./icons/deathIcon.png"
+import fireIcon from "./icons/fireIcon.png"
+import floodIcon from "./icons/floodIcon.png"
+import injuryIcon from "./icons/injuryIcon.png"
+import missingIcon from "./icons/missingIcon.png"
+import otherIcon from "./icons/otherIcon.png"
+import terrorismIcon from "./icons/terrorismIcon.png"
+import trappedIcon from "./icons/trappedIcon.png"
 
 export function setSwitcherHeight(itemsNum) {
     let container = document.querySelector('.layer-switcher');
     container.style.height = `${itemsNum * 29}px`
+}
+
+export function getIcon(impact) {
+    switch (impact.impact.toLowerCase() ){
+        case "damage":
+            return damageIcon;
+        case "deaths":
+            return deathIcon;
+        case "fire":
+            return fireIcon;
+        case "flood":
+            return floodIcon;
+        case "injury":
+            return injuryIcon;
+        case "missing":
+            return missingIcon;
+        case "other":
+            return otherIcon;
+        case "terrorism":
+            return terrorismIcon;
+        case "trapped":
+            return trappedIcon;
+    }
 }

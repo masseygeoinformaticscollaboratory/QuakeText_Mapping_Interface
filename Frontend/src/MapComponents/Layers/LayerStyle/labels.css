@@ -13,3 +13,11 @@
 h4 {
     text-align: center;
 }
+
+img {
+    width: 25px;
+    height: auto;
+    position: absolute;
+    right: 10px;
+}
+
