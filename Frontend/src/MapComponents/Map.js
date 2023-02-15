@@ -78,8 +78,6 @@ function MapComponent() {
                 </div>
                 <LayerSwitcher className="layer-switcher" impactLayers={impactLayers} popup={popupRef}/>
             </div>
-
-
         </main>
     );
 }
