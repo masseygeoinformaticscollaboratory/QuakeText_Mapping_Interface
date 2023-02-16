@@ -6,9 +6,9 @@ import './MapStyle/MapStyle.css';
 import 'ol/ol.css';
 import {setText, formatPopup, createPopUpOverlay} from "./MapStyle/PopUpStyle";
 import impactLayers from "./Layers/AllImpacts"
-import LayerSwitcher from "./Layers/LayerSwitcher";
-import {setSwitcherHeight} from "./Layers/LayerStyle/LayerSwitcherStyle";
-import {impactLabels} from "./Layers/LayerStyle/labels";
+import LayerSwitcher from "./Layers/LayerSwitcher/LayerSwitcher";
+import {setSwitcherHeight} from "./Layers/LayerSwitcher/LayerSwitcherStyles/LayerSwitcherStyle";
+import {impactLabels} from "./Layers/LayerSwitcher/LayerSwitcherStyles/labels";
 
 function MapComponent() {
     const [map, setMap] = useState();
@@ -19,7 +19,6 @@ function MapComponent() {
     mapRef.current = map;
 
     useEffect(() => {
-
             const map = new Map({
                 target: mapElement.current,
                 layers: [base, impactLayers],
@@ -33,15 +32,16 @@ function MapComponent() {
             map.addOverlay(popup);
 
             map.on("click", (event) => {
-
                 let features = map.getFeaturesAtPixel(event.pixel);
 
                 if (features && features.length > 0) {
                     popupRef.current.style.display = "block"
 
-                    let text = "";
-                    let {location, coordinates, tweet, impact} = setText()
+                    console.log()
 
+
+                    let {title, location, coordinates, tweet, impact} = setText(features[0].getId().substring(0,features[0].getId().indexOf(".")))
+                    let text = title + '\n \n';
                     for (let i = 0; i < features.length; i++) {
                         //features[i].get("placename") for JSON
                         //features[i].get("instance") for CSV
@@ -52,15 +52,10 @@ function MapComponent() {
                             impact + features[i].get("impact_type") +
                             "\n \n"
                     }
-
                     popup.setPosition(features[0].get("geometry").flatCoordinates);
                     popupContentRef.current.innerHTML = text;
                     formatPopup(mapElement, popupRef);
-
-
                 }
-
-
             });
         },
         []);

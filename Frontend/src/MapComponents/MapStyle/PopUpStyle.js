@@ -11,14 +11,16 @@ export function formatPopup(mapElement, popupRef) {
     popupRef.current.style.maxHeight = `${maxHeight}px`;
 }
 
-export function setText(){
+export function setText(layer) {
+
+    let title =  `<h4 class = "title" >${layer}</h4>`;
     let location = '<span class= "bold">Location: </span>';
     let coordinates = '<span class= "bold">Coordinates: </span>';
     let tweet = '<span class= "bold">Tweet: </span>';
-    let impact ='<span class= "bold">Impact Type: </span>';
+    let impact = '<span class= "bold">Impact Type: </span>';
 
 
-    return {location, coordinates, tweet,impact}
+    return {title, location, coordinates, tweet, impact}
 }
 
 export function createPopUpOverlay(popupRef) {

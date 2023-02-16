@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import {impactLabels} from "./LayerStyle/labels";
-import "./LayerStyle/labels.css"
-import {getIcon} from "./LayerStyle/LayerSwitcherStyle";
+import {impactLabels} from "./LayerSwitcherStyles/labels";
+import "./LayerSwitcherStyles/labels.css"
+import {getIcon} from "./LayerSwitcherStyles/LayerSwitcherStyle";
 
 
 function LayerSwitcher(props) {
@@ -24,7 +24,6 @@ function LayerSwitcher(props) {
             impact.setVisible(true)
         }
 
-        console.log(impact.getStyle().getImage());
         props.popup.current.style.display = "none";
     }
 
