@@ -46,7 +46,7 @@ function LayerSwitcher(props) {
                                 />
                                 <label htmlFor={`custom-checkbox-${index}`}>
                                     <span>{impact}   </span>
-                                    <img src = {getIcon({impact})}  alt=""/>
+                                    <img src = {getIcon({impact}.impact)}  alt=""/>
                                 </label>
 
                             </div>

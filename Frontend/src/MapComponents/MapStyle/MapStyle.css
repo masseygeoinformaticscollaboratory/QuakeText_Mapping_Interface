@@ -90,10 +90,14 @@ input {
     font-weight: bold;
 }
 
-.title{
+#title{
     position: relative;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: -20px;
 }
 
+#title-image{
+    left: 10px;
+     margin-top: -3px;
+}

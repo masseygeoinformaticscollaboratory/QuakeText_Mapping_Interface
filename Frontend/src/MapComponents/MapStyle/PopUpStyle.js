@@ -1,5 +1,5 @@
 import {Overlay} from "ol";
-
+import {getIcon} from "../Layers/LayerSwitcher/LayerSwitcherStyles/LayerSwitcherStyle";
 export function formatPopup(mapElement, popupRef) {
     const mapHeight = mapElement.current.getBoundingClientRect();
     const popRect = popupRef.current.getBoundingClientRect();
@@ -12,8 +12,8 @@ export function formatPopup(mapElement, popupRef) {
 }
 
 export function setText(layer) {
-
-    let title =  `<h4 class = "title" >${layer}</h4>`;
+    console.log(layer)
+    let title =  `<h4 id = "title" >${layer}</h4><img id = "title-image" src="${getIcon(layer)}" alt="">`;
     let location = '<span class= "bold">Location: </span>';
     let coordinates = '<span class= "bold">Coordinates: </span>';
     let tweet = '<span class= "bold">Tweet: </span>';

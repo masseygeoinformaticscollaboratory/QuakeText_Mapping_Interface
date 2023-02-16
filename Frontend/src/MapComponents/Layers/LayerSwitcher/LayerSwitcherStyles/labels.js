@@ -3,7 +3,7 @@ export const impactLabels = [
         impact: "Damage"
     },
     {
-        impact: "Deaths"
+        impact: "Death"
     },
     {
         impact: "Fire"

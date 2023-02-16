@@ -15,10 +15,10 @@ export function setSwitcherHeight(itemsNum) {
 }
 
 export function getIcon(impact) {
-    switch (impact.impact.toLowerCase() ){
+    switch (impact.toLowerCase() ){
         case "damage":
             return damageIcon;
-        case "deaths":
+        case "death":
             return deathIcon;
         case "fire":
             return fireIcon;
