@@ -36,21 +36,22 @@ function MapComponent() {
 
                 if (features && features.length > 0) {
                     popupRef.current.style.display = "block"
+                    let impactString = features[0].getId().substring(0, features[0].getId().indexOf("."));
 
-                    console.log()
-
-
-                    let {title, location, coordinates, tweet, impact} = setText(features[0].getId().substring(0,features[0].getId().indexOf(".")))
+                    let {title, location, coordinates, tweet, impact} = setText(impactString)
                     let text = title + '\n \n';
                     for (let i = 0; i < features.length; i++) {
                         //features[i].get("placename") for JSON
                         //features[i].get("instance") for CSV
-                        text = text +
-                            location + features[i].get("placename") + "\n" +
-                            coordinates + features[i].get("geometry").flatCoordinates + "\n" +
-                            tweet + features[i].get("tweet_text") + "\n" +
-                            impact + features[i].get("impact_type") +
-                            "\n \n"
+
+                        if (impactString === features[i].getId().substring(0, features[0].getId().indexOf("."))) {
+                            text = text +
+                                location + features[i].get("placename") + "\n" +
+                                coordinates + features[i].get("geometry").flatCoordinates + "\n" +
+                                tweet + features[i].get("tweet_text") + "\n" +
+                                impact + features[i].get("impact_type") +
+                                "\n \n"
+                        }
                     }
                     popup.setPosition(features[0].get("geometry").flatCoordinates);
                     popupContentRef.current.innerHTML = text;
