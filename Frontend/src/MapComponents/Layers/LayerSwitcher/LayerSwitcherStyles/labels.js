@@ -1,3 +1,4 @@
+//Labels for each impact
 export const impactLabels = [
     {
         impact: "Damage"

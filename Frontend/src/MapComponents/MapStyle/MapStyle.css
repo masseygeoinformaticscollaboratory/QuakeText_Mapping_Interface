@@ -7,11 +7,10 @@
 .map {
     width: 100vw;
     height: 90vh;
-    --contentHeight: 95vh;
     position: relative;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 
 }
 
@@ -28,7 +27,9 @@ input {
     position: absolute;
     background-color: white;
     box-shadow: 2px 2px 5px rgba(51, 40, 40, 0.2);
-    padding: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
     border-radius: 10px;
     border: 1px solid black;
     bottom: 55px;
@@ -90,14 +91,14 @@ input {
     font-weight: bold;
 }
 
-#title{
+#title {
     position: relative;
     font-weight: bold;
     font-size: 20px;
     margin-bottom: -20px;
 }
 
-#title-image{
+#title-image {
     left: 10px;
-     margin-top: -3px;
+    margin-top: -3px;
 }

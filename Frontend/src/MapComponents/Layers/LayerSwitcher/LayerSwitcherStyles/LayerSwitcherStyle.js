@@ -9,11 +9,13 @@ import otherIcon from "./icons/otherIcon.png"
 import terrorismIcon from "./icons/terrorismIcon.png"
 import trappedIcon from "./icons/trappedIcon.png"
 
+//Sets the height of the layer swticher based on how many layers there are
 export function setSwitcherHeight(itemsNum) {
     let container = document.querySelector('.layer-switcher');
     container.style.height = `${itemsNum * 29}px`
 }
 
+//Returns the Appropriate Icon based on input string
 export function getIcon(impact) {
     switch (impact.toLowerCase() ){
         case "damage":

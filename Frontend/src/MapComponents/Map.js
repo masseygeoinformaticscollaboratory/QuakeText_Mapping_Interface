@@ -4,12 +4,14 @@ import base from "./Layers/BaseLayer"
 import view from "./MapStyle/mapView";
 import './MapStyle/MapStyle.css';
 import 'ol/ol.css';
-import {setText, formatPopup, createPopUpOverlay} from "./MapStyle/PopUpStyle";
+import {setText, setPopUpHeight, createPopUpOverlay} from "./MapStyle/PopUpStyle";
 import impactLayers from "./Layers/AllImpacts"
 import LayerSwitcher from "./Layers/LayerSwitcher/LayerSwitcher";
 import {setSwitcherHeight} from "./Layers/LayerSwitcher/LayerSwitcherStyles/LayerSwitcherStyle";
 import {impactLabels} from "./Layers/LayerSwitcher/LayerSwitcherStyles/labels";
 
+//This component handles and creates the main map component,
+//and adds layers such as pop-ups and the layer swticher
 function MapComponent() {
     const [map, setMap] = useState();
     const mapElement = useRef(null);
@@ -25,26 +27,27 @@ function MapComponent() {
                 view: view
             });
             setMap(map)
-
-            const popup = createPopUpOverlay(popupRef);
             setSwitcherHeight(impactLabels.length);
 
+            const popup = createPopUpOverlay(popupRef);
             map.addOverlay(popup);
 
             map.on("click", (event) => {
+                // If the user clicks on an icon, a pop-up will be displayed
                 let features = map.getFeaturesAtPixel(event.pixel);
 
                 if (features && features.length > 0) {
                     popupRef.current.style.display = "block"
-                    let impactString = features[0].getId().substring(0, features[0].getId().indexOf("."));
+                    let target = features[0].getId();
+                    let impactString = target.substring(0, target.indexOf("."));
 
                     let {title, location, coordinates, tweet, impact} = setText(impactString)
                     let text = title + '\n \n';
                     for (let i = 0; i < features.length; i++) {
                         //features[i].get("placename") for JSON
                         //features[i].get("instance") for CSV
-
-                        if (impactString === features[i].getId().substring(0, features[0].getId().indexOf("."))) {
+                        let target = features[i].getId()
+                        if (impactString === target.substring(0, target.indexOf("."))) {
                             text = text +
                                 location + features[i].get("placename") + "\n" +
                                 coordinates + features[i].get("geometry").flatCoordinates + "\n" +
@@ -53,15 +56,21 @@ function MapComponent() {
                                 "\n \n"
                         }
                     }
+                    //Generates popup and sets text and location
                     popup.setPosition(features[0].get("geometry").flatCoordinates);
                     popupContentRef.current.innerHTML = text;
-                    formatPopup(mapElement, popupRef);
+                    setPopUpHeight(mapElement, popupRef);
+
+                } else {
+                    //When the user clicks away from the pop up, it will close
+                    popupRef.current.style.display = "none"
                 }
             });
         },
         []);
 
     function closePopup() {
+        // Closes pop-up when exit button is clicked
         popupRef.current.style.display = "none";
     }
 

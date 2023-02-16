@@ -9,6 +9,7 @@ import OtherLayer from "./ImpactLayers/OtherLayer";
 import TerrorismLayer from "./ImpactLayers/TerrorismLayer";
 import TrappedLayer from "./ImpactLayers/TrappedLayer";
 
+//Collects all layers into a layer group
 const impactLayers = new LayerGroup({
     layers: [
         DamageLayer,  DeathLayer, FireLayer,

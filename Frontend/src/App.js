@@ -3,7 +3,7 @@ import './App.css';
 import React from "react";
 import Map from "./MapComponents/Map";
 
-
+//This is the main App component
 function App() {
 
     return (

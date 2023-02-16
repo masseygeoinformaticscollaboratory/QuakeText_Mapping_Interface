@@ -6,10 +6,12 @@ import {getIcon} from "./LayerSwitcherStyles/LayerSwitcherStyle";
 
 function LayerSwitcher(props) {
 
+    //Adds layer switcher control panel so user can switch between impact layers
     const [checkedState, setCheckedState] = useState(
         new Array(impactLabels.length).fill(true)
     );
 
+    //Handles when a checkbox state changes
     const handleOnChange = (position) => {
         const updatedCheckedState = checkedState.map((item, index) =>
             index === position ? !item : item
