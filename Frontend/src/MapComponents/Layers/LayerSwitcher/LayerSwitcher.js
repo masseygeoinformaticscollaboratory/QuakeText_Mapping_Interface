@@ -29,10 +29,9 @@ function LayerSwitcher(props) {
         props.popup.current.style.display = "none";
     }
 
-
     return (
         <div className="layer-switcher">
-            <h4>Select Impacts</h4>
+            <h4>Display Impacts</h4>
             <ul className="impacts-list">
                 {impactLabels.map(({impact}, index) => {
                     return (

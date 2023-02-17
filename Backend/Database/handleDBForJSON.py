@@ -37,7 +37,7 @@ def create_table():
 def insert_to_database(row):
     insert_query = """ 
          INSERT INTO quake_text (placeName, impact_type, impact_place_relation, tweet_text, geometry) 
-         VALUES (%s,%s,%s,%s,%s);
+         VALUES (%s,%s,%s,%s,ST_GeomFromText(%s,4326));
          """
     record_to_insert = (row["place name"],row["type of impact"], row["impact place relation"],row["tweet text"], row["geometry"].wkt)
     return insert_query, record_to_insert
