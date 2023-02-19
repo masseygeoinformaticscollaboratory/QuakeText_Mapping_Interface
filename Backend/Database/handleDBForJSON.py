@@ -36,8 +36,6 @@ def create_table():
 
 
 def insert_to_database(row):
-    print (type(row["impact category"]))
-
     insert_query = """ 
          INSERT INTO quake_text (placeName, impact_type, impact_place_relation, impact_category, tweet_text, geometry) 
          VALUES (%s,%s,%s,%s,%s,ST_GeomFromText(%s,4326));

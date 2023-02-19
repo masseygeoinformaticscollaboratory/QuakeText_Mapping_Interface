@@ -1,1 +1,0 @@
-# Quake Text Mapping Interface 
