@@ -28,6 +28,7 @@ def create_table():
           placeName                varchar(70),
           impact_type              varchar(500),
           impact_place_relation    varchar(500),
+          impact_category          varchar(500),
           tweet_text               varchar(500),
           geometry                 geometry(Point, 4326)
           );
@@ -35,12 +36,18 @@ def create_table():
 
 
 def insert_to_database(row):
+    print (type(row["impact category"]))
+
     insert_query = """ 
-         INSERT INTO quake_text (placeName, impact_type, impact_place_relation, tweet_text, geometry) 
-         VALUES (%s,%s,%s,%s,ST_GeomFromText(%s,4326));
+         INSERT INTO quake_text (placeName, impact_type, impact_place_relation, impact_category, tweet_text, geometry) 
+         VALUES (%s,%s,%s,%s,%s,ST_GeomFromText(%s,4326));
          """
-    record_to_insert = (row["place name"],row["type of impact"], row["impact place relation"],row["tweet text"], row["geometry"].wkt)
+    record_to_insert = (
+    row["place name"], row["type of impact"], row["impact place relation"], row["impact category"], row["tweet text"],
+    row["geometry"].wkt)
     return insert_query, record_to_insert
+
+
 def remove_duplicates():
     return """
     DELETE FROM quake_text T1
