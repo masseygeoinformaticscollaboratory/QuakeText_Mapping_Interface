@@ -2,10 +2,33 @@ import geocoder
 import geopandas as gpd
 import numpy as np
 import pandas as pd
+from pathlib import Path
+
+def read_data():
+    path = '../dataFiles'
+    files = Path(path).glob('*.json')
+    dfs = list()
+    for f in files:
+        file = open(f, "r")
+        if file.readline() != 'read\n':
+            data = pd.read_json(f, lines=True)
+            data['file'] = f.stem
+            dfs.append(data)
+            line_prepender(f)
+    if len(dfs) < 1:
+        return pd.DataFrame(dfs)
+    else:
+        return clean_df(pd.concat(dfs, ignore_index=True))
 
 
-def get_json_data():
-    data = pd.read_json('../jsonData/pred1.json', lines=True)
+def line_prepender(filename):
+    with open(filename, 'r+') as f:
+        content = f.read()
+        f.seek(0, 0)
+        f.write('read' + '\n' + content)
+
+
+def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
     relations = data.get("relations")
     sentences = data.get("sentences")
     df = pd.DataFrame(
