@@ -14,8 +14,8 @@ const flood_layer = new VectorLayer({
     style: new Style({
         image: new Icon({
             src: iconImage,
-            scale: 0.05,
-            anchor: [0.5, 0.9],
+            scale: 0.055,
+            anchor: [1, 0.9],
         }),
     }),
 

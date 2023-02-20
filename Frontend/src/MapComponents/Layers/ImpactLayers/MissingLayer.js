@@ -15,7 +15,7 @@ const missing_layer = new VectorLayer({
         image: new Icon({
             src: iconImage,
             scale: 0.06,
-            anchor: [0.6, 0.9],
+            anchor: [-0.5, 0],
         }),
     }),
 });
