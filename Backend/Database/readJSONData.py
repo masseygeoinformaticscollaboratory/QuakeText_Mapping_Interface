@@ -119,8 +119,9 @@ def get_coordinates(data):
         if g.current_result:
             data.loc[[index], 'latitude'] = g.lat
             data.loc[[index], 'longitude'] = g.lng
-        else:
-            print("Unable to find:" + row['place name'] + ' in geonames')
+       # To identify which names are not being found in GeoNames - they are normally unusual/misspelled names
+        # else:
+       #     print("Unable to find:" + row['place name'] + ' in geonames')
     return data
 
 

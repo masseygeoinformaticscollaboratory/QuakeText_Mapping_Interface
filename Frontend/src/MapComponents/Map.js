@@ -11,7 +11,7 @@ import {setSwitcherHeight} from "./Layers/LayerSwitcher/LayerSwitcherStyles/Laye
 import {impactLabels} from "./Layers/LayerSwitcher/LayerSwitcherStyles/labels";
 
 //This component handles and creates the main map component,
-//and adds layers such as pop-ups and the layer swticher
+//and adds layers such as pop-ups and the layer switcher
 function MapComponent() {
     const [map, setMap] = useState();
     const mapElement = useRef(null);
@@ -27,6 +27,8 @@ function MapComponent() {
                 view: view
             });
             setMap(map)
+
+            //Sets the layer switcher height based on how many number of impact categories
             setSwitcherHeight(impactLabels.length);
 
             const popup = createPopUpOverlay(popupRef);
@@ -36,6 +38,7 @@ function MapComponent() {
                 // If the user clicks on an icon, a pop-up will be displayed
                 let features = map.getFeaturesAtPixel(event.pixel);
 
+                //Must be a point where an icon is located
                 if (features && features.length > 0) {
                     popupRef.current.style.display = "block"
                     let target = features[0].getId();
@@ -62,7 +65,7 @@ function MapComponent() {
                     setPopUpHeight(mapElement, popupRef);
 
                 } else {
-                    //When the user clicks away from the pop up, it will close
+                    //When the user clicks away from the pop-up, it will close
                     popupRef.current.style.display = "none"
                 }
             });

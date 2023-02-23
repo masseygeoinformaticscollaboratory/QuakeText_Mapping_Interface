@@ -10,7 +10,7 @@ def connect():
     conn = psycopg2.connect(**params)
     return conn, conn.cursor(), url
 
-
+#Creates a url from the config file parameters
 def create_url(params):
     url_object = URL.create(
         "postgresql+psycopg2",
