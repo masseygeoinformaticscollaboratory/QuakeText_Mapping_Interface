@@ -17,7 +17,7 @@ const trapped_layer = new VectorLayer({
             image: new Icon({
                 src: iconImage,
                 scale: 0.06,
-                anchor: [0.4, 1.1],
+                anchor: [-0.5, 0.8],
             }),
         }),
     })

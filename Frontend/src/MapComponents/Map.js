@@ -49,10 +49,10 @@ function MapComponent() {
                         let target = features[i].getId()
                         if (impactString === target.substring(0, target.indexOf("."))) {
                             text = text +
+                                impact + features[i].get("impact_type") + "\n" +
                                 location + features[i].get("placename") + "\n" +
                                 coordinates + features[i].get("geometry").flatCoordinates + "\n" +
                                 tweet + features[i].get("tweet_text") + "\n" +
-                                impact + features[i].get("impact_type") +
                                 "\n \n"
                         }
                     }

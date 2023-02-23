@@ -18,7 +18,7 @@ const damageLayer = new VectorLayer({
         image: new Icon({
             src: iconImage,
             scale: 0.06,
-            anchor: [0.6, 1],
+            anchor: [-0.2, 1],
         }),
     }),
 
