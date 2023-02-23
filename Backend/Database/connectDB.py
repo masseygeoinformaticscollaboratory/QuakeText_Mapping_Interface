@@ -12,6 +12,8 @@ try:
     conn_engine = engine.connect()
     connection.autocommit = True
 
+    #This can easily be used with a CSV file - just use the read_data() function from readCSVData.py
+    #and use the handleDBForCSV in place of handleDBForJSON
     gdf = read_data()
     if not gdf.empty:
         cursor.execute(create_table())
@@ -19,6 +21,7 @@ try:
             query, data = insert_to_database(row)
             cursor.execute(query, data)
 
+    # Only needed with insert_query1
     cursor.execute(remove_duplicates())
 
 except(Exception, psycopg2.DatabaseError) as error:

@@ -10,6 +10,7 @@ def read_data():
     dfs = list()
     for f in files:
         file = open(f, "r")
+        #if the file has not been read
         if file.readline() != 'read\n':
             data = pd.read_json(f, lines=True)
             data['file'] = f.stem
@@ -22,6 +23,7 @@ def read_data():
 
 
 def line_prepender(filename):
+    #Adds 'read' to the first name of a file
     with open(filename, 'r+') as f:
         content = f.read()
         f.seek(0, 0)
@@ -31,6 +33,7 @@ def line_prepender(filename):
 def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
     relations = data.get("relations")
     sentences = data.get("sentences")
+    #creates empty dataframe to append data
     df = pd.DataFrame(
         columns=['place name', 'type of impact', 'impact place relation', 'tweet text', 'impact category'])
     i = 0
@@ -49,6 +52,8 @@ def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
 
 
 def get_impact_relations(impact_list, sentence):
+    #Gets the impact relations based on location - if it is multiple words, simply use the given indices, otherwise we
+    #need to add one to the ending index
     if impact_list[0] == impact_list[1]:
         impact = ' '.join(sentence[impact_list[0]:impact_list[1] + 1])
     else:
@@ -67,6 +72,7 @@ def get_impact_relations(impact_list, sentence):
 
 
 def get_impact_category(data):
+    #This could be MUCH improved and not be hard coded. May need to add more words to each category as more data is received
     damage = ['Damage', 'Damages', 'Damaged', 'Collapse', 'Collapsed', 'Down', 'Destroyed', 'Destroy', 'Destroys']
     death = ['Dead', 'Killed', 'Kill', 'Kills', 'Die', 'Dies', 'Died', 'Loss', 'Loss Of Life', 'Death Toll', 'Claims',
              'Claim', 'Death', 'Deaths', 'Deads', 'Daed']
@@ -108,8 +114,7 @@ def get_coordinates(data):
     data["longitude"] = np.nan
 
     for index, row in data.iterrows():
-        impact = row["type of impact"]
-
+        #Looked at GeoTxt but it is not going to work
         g = geocoder.geonames(row['place name'], key='QuakeText')
         if g.current_result:
             data.loc[[index], 'latitude'] = g.lat

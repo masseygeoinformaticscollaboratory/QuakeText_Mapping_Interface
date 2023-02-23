@@ -1,5 +1,5 @@
 from configparser import ConfigParser
-
+#config file for database
 def config(filename="database.ini", section="postgresql"):
     parser = ConfigParser()
     parser.read(filename)
