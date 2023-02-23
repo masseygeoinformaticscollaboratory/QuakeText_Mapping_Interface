@@ -6,7 +6,7 @@ import iconImage from "./icons/injuryLayer.png";
 
 const injury_layer = new VectorLayer({
     source: new VectorSource({
-        url: 'http://localhost:8080/geoserver/quaketext/ows?service=WFS&version=1.0.0' +
+        url: 'http://vm010945.massey.ac.nz:8080/geoserver/quaketext/ows?service=WFS&version=1.0.0' +
             '&request=GetFeature&typeName=quaketext:Injury&maxFeatures=1000&output' +
             'Format=application/json',
         format: new GeoJSON(),

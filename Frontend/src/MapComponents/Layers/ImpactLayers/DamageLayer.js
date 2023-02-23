@@ -7,7 +7,7 @@ import iconImage from "./icons/damageLayer.png";
 
 const damageLayer = new VectorLayer({
     source: new VectorSource({
-        url: 'http://localhost:8080/geoserver/quaketext/ows?service=WFS&version=1.0.0' +
+        url: 'http://vm010945.massey.ac.nz:8080/geoserver/quaketext/ows?service=WFS&version=1.0.0' +
             '&request=GetFeature&typeName=quaketext:Damage&maxFeatures=1000&output' +
             'Format=application/json',
         format: new GeoJSON(),
