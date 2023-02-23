@@ -1,4 +1,3 @@
-import React from "react";
 import damageIcon from "./icons/damageIcon.png"
 import deathIcon from "./icons/deathIcon.png"
 import fireIcon from "./icons/fireIcon.png"
