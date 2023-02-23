@@ -4,6 +4,7 @@ import {GeoJSON} from "ol/format";
 import {Icon, Style} from "ol/style";
 import iconImage from './icons/deathLayer.png';
 
+//Death Impact Category Layer
 
 const death_layer = new VectorLayer({
     source: new VectorSource({

@@ -4,6 +4,8 @@ import {GeoJSON} from "ol/format";
 import {Icon, Style} from "ol/style";
 import iconImage from "./icons/terrorismLayer.png";
 
+//Terrorism Impact Category Layer
+
 const terrorism_layer = new VectorLayer({
     source: new VectorSource({
         url: 'http://vm010945.massey.ac.nz:8080/geoserver/quaketext/ows?service=WFS&version=1.0.0' +

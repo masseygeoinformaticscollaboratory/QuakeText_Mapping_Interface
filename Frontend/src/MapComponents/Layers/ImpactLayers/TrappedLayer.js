@@ -4,6 +4,7 @@ import {GeoJSON} from "ol/format";
 import {Icon, Style} from "ol/style";
 import iconImage from "./icons/trappedLayer.png";
 
+//Trapped Impact Category Layer
 
 const trapped_layer = new VectorLayer({
         source: new VectorSource({

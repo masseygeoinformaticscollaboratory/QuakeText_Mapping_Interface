@@ -4,6 +4,7 @@ import {GeoJSON} from "ol/format";
 import {Icon, Style} from "ol/style";
 import iconImage from "./icons/damageLayer.png";
 
+//Damage Impact Category Layer
 
 const damageLayer = new VectorLayer({
     source: new VectorSource({
