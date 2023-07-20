@@ -8,7 +8,7 @@ import iconImage from "./icons/missingLayer.png";
 
 const missing_layer = new VectorLayer({
     source: new VectorSource({
-        url: 'http://vm010945.massey.ac.nz:8080/geoserver/quaketext/ows?service=WFS&version=1.0.0' +
+        url: 'http://localhost:8080/geoserver/quaketext/ows?service=WFS&version=1.0.0' +
             '&request=GetFeature&typeName=quaketext:Missing&maxFeatures=1000&output' +
             'Format=application/json',
         format: new GeoJSON(),

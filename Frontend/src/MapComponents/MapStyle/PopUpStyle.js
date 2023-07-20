@@ -15,7 +15,6 @@ export function setPopUpHeight(mapElement, popupRef) {
 
 //Sets the text for the pop up and formats it
 export function setText(layer) {
-    console.log(layer)
     let title = `<h4 id = "title" >${layer}</h4><img id = "title-image" src="${getIcon(layer)}" alt="">`;
     let location = '<span class= "bold">Location: </span>';
     let coordinates = '<span class= "bold">Coordinates: </span>';
