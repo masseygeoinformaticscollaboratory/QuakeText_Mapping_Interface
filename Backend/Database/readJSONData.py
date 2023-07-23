@@ -41,7 +41,7 @@ def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
     # creates empty dataframe to append data
     df = pd.DataFrame(
         columns=['place name', 'type of impact', 'impact place relation', 'modifier place relation',
-                 'severity impact_relation', 'item impact relation', 'tweet text', 'impact category'])
+                 'severity impact relation', 'item impact relation', 'tweet text', 'impact category'])
     i = 0
 
     for items in entity_relations:
@@ -61,25 +61,25 @@ def get_relations_entities(items, tweet):
     for item in items:
         if len(item) == 3:
             if item[2] == 'place name':
-                place = ''.join(tweet[item[0]:item[1]])
+                place += ''.join(tweet[item[0]:item[1]])
             elif item[2] == 'type of impact':
-                impact = ''.join(tweet[item[0]:item[1]])
+                impact += ''.join(tweet[item[0]:item[1]])
         elif len(item) == 5:
             match item[4]:
                 case 'modifier_place_rel':
-                    location = tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
+                    location += tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
                 case 'place_impact_rel':
-                    impact_place = tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
+                    impact_place += tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
                 case 'severity_impact_rel':
-                    sev_impact = tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
+                    sev_impact += tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
                 case 'item_impact_rel':
-                    item_impact = tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
+                    item_impact += tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
     return {
         'place name': place,
         'type of impact': impact,
         'impact place relation': impact_place,
         'modifier place relation': location,
-        'severity impact_relation': sev_impact,
+        'severity impact relation': sev_impact,
         'item impact relation': item_impact,
         'tweet text': tweet
     }
@@ -119,27 +119,29 @@ def get_impact_category(data):
     trapped = ['Trap', 'Traps', 'Marooned', 'Maroon', 'Maroons', 'Stranded', 'Strands', 'Strand']
 
     for index, row in data.iterrows():
-        impact = row["type of impact"]
-
-        match impact:
-            case impact if impact in damage:
-                data.loc[[index], 'impact category'] = 'Damage'
-            case impact if impact in death:
-                data.loc[[index], 'impact category'] = 'Death'
-            case impact if impact in fire:
-                data.loc[[index], 'impact category'] = 'Fire'
-            case impact if impact in flood:
-                data.loc[[index], 'impact category'] = 'Flood'
-            case impact if impact in injury:
-                data.loc[[index], 'impact category'] = 'Injury'
-            case impact if impact in missing:
-                data.loc[[index], 'impact category'] = 'Missing'
-            case impact if impact in terrorism:
-                data.loc[[index], 'impact category'] = 'Terrorism'
-            case impact if impact in trapped:
-                data.loc[[index], 'impact category'] = 'Trapped'
-            case _:
-                data.loc[[index], 'impact category'] = 'Other'
+        impacts = row["type of impact"]
+        impacts = impacts.split(':')
+        impacts = [x for x in impacts if x != '']
+        for impact in impacts:
+            match impact:
+                case impact if impact in damage:
+                    data.loc[[index], 'impact category'] = 'Damage'
+                case impact if impact in death:
+                    data.loc[[index], 'impact category'] = 'Death'
+                case impact if impact in fire:
+                    data.loc[[index], 'impact category'] = 'Fire'
+                case impact if impact in flood:
+                    data.loc[[index], 'impact category'] = 'Flood'
+                case impact if impact in injury:
+                    data.loc[[index], 'impact category'] = 'Injury'
+                case impact if impact in missing:
+                    data.loc[[index], 'impact category'] = 'Missing'
+                case impact if impact in terrorism:
+                    data.loc[[index], 'impact category'] = 'Terrorism'
+                case impact if impact in trapped:
+                    data.loc[[index], 'impact category'] = 'Trapped'
+                case _:
+                    data.loc[[index], 'impact category'] = 'Other'
 
     return data
 
@@ -167,4 +169,6 @@ def create_gdf(data: pd.DataFrame) -> gpd.GeoDataFrame:
     return gdf
 
 
-read_data()
+hello = read_data()
+print(hello)
+print()
