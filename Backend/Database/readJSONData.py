@@ -16,13 +16,12 @@ def read_data():
             data = pd.read_json(f)
             data['file'] = f.stem
             dfs.append(data)
-            line_prepender(f)
+            # line_prepender(f)
 
-    # print(dfs)
-    # if len(dfs) < 1:
-    #   return pd.DataFrame(dfs)
-    # else:
-    #    return clean_df(pd.concat(dfs, ignore_index=True))
+    if len(dfs) < 1:
+        return pd.DataFrame(dfs)
+    else:
+        return clean_df(pd.concat(dfs, ignore_index=True))
 
 
 def line_prepender(filename):
@@ -34,24 +33,56 @@ def line_prepender(filename):
 
 
 def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
-    relations = data.get("relations")
-    sentences = data.get("sentences")
+    relations_list = data.get("relations")
+    tweets = data.get("tweet")
+    entity_list = data.get("entities")
+    entity_relations = entity_list + relations_list
+
     # creates empty dataframe to append data
     df = pd.DataFrame(
-        columns=['place name', 'type of impact', 'impact place relation', 'tweet text', 'impact category'])
+        columns=['place name', 'type of impact', 'impact place relation', 'modifier place relation',
+                 'severity impact_relation', 'item impact relation', 'tweet text', 'impact category'])
     i = 0
-    for impacts in relations:
-        [impact_list] = impacts
-        [sentence] = sentences[i]
-        for impact in impact_list:
-            df = pd.concat([df, pd.DataFrame.from_records([get_impact_relations(impact, sentence)])])
+
+    for items in entity_relations:
+        [tweet] = tweets[i]
+        df = pd.concat([df, pd.DataFrame.from_records([get_relations_entities(items, tweet)])])
         i += 1
     df['type of impact'] = df['type of impact'].apply(str.title)
     df = get_impact_category(df.reset_index(drop=True))
     df = get_coordinates(df.reset_index(drop=True))
     df.dropna(inplace=True)
-
+    print(df)
     return create_gdf(df)
+
+
+def get_relations_entities(items, tweet):
+    place, impact, location, impact_place, sev_impact, item_impact = "", "", "", "", "", ""
+    for item in items:
+        if len(item) == 3:
+            if item[2] == 'place name':
+                place = ''.join(tweet[item[0]:item[1]])
+            elif item[2] == 'type of impact':
+                impact = ''.join(tweet[item[0]:item[1]])
+        elif len(item) == 5:
+            match item[4]:
+                case 'modifier_place_rel':
+                    location = tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
+                case 'place_impact_rel':
+                    impact_place = tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
+                case 'severity_impact_rel':
+                    sev_impact = tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
+                case 'item_impact_rel':
+                    item_impact = tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]]
+    return {
+        'place name': place,
+        'type of impact': impact,
+        'impact place relation': impact_place,
+        'modifier place relation': location,
+        'severity impact_relation': sev_impact,
+        'item impact relation': item_impact,
+        'tweet text': tweet
+    }
 
 
 def get_impact_relations(impact_list, sentence):
@@ -77,7 +108,8 @@ def get_impact_relations(impact_list, sentence):
 def get_impact_category(data):
     # This could be MUCH improved and not be hard coded. May need to add more words to each category as more data is received
     damage = ['Damage', 'Damages', 'Damaged', 'Collapse', 'Collapsed', 'Down', 'Destroyed', 'Destroy', 'Destroys']
-    death = ['Dead', 'Killed', 'Kill', 'Kills', 'Die', 'Dies', 'Died', 'Loss', 'Loss Of Life', 'Death Toll', 'Claims',
+    death = ['Dead', 'Killed', 'Kill', 'Kills', 'Die', 'Dies', 'Died', 'Loss', 'Loss Of Life', 'Death Toll',
+             'Claims',
              'Claim', 'Death', 'Deaths', 'Deads', 'Daed']
     fire = ['Fire', 'Fires', 'Flames', 'Flame', 'Blaze', 'Smoke']
     flood = ['Flood', 'Floods', 'Wash Away', 'Sweep Away', 'Submerge', 'Flood Hits']
