@@ -6,6 +6,7 @@ from pathlib import Path
 
 
 def read_data():
+    print("Reading files...")
     path = '../dataFiles'
     files = Path(path).glob('*.json')
     dfs = list()
@@ -16,7 +17,7 @@ def read_data():
             data = pd.read_json(f)
             data['file'] = f.stem
             dfs.append(data)
-            # line_prepender(f)
+            #line_prepender(f)
 
     if len(dfs) < 1:
         return pd.DataFrame(dfs)
@@ -33,6 +34,7 @@ def line_prepender(filename):
 
 
 def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
+    print("Cleaing Data...")
     relations_list = data.get("relations")
     tweets = data.get("tweet")
     entity_list = data.get("entities")
@@ -83,27 +85,6 @@ def get_relations_entities(items, tweet):
         'item impact relation': item_impact,
         'tweet text': tweet
     }
-
-
-def get_impact_relations(impact_list, sentence):
-    # Gets the impact relations based on location - if it is multiple words, simply use the given indices, otherwise we
-    # need to add one to the ending index
-    if impact_list[0] == impact_list[1]:
-        impact = ' '.join(sentence[impact_list[0]:impact_list[1] + 1])
-    else:
-        impact = ' '.join(sentence[impact_list[0]:impact_list[1]])
-
-    if impact_list[2] == impact_list[3]:
-        place = ' '.join(sentence[impact_list[2]:impact_list[3] + 1])
-    else:
-        place = ' '.join(sentence[impact_list[2]:impact_list[3]])
-    return {
-        'place name': place,
-        'type of impact': impact,
-        'impact place relation': impact + " " + place,
-        'tweet text': ' '.join(sentence),
-    }
-
 
 def get_impact_category(data):
     # This could be MUCH improved and not be hard coded. May need to add more words to each category as more data is received
@@ -163,12 +144,8 @@ def get_coordinates(data):
 
 
 def create_gdf(data: pd.DataFrame) -> gpd.GeoDataFrame:
+    print("Creating GDF...")
     gdf = gpd.GeoDataFrame(
         data, crs='EPSG:4326', geometry=gpd.points_from_xy(data.longitude, data.latitude))
     gdf = gdf.drop(columns=["latitude", "longitude"])
     return gdf
-
-
-hello = read_data()
-print(hello)
-print()
