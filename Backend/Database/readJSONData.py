@@ -61,7 +61,6 @@ def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
     return create_gdf(df)
 
 
-
 def get_database_rows(items, tweet):
     rows = []
 
@@ -176,5 +175,3 @@ def create_gdf(data: pd.DataFrame) -> gpd.GeoDataFrame:
     gdf = gdf.drop(columns=["latitude", "longitude"])
     return gdf
 
-
-read_data()
