@@ -63,60 +63,42 @@ def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
 
 
 def get_relations_entities(items, tweet):
-    place, impact, location, sev_impact, item_impact = [], [], [], [], []
     impact_place = ""
     rows = []
 
-    count, impact_relations = count_occurrences(items, "place_impact_rel")
+    impact_relations = get_impact_relations(items, "place_impact_rel")
 
-    if len(impact_relations) > 1:
-        for relation in impact_relations:
-            impact_place = tweet[relation[0]:relation[1]] + ' ' + tweet[relation[2]:relation[3]]
-            for item in items:
-                if len(item) == 3:
-                    if item[2] == 'place name':
-                        place.append(tweet[item[0]:item[1]])
-                    elif item[2] == 'type of impact':
-                        impact.append(tweet[item[0]:item[1]])
-                elif len(item) == 5:
-                    match item[4]:
-                        case 'modifier_place_rel':
-                            location.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
-                        case 'severity_impact_rel':
-                            sev_impact.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
-                        case 'item_impact_rel':
-                            item_impact.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
-            rows.append({'place name': place,
-                         'type of impact': impact,
-                         'impact place relation': impact_place,
-                         'modifier place relation': location,
-                         'severity impact relation': sev_impact,
-                         'item impact relation': item_impact,
-                         'tweet text': tweet})
+    # if len(impact_relations) > 1:
+    for relation in impact_relations:
+        place, impact, location, sev_impact, item_impact = [], [], [], [], []
+        impact_place = tweet[relation[0]:relation[1]] + ' ' + tweet[relation[2]:relation[3]]
+        for item in items:
+            if len(item) == 3:
+                if item[2] == 'place name':
+                    place.append(tweet[item[0]:item[1]])
+                elif item[2] == 'type of impact':
+                    impact.append(tweet[item[0]:item[1]])
+            elif len(item) == 5:
+                match item[4]:
+                    case 'modifier_place_rel':
+                        location.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
+                    case 'severity_impact_rel':
+                        sev_impact.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
+                    case 'item_impact_rel':
+                        item_impact.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
+        rows.append({'place name': place,
+                     'type of impact': impact,
+                     'impact place relation': impact_place,
+                     'modifier place relation': location,
+                     'severity impact relation': sev_impact,
+                     'item impact relation': item_impact,
+                     'tweet text': tweet})
+
 
     return rows
 
-    '''
-    for item in items:
-        if len(item) == 3:
-            if item[2] == 'place name':
-                place.append(tweet[item[0]:item[1]])
-            elif item[2] == 'type of impact':
-                impact.append(tweet[item[0]:item[1]])
-        elif len(item) == 5:
-            match item[4]:
-                case 'modifier_place_rel':
-                    location.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
-                case 'place_impact_rel':
-                    impact_place.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
-                case 'severity_impact_rel':
-                    sev_impact.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
-                case 'item_impact_rel':
-                    item_impact.append(tweet[item[0]:item[1]] + ' ' + tweet[item[2]:item[3]])
-    '''
 
-
-def count_occurrences(list_of_lists, target):
+def get_impact_relations(list_of_lists, target):
     count = 0
     relations = []
     for sublist in list_of_lists:
