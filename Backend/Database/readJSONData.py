@@ -51,15 +51,15 @@ def clean_df(data: pd.DataFrame) -> gpd.GeoDataFrame:
         for row in get_database_rows(items, tweet):
             df = pd.concat([df, pd.DataFrame.from_records([row])])
         i += 1
-    print(df)
-    ''' 
+    df = df.drop_duplicates()
     df['type of impact'] = df['type of impact'].apply(str.title)
     df = get_impact_category(df.reset_index(drop=True))
     df = get_coordinates(df.reset_index(drop=True))
     df.dropna(inplace=True)
+    print(df)
 
     return create_gdf(df)
-    '''
+
 
 
 def get_database_rows(items, tweet):
