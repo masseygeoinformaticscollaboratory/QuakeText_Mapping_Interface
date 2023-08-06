@@ -1,0 +1,2 @@
+read
+[{"tweet": ["Saddened by powerful 7.7 magn.earthquake that killed 250 people in #Pakistan. Condolences for victims&amp;families and hope for a quick recovery"], "tweetId": "382813501729017856", "entities": [[64, 66, "location modifier"], [53, 56, "severity or quantity"], [46, 52, "type of impact"], [68, 76, "place name"], [57, 63, "item affected"]], "relations": [[64, 66, 68, 76, "modifier_place_rel"], [68, 76, 46, 52, "place_impact_rel"], [53, 56, 46, 52, "severity_impact_rel"], [57, 63, 46, 52, "item_impact_rel"]]}]

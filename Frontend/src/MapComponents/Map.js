@@ -53,7 +53,7 @@ function MapComponent() {
                         if (impactString === target.substring(0, target.indexOf("."))) {
                             text = text +
                                 impact + features[i].get("impact_type") + "\n" +
-                                location + features[i].get("placename") + "\n" +
+                                location + features[i].get("place_name") + "\n" +
                                 coordinates + features[i].get("geometry").flatCoordinates + "\n" +
                                 tweet + features[i].get("tweet_text") + "\n" +
                                 "\n \n"

@@ -1,0 +1,933 @@
+[
+  {
+    "tweet": [
+      "Natural disaster or man made disaster, end result is dead Pakistani, May God have mercy on us all #Awaran #Balochistan #PeshawarChurchBlast"
+    ],
+    "tweetId": "382853292482506752",
+    "entities": [
+      [
+        53,
+        57,
+        "type of impact"
+      ],
+      [
+        58,
+        67,
+        "item affected"
+      ],
+      [
+        107,
+        118,
+        "place name"
+      ],
+      [
+        120,
+        128,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        120,
+        128,
+        53,
+        57,
+        "place_impact_rel"
+      ],
+      [
+        107,
+        118,
+        53,
+        57,
+        "place_impact_rel"
+      ],
+      [
+        58,
+        67,
+        53,
+        57,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @geonews_english: Death toll rises to 285 in #Balochistan #earthquake http://t.co/ZszK6xbter"
+    ],
+    "tweetId": "382854584903151616",
+    "entities": [
+      [
+        21,
+        26,
+        "type of impact"
+      ],
+      [
+        41,
+        44,
+        "severity or quantity"
+      ],
+      [
+        49,
+        60,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        41,
+        44,
+        21,
+        26,
+        "severity_impact_rel"
+      ],
+      [
+        49,
+        60,
+        21,
+        26,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#QUETTA: At least 421 people have been killed, 21 thousand houses affected due to #earthquake in Balochistan, Chairman NDMA says."
+    ],
+    "tweetId": "382855724881043456",
+    "entities": [
+      [
+        9,
+        21,
+        "severity or quantity"
+      ],
+      [
+        22,
+        28,
+        "item affected"
+      ],
+      [
+        39,
+        45,
+        "type of impact"
+      ],
+      [
+        47,
+        58,
+        "severity or quantity"
+      ],
+      [
+        59,
+        65,
+        "item affected"
+      ],
+      [
+        94,
+        96,
+        "location modifier"
+      ],
+      [
+        97,
+        108,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        94,
+        96,
+        97,
+        108,
+        "modifier_place_rel"
+      ],
+      [
+        9,
+        21,
+        39,
+        45,
+        "severity_impact_rel"
+      ],
+      [
+        97,
+        108,
+        39,
+        45,
+        "place_impact_rel"
+      ],
+      [
+        22,
+        28,
+        39,
+        45,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Pakistan Pakistan earthquake: Hundreds dead in Balochistan | BBC - http://t.co/VAVCRQDrHW"
+    ],
+    "tweetId": "382856499808047104",
+    "entities": [
+      [
+        48,
+        59,
+        "place name"
+      ],
+      [
+        1,
+        9,
+        "place name"
+      ],
+      [
+        10,
+        18,
+        "place name"
+      ],
+      [
+        31,
+        39,
+        "severity or quantity"
+      ],
+      [
+        45,
+        47,
+        "location modifier"
+      ],
+      [
+        40,
+        44,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        1,
+        9,
+        40,
+        44,
+        "place_impact_rel"
+      ],
+      [
+        45,
+        47,
+        10,
+        18,
+        "modifier_place_rel"
+      ],
+      [
+        45,
+        47,
+        1,
+        9,
+        "modifier_place_rel"
+      ],
+      [
+        48,
+        59,
+        40,
+        44,
+        "place_impact_rel"
+      ],
+      [
+        45,
+        47,
+        48,
+        59,
+        "modifier_place_rel"
+      ],
+      [
+        31,
+        39,
+        40,
+        44,
+        "severity_impact_rel"
+      ],
+      [
+        10,
+        18,
+        40,
+        44,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @earthskyscience: New island off Pakistan's coast,... http://t.co/ueRxtmpdZ4 #Pakistan #Gwadar #Balochistan #Earthquake via @shawncable"
+    ],
+    "tweetId": "382858709871099904",
+    "entities": [
+      [
+        36,
+        52,
+        "place name"
+      ],
+      [
+        91,
+        97,
+        "place name"
+      ],
+      [
+        21,
+        31,
+        "type of impact"
+      ],
+      [
+        99,
+        109,
+        "place name"
+      ],
+      [
+        32,
+        35,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        36,
+        52,
+        21,
+        31,
+        "place_impact_rel"
+      ],
+      [
+        32,
+        35,
+        36,
+        52,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "@PatriciaLMalik The 7.8 magnitude #earthquake in #Pakistan creates island off the coast of Balochistan http://t.co/O6Y6ilAu9o #jetlagged"
+    ],
+    "tweetId": "382861569442713600",
+    "entities": [
+      [
+        46,
+        48,
+        "location modifier"
+      ],
+      [
+        91,
+        102,
+        "place name"
+      ],
+      [
+        59,
+        66,
+        "type of impact"
+      ],
+      [
+        74,
+        90,
+        "location modifier"
+      ],
+      [
+        50,
+        58,
+        "place name"
+      ],
+      [
+        67,
+        73,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        67,
+        73,
+        59,
+        66,
+        "item_impact_rel"
+      ],
+      [
+        50,
+        58,
+        59,
+        66,
+        "place_impact_rel"
+      ],
+      [
+        74,
+        90,
+        91,
+        102,
+        "modifier_place_rel"
+      ],
+      [
+        46,
+        48,
+        91,
+        102,
+        "modifier_place_rel"
+      ],
+      [
+        46,
+        48,
+        50,
+        58,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Today Show 'Situation in Baluchistan after Massive Earthquake' how #Pakistan response! any question?"
+    ],
+    "tweetId": "382862267340976128",
+    "entities": [
+      [
+        22,
+        24,
+        "location modifier"
+      ],
+      [
+        25,
+        36,
+        "place name"
+      ],
+      [
+        68,
+        76,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        22,
+        24,
+        25,
+        36,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "*@BBCBreaking: At least 328 people are known to have died in powerful #earthquake in Pakistan, hundreds more injured http://t.co/ZaYn3ayQWv*"
+    ],
+    "tweetId": "382863063818317824",
+    "entities": [
+      [
+        15,
+        27,
+        "severity or quantity"
+      ],
+      [
+        82,
+        84,
+        "location modifier"
+      ],
+      [
+        85,
+        93,
+        "place name"
+      ],
+      [
+        95,
+        108,
+        "severity or quantity"
+      ],
+      [
+        53,
+        57,
+        "type of impact"
+      ],
+      [
+        28,
+        34,
+        "item affected"
+      ],
+      [
+        109,
+        116,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        85,
+        93,
+        53,
+        57,
+        "place_impact_rel"
+      ],
+      [
+        28,
+        34,
+        53,
+        57,
+        "item_impact_rel"
+      ],
+      [
+        85,
+        93,
+        109,
+        116,
+        "place_impact_rel"
+      ],
+      [
+        95,
+        108,
+        109,
+        116,
+        "severity_impact_rel"
+      ],
+      [
+        28,
+        34,
+        109,
+        116,
+        "item_impact_rel"
+      ],
+      [
+        15,
+        27,
+        53,
+        57,
+        "severity_impact_rel"
+      ],
+      [
+        82,
+        84,
+        85,
+        93,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "A new Island emerged after #earthquake in #Gwadar,its called \ufffd??Zalzala Koh'' by the locals,Lets hope the gvt stays awy http://t.co/ibKLYcBsM9"
+    ],
+    "tweetId": "382864789304664065",
+    "entities": [
+      [
+        39,
+        41,
+        "location modifier"
+      ],
+      [
+        64,
+        75,
+        "place name"
+      ],
+      [
+        13,
+        20,
+        "type of impact"
+      ],
+      [
+        43,
+        49,
+        "place name"
+      ],
+      [
+        2,
+        12,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        43,
+        49,
+        13,
+        20,
+        "place_impact_rel"
+      ],
+      [
+        39,
+        41,
+        43,
+        49,
+        "modifier_place_rel"
+      ],
+      [
+        2,
+        12,
+        13,
+        20,
+        "item_impact_rel"
+      ],
+      [
+        64,
+        75,
+        13,
+        20,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @RT_com: BREAKING UPDATE: Death toll from #Pakistan earthquake rises to over 230 http://t.co/fmytyHEJf4"
+    ],
+    "tweetId": "382864830371069952",
+    "entities": [
+      [
+        66,
+        83,
+        "severity or quantity"
+      ],
+      [
+        46,
+        54,
+        "place name"
+      ],
+      [
+        29,
+        34,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        46,
+        54,
+        29,
+        34,
+        "place_impact_rel"
+      ],
+      [
+        66,
+        83,
+        29,
+        34,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @NoorulainK: Death toll continues to rise. Pakistani government confirms at least 327 people killed by 7.7-magnitude #earthquake in #Pak\u00e2\u20ac\u00a6"
+    ],
+    "tweetId": "382865192276590592",
+    "entities": [
+      [
+        85,
+        88,
+        "severity or quantity"
+      ],
+      [
+        89,
+        95,
+        "item affected"
+      ],
+      [
+        96,
+        102,
+        "type of impact"
+      ],
+      [
+        46,
+        54,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        46,
+        54,
+        96,
+        102,
+        "place_impact_rel"
+      ],
+      [
+        85,
+        88,
+        96,
+        102,
+        "severity_impact_rel"
+      ],
+      [
+        89,
+        95,
+        96,
+        102,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @marvisirmed: Over 265 people lose their lives #EarthQuake #Balochistan since yesterday afternoon. There are still many areas where no r\u2026"
+    ],
+    "tweetId": "382869958969270272",
+    "entities": [
+      [
+        17,
+        25,
+        "severity or quantity"
+      ],
+      [
+        26,
+        32,
+        "item affected"
+      ],
+      [
+        33,
+        49,
+        "type of impact"
+      ],
+      [
+        63,
+        74,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        17,
+        25,
+        33,
+        49,
+        "severity_impact_rel"
+      ],
+      [
+        26,
+        32,
+        33,
+        49,
+        "item_impact_rel"
+      ],
+      [
+        63,
+        74,
+        33,
+        49,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#pakistan #quake kills 39 and creates island - http://t.co/6PKacTEImh"
+    ],
+    "tweetId": "382873430808621056",
+    "entities": [
+      [
+        1,
+        9,
+        "place name"
+      ],
+      [
+        17,
+        22,
+        "type of impact"
+      ],
+      [
+        23,
+        25,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        1,
+        9,
+        17,
+        22,
+        "place_impact_rel"
+      ],
+      [
+        23,
+        25,
+        17,
+        22,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @Starseed52: #Sep24 New Island Rises Out of the Sea During 7.8 Earthquake in Pakistan http://t.co/XHXeSdEcd7 #Pakistan #quake #island"
+    ],
+    "tweetId": "382873664112590848",
+    "entities": [
+      [
+        34,
+        43,
+        "type of impact"
+      ],
+      [
+        23,
+        33,
+        "place name"
+      ],
+      [
+        77,
+        79,
+        "location modifier"
+      ],
+      [
+        80,
+        88,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        23,
+        33,
+        34,
+        43,
+        "place_impact_rel"
+      ],
+      [
+        77,
+        79,
+        80,
+        88,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "This is horrible - #Pakistan earthquake: Hundreds dead in Balochistan http://t.co/88HHJKM1uu"
+    ],
+    "tweetId": "382878439000133633",
+    "entities": [
+      [
+        50,
+        54,
+        "type of impact"
+      ],
+      [
+        41,
+        49,
+        "severity or quantity"
+      ],
+      [
+        58,
+        69,
+        "place name"
+      ],
+      [
+        20,
+        28,
+        "place name"
+      ],
+      [
+        55,
+        57,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        55,
+        57,
+        20,
+        28,
+        "modifier_place_rel"
+      ],
+      [
+        20,
+        28,
+        50,
+        54,
+        "place_impact_rel"
+      ],
+      [
+        55,
+        57,
+        58,
+        69,
+        "modifier_place_rel"
+      ],
+      [
+        41,
+        49,
+        50,
+        54,
+        "severity_impact_rel"
+      ],
+      [
+        58,
+        69,
+        50,
+        54,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Baluchistan: #Gwadar's #quake island unlikely to last: experts http://t.co/s3Q13BMbAe #Pakistan #Balochistan #Earthquake"
+    ],
+    "tweetId": "382879057676750848",
+    "entities": [
+      [
+        1,
+        12,
+        "place name"
+      ],
+      [
+        15,
+        21,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "In pictures: Pakistan earthquake (bbc) http://t.co/zyYuntd7FA #Earthquake"
+    ],
+    "tweetId": "382880919972872192",
+    "entities": [
+      [
+        13,
+        21,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "RT @CBCAlerts: Number of dead in 7.7-magnitude #Pakistan earthquake jumps to 327, according to local officials.  Strong aftershocks continu\u2026"
+    ],
+    "tweetId": "382881931899056129",
+    "entities": [
+      [
+        25,
+        29,
+        "type of impact"
+      ],
+      [
+        48,
+        56,
+        "place name"
+      ],
+      [
+        77,
+        80,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        48,
+        56,
+        25,
+        29,
+        "place_impact_rel"
+      ],
+      [
+        77,
+        80,
+        25,
+        29,
+        "severity_impact_rel"
+      ]
+    ]
+  }
+]
