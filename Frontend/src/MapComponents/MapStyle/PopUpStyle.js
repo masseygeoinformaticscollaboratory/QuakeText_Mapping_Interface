@@ -1,7 +1,8 @@
 import {Overlay} from "ol";
 import {getIcon} from "../Layers/LayerSwitcher/LayerSwitcherStyles/LayerSwitcherStyle";
 
-//Sets the Pop up Max Height so it doesn't extend the map
+// Sets the Pop up Max Height so it doesn't extend the map
+// Calculated based on the location of the point and the edge of the map
 export function setPopUpHeight(mapElement, popupRef) {
     const mapHeight = mapElement.current.getBoundingClientRect();
     const popRect = popupRef.current.getBoundingClientRect();
@@ -13,14 +14,13 @@ export function setPopUpHeight(mapElement, popupRef) {
     popupRef.current.style.maxHeight = `${maxHeight}px`;
 }
 
-//Sets the text for the pop up and formats it
+//Sets the text for the pop-up and formats it
 export function setText(layer) {
     let title = `<h4 id = "title" >${layer}</h4><img id = "title-image" src="${getIcon(layer)}" alt="">`;
     let location = '<span class= "bold">Location: </span>';
     let coordinates = '<span class= "bold">Coordinates: </span>';
     let tweet = '<span class= "bold">Tweet: </span>';
     let impact = '<span class= "bold">Impact Type: </span>';
-
 
     return {title, location, coordinates, tweet, impact}
 }

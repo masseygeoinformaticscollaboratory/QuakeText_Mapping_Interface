@@ -21,6 +21,7 @@ function MapComponent() {
     mapRef.current = map;
 
     useEffect(() => {
+            // Creates map and sets layers
             const map = new Map({
                 target: mapElement.current,
                 layers: [base, impactLayers],
@@ -28,7 +29,7 @@ function MapComponent() {
             });
             setMap(map)
 
-            //Sets the layer switcher height based on how many number of impact categories
+            // Sets the layer switcher height based on how many number of impact categories
             setSwitcherHeight(impactLabels.length);
 
             const popup = createPopUpOverlay(popupRef);
@@ -66,7 +67,7 @@ function MapComponent() {
 
                 } else {
                     //When the user clicks away from the pop-up, it will close
-                    popupRef.current.style.display = "none"
+                    popupRef.current.style.display = "none" // Need to use closePopUp instead
                 }
             });
         },
@@ -78,6 +79,7 @@ function MapComponent() {
     }
 
     return (
+        // Return the required components
         <main style={{display: "flex"}}>
             <div ref={mapElement} className="map">
                 <div ref={popupRef} className="popupContainer">

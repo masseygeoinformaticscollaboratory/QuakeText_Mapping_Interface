@@ -30,6 +30,7 @@ function LayerSwitcher(props) {
     }
 
     return (
+        // For each layer, return a custom check box along with title and label
         <div className="layer-switcher">
             <h4>Display Impacts</h4>
             <ul className="impacts-list">

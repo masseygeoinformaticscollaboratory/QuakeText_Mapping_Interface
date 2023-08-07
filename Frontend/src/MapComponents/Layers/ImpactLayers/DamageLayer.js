@@ -14,7 +14,7 @@ const damageLayer = new VectorLayer({
         format: new GeoJSON(),
     }),
     title: "Damage",
-
+// add appropriate icon image and offset position slighty
     style: new Style({
         image: new Icon({
             src: iconImage,
@@ -24,7 +24,6 @@ const damageLayer = new VectorLayer({
     }),
 
 });
-
 
 export default damageLayer;
 

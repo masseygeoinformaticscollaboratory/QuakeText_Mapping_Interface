@@ -13,6 +13,8 @@ const flood_layer = new VectorLayer({
             'Format=application/json',
         format: new GeoJSON(),
     }),
+    // add appropriate icon image and offset position slighty
+
     style: new Style({
         image: new Icon({
             src: iconImage,
