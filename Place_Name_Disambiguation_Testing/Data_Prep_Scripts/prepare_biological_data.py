@@ -35,7 +35,7 @@ def perform_ner(data):
 
 
 def run():
-    data = pd.read_csv('dataset1.csv', low_memory=False)
+    data = pd.read_csv('biological_DataSet.csv', low_memory=False)
     data = clean_data(data)
     perform_ner(data)
 
