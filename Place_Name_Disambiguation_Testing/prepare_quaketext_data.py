@@ -1,5 +1,6 @@
 import pandas as pd
 from pathlib import Path
+import time
 
 from geopy import GeoNames
 
@@ -25,7 +26,7 @@ def clean_df(data: pd.DataFrame):
 
     # creates empty dataframe to append data
     df = pd.DataFrame(
-        columns=['place name', 'tweet text'])
+        columns=['place name', 'tweet text', 'geonames id', 'geonames string'])
     i = 0
     for items in entity_relations:
         [tweet] = tweets[i]
@@ -40,20 +41,40 @@ def clean_df(data: pd.DataFrame):
     return df
 
 
+count = 0
+
+
 def get_database_rows(items, tweet):
+    global count
     rows = []
-    geolocator = GeoNames(username='QuakeText')
 
     place_entities = get_relations(items, "place name")
+    geolocator = GeoNames(username='QuakeText')
 
     for place in place_entities:
         place_entity = tweet[place[0]:place[1]]
-        geonames_instances = geolocator.geocode(place, exactly_one=False)
-        for instance in geonames_instances:
-            print(instance.raw)
-            if instance.address.split(',') == place:
-                geonames_string = instance.raw.toponymName + ',' + ',' + instance.raw.countryName + ',' + instance.raw.countryCode + ',' + instance.raw.fcodeName
-                rows.append({'place name': place_entity, 'tweet text': tweet, "geonames id": instance.raw.geonameId, })
+        if count >= 1000:
+            count = 0
+            sleep_duration = 70 * 60  # 70 minutes * 60 seconds
+            time.sleep(sleep_duration)
+        else:
+            geonames_instances = geolocator.geocode(place_entity, exactly_one=False)
+            count += 1
+            if geonames_instances is not None:
+                for instance in geonames_instances:
+                    if instance.address.split(',')[0].lower() == place_entity.lower():
+                        geonames_list = [instance.raw.get('toponymName'), instance.raw.get('countryName'),
+                                         instance.raw.get(
+                                             'countryCode'), instance.raw.get('fcodeName'),
+                                         instance.raw.get('fcodeName')]
+                        cleaned_geonames_list = [item for item in geonames_list if item is not None]
+
+                        geonames_string = ', '.join(cleaned_geonames_list)
+
+                        rows.append(
+                            {'place name': place_entity, 'tweet text': tweet,
+                             "geonames id": instance.raw.get('geonameId'), 'geonames string': geonames_string})
+
     return rows
 
 
@@ -66,13 +87,5 @@ def get_relations(list_of_lists, target):
     return relations
 
 
-# data = read_data()
-# data.to_csv('quake_text_prepped_data.csv', index=False)
-
-geolocator = GeoNames(username='QuakeText')
-
-geonames_instances = geolocator.geocode('Pakistan', exactly_one=False)
-for instance in geonames_instances:
-    geonames_string = instance.raw.get('toponymName') + ', ' + instance.raw.get('countryName') + ', ' + instance.raw.get(
-        'countryCode') + ', ' + instance.raw.get('fcodeName')
-    print(geonames_string)
+data = read_data()
+data.to_csv('quake_text_prepped_data.csv', index=False)

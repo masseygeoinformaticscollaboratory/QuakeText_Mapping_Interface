@@ -13,6 +13,7 @@ def get_coordinates():
     print(geonames_instances)
     for instance in geonames_instances:
         if instance.address.split(',') == place_name:
+            print()
             #do some stuff here to add it to the data base
 
 
