@@ -49,7 +49,6 @@ def get_database_rows(items, tweet):
     rows = []
 
     place_entities = get_relations(items, "place name")
-    geolocator = GeoNames(username='QuakeText')
 
     for place in place_entities:
         place_entity = tweet[place[0]:place[1]]
@@ -58,6 +57,7 @@ def get_database_rows(items, tweet):
             sleep_duration = 70 * 60  # 70 minutes * 60 seconds
             time.sleep(sleep_duration)
         else:
+            geolocator = GeoNames(username='QuakeText', timeout=20)
             geonames_instances = geolocator.geocode(place_entity, exactly_one=False)
             count += 1
             if geonames_instances is not None:
