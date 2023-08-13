@@ -10,7 +10,7 @@ from transformers import AutoTokenizer, AutoModel
 import torch
 from sklearn.metrics.pairwise import cosine_similarity
 
-openai.api_key = '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'
+openai.api_key = ''
 
 
 def get_openai_embedding(text, model="text-embedding-ada-002"):
