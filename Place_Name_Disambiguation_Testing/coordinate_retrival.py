@@ -56,13 +56,41 @@ def run():
     data = pd.read_csv(path, low_memory=False)
     geolocator = GeoNames(username='QuakeText')
     geolocator_2 = GeoNames(username='lp776')
+    geolocator_3 = GeoNames(username='20004521_lp')
+    geolocator_4 = GeoNames(username='l_joy')
+    geolocator_5 = GeoNames(username='temp_1')
+    geolocator_6 = GeoNames(username='temp_222')
+    geolocator_7 = GeoNames(username='temp_3')
+    geolocator_8 = GeoNames(username='temp_4')
+    geolocator_9 = GeoNames(username='temp_5')
 
     for index, row in data.iterrows():
-        if count <= 950:
+        if count <= 975:
             instances.append(get_geonames_instance(row[location], geolocator))
             count += 1
-        elif 950 < count < 1800:
+        elif 975 < count <= 1950:
             instances.append(get_geonames_instance(row[location], geolocator_2))
+            count += 1
+        elif 1950 < count <= 2925:
+            instances.append(get_geonames_instance(row[location], geolocator_3))
+            count += 1
+        elif 2925 < count <= 3900:
+            instances.append(get_geonames_instance(row[location], geolocator_4))
+            count += 1
+        elif 3900 < count <= 4875:
+            instances.append(get_geonames_instance(row[location], geolocator_5))
+            count += 1
+        elif 4875 < count <= 5850:
+            instances.append(get_geonames_instance(row[location], geolocator_6))
+            count += 1
+        elif 5850 < count <= 6825:
+            instances.append(get_geonames_instance(row[location], geolocator_7))
+            count += 1
+        elif 6825 < count <= 7800:
+            instances.append(get_geonames_instance(row[location], geolocator_8))
+            count += 1
+        elif 7800 < count <= 8775:
+            instances.append(get_geonames_instance(row[location], geolocator_9))
             count += 1
         else:
             time.sleep(4500)
