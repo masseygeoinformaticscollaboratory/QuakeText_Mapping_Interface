@@ -28,3 +28,4 @@ venv/
 ENV/
 
 node_modules/
+/Place_Name_Disambiguation_Testing/config.py
