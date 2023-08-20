@@ -31,7 +31,7 @@ def get_bert_embedding(sentence):
     return outputs.last_hidden_state.mean(dim=1).squeeze().numpy()
 
 
-def get_geonames_instance(place_entity, geonames, country_info):
+def get_geonames_instance(place_entity, geonames, country_info, feature_codes):
     geonames_instances_lst = []
     geonames_instances = geonames[geonames['name'].str.lower() == place_entity.lower()]
     if not geonames_instances.empty:
@@ -40,9 +40,16 @@ def get_geonames_instance(place_entity, geonames, country_info):
             country = country_info[mask]
             country = country.values
 
+            if row['fcode'] is not np.nan and row["fclass"] is not np.nan:
+                code = row['fclass'] + '.' + row['fcode']
+                mask = feature_codes['Code'] == code
+                fcode = feature_codes[mask]
+                fcode = fcode.values[0][1]
+            else:
+                fcode = np.nan
 
             geonames_list = [row['name'], row['alternatenames'],
-                             country[0][1], country[0][2], row['fcode'], row['timezone']]
+                             country[0][1], country[0][2], fcode, row['timezone']]
 
             cleaned_geonames_list = [item for item in geonames_list if item is not np.nan]
 
@@ -60,13 +67,13 @@ def run():
 
     # Initialise data
     # path = 'Cleaned_Data_Ready_For_Embeddings/quake_text_prepped_data.csv'
-    path = 'text.csv'
-    text = 'tweet_text'
-    location = 'location'
+    path = 'Cleaned_Data_Ready_For_Embeddings/quake_text_prepped_data.csv'
+    text = 'tweet text'
+    location = 'place name'
     data = pd.read_csv(path, low_memory=False)
     country_info = pd.read_csv("local_data_base_test/countryInfo.csv", low_memory=False)
     country_info = country_info[['ISO', 'Country', 'Continent']]
-
+    feature_codes = pd.read_csv("local_data_base_test/featureCodes.csv", low_memory=False)
     geonames = pd.read_csv("local_data_base_test/geonames.csv", low_memory=False)
     data["open ai"] = np.nan
     data["geonames_lat_openai"] = np.nan
@@ -77,7 +84,7 @@ def run():
     data["geonames_lon_bert"] = np.nan
 
     for index, row in data.iterrows():
-        geonames_instances = get_geonames_instance(row[location], geonames, country_info)
+        geonames_instances = get_geonames_instance(row[location], geonames, country_info, feature_codes)
         geonames_strings = []
         for item in geonames_instances:
             geonames_strings.append(item.get("Geonames String"))
@@ -117,7 +124,7 @@ def run():
             data.at[index, "geonames_lon_bert"] = geonames_instances[
                 np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Longitude')
     data = data.dropna(subset=["bert"])
-    data.to_csv('test_completed_embeddings.csv', index=False)
+    data.to_csv('quake_text_completed_embeddings.csv', index=False)
     end = time.time()
     print(f"Total time taken: {end - start}")
     print(f"Open AI Time taken: {totalopen}")
