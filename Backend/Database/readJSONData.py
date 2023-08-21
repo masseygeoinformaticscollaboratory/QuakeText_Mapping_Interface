@@ -176,4 +176,5 @@ def create_gdf(data: pd.DataFrame) -> gpd.GeoDataFrame:
     return gdf
 
 
-read_data()
+completed = read_data()
+completed.to_csv('quake_text_prepped_data.csv', index=False)

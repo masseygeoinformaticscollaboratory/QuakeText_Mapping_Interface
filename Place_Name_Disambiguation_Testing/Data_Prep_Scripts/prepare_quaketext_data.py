@@ -1,20 +1,17 @@
 from pathlib import Path
-
+import numpy as np
 import pandas as pd
-from geopy import GeoNames
-
-count = 0
 
 
 def read_data():
     print("Reading files...")
     path = '../Backend/dataFiles'
+
     files = Path(path).glob('*.json')
     dfs = list()
     for f in files:
         current_data = pd.read_json(f)
         dfs.append(current_data)
-
     return clean_df(pd.concat(dfs, ignore_index=True))
 
 
@@ -24,6 +21,10 @@ def clean_df(data_frame: pd.DataFrame):
     tweets = data_frame.get("tweet")
     entity_list = data_frame.get("entities")
     entity_relations = entity_list + relations_list
+    country_info = pd.read_csv("local_data_base_test/countryInfo.csv", low_memory=False)
+    country_info = country_info[['ISO', 'Country', 'Continent']]
+    feature_codes = pd.read_csv("local_data_base_test/featureCodes.csv", low_memory=False)
+    geonames = pd.read_csv("local_data_base_test/geonames.csv", low_memory=False)
 
     # creates empty dataframe to append data
     df = pd.DataFrame(
@@ -31,7 +32,7 @@ def clean_df(data_frame: pd.DataFrame):
     i = 0
     for items in entity_relations:
         [tweet] = tweets[i]
-        for row in get_database_rows(items, tweet):
+        for row in get_database_rows(items, tweet, geonames, country_info, feature_codes):
             df = pd.concat([df, pd.DataFrame.from_records([row])])
         i += 1
 
@@ -42,52 +43,48 @@ def clean_df(data_frame: pd.DataFrame):
     return df
 
 
-def get_database_rows(items, tweet):
-    global count
+def get_database_rows(items, tweet, geonames, country_info, feature_codes):
     rows = []
-    geolocator_1 = GeoNames(username='QuakeText')
-    geolocator_2 = GeoNames(username='20004521_lp')
-    geolocator_3 = GeoNames(username='lp_20004521')
-    geolocator_4 = GeoNames(username='lp_776')
 
     place_entities = get_relations(items, "place name")
 
     for place in place_entities:
         place_entity = tweet[place[0]:place[1]]
-
-        if count < 900:
-            get_instance(geolocator_1, place_entity, rows, tweet)
-            count += 1
-        elif 899 < count < 1799:
-            get_instance(geolocator_2, place_entity, rows, tweet)
-            count += 1
-        elif 1799 < count < 2399:
-            get_instance(geolocator_3, place_entity, rows, tweet)
-            count += 1
-        else:
-            get_instance(geolocator_4, place_entity, rows, tweet)
-            count += 1
-
-        print(count)
+        get_geonames_instance(place_entity, geonames, rows, tweet, country_info, feature_codes)
 
     return rows
 
 
-def get_instance(geolocator_1, place_entity, rows, tweet):
-    geonames_instances = geolocator_1.geocode(place_entity, exactly_one=False, timeout=None)
-    if geonames_instances is not None:
-        for instance in geonames_instances:
-            if instance.address.split(',')[0].lower() == place_entity.lower():
-                geonames_list = [instance.raw.get('toponymName'), instance.raw.get('countryName'),
-                                 instance.raw.get(
-                                     'countryCode'), instance.raw.get('fcodeName')]
-                cleaned_geonames_list = [item for item in geonames_list if item is not None]
+def get_geonames_instance(place_entity, geonames, rows, tweet, country_info, feature_codes):
+    geonames_instances = geonames[geonames['name'].str.lower() == place_entity.lower()]
+    if not geonames_instances.empty:
+        for index, row in geonames_instances.iterrows():
+            if row['country'] is not np.nan:
+                mask = country_info['ISO'] == row['country']
+                country = country_info[mask]
+                country = country.values[0]
+                country_name = country[1]
+                continent = country[2]
+            else:
+                country_name = np.nan
+                continent = np.nan
 
-                geonames_string = ', '.join(cleaned_geonames_list)
+            if row['fcode'] is not np.nan and row["fclass"] is not np.nan:
+                code = row['fclass'] + '.' + row['fcode']
+                mask = feature_codes['Code'] == code
+                fcode = feature_codes[mask]
+                fcode = fcode.values[0][1]
+            else:
+                fcode = np.nan
 
-                rows.append(
-                    {'place name': place_entity, 'tweet text': tweet,
-                     "geonames id": instance.raw.get('geonameId'), 'geonames string': geonames_string})
+            geonames_list = [row['name'], row['alternatenames'],
+                             country_name, continent, fcode, row['timezone']]
+
+            cleaned_geonames_list = [item for item in geonames_list if item is not np.nan]
+
+            rows.append(
+                {'place name': place_entity, 'tweet text': tweet,
+                 "geonames id": row['geonameid'], 'geonames string': ', '.join(cleaned_geonames_list)})
 
 
 def get_relations(list_of_lists, target):
@@ -100,4 +97,4 @@ def get_relations(list_of_lists, target):
 
 
 data = read_data()
-data.to_csv('quake_text_prepped_data.csv', index=False)
+data.to_csv('quake_text_prepped_data_base_checking.csv', index=False)
