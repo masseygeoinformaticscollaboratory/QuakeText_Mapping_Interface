@@ -21,8 +21,9 @@ export function setText(layer) {
     let coordinates = '<span class= "bold">Coordinates: </span>';
     let tweet = '<span class= "bold">Tweet: </span>';
     let impact = '<span class= "bold">Impact Type: </span>';
+    let impact_place = '<span class= "bold">Impact Place Relation: </span>';
 
-    return {title, location, coordinates, tweet, impact}
+    return {title, location, coordinates, tweet, impact, impact_place}
 }
 
 //Creates the pop-up overlay for the map

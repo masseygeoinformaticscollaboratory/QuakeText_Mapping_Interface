@@ -1,0 +1,29 @@
+[
+  {
+    "tweet": [
+      "Pakistan's Earthquake Was So Powerful It Created a New Island http://t.co/p3esyB28pj #earthquake"
+    ],
+    "tweetId": "382828825387618305",
+    "entities": [
+      [
+        0,
+        8,
+        "place name"
+      ],
+      [
+        41,
+        48,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        0,
+        8,
+        41,
+        48,
+        "place_impact_rel"
+      ]
+    ]
+  }
+]

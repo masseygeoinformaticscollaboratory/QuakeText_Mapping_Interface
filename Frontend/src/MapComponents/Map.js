@@ -45,7 +45,7 @@ function MapComponent() {
                     let target = features[0].getId();
                     let impactString = target.substring(0, target.indexOf("."));
 
-                    let {title, location, coordinates, tweet, impact} = setText(impactString)
+                    let {title, location, coordinates, tweet, impact, impact_place} = setText(impactString)
                     let text = title + '\n \n';
                     for (let i = 0; i < features.length; i++) {
                         //features[i].get("placename") for JSON
@@ -57,6 +57,7 @@ function MapComponent() {
                                 location + features[i].get("place_name") + "\n" +
                                 coordinates + features[i].get("geometry").flatCoordinates + "\n" +
                                 tweet + features[i].get("tweet_text") + "\n" +
+                                impact_place + features[i].get("impact_place_rel") + "\n" +
                                 "\n \n"
                         }
                     }

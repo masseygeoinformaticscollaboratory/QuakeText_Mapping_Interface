@@ -1,8 +1,12 @@
 import psycopg2
-from sqlalchemy import create_engine, URL
+from sqlalchemy import create_engine, URL, inspect, text
 import pandas as pd
 import time
-from get_geonames_local import get_geonames_instance
+from prepare_quaketext_data import read_data
+
+from sqlalchemy.orm import sessionmaker
+
+# from get_geonames_local import get_geonames_instance
 
 from configDB import config
 
@@ -38,25 +42,13 @@ try:
     conn_engine = engine.connect()
     connection.autocommit = True
 
-    # This can easily be used with a CSV file - just use the read_data() function from readCSVData.py
-    # and use the handleDBForCSV in place of handleDBForJSON
-    query = "SELECT * FROM geoname"
-    geonames = pd.read_sql(query, conn_engine)
-    geonames.to_csv("geonames.csv", index=False)
+    data = read_data(conn_engine)
+    data.reset_index(drop=True, inplace=True)
+    data.to_csv("quake_text_for_eval.csv", index=False)
 
-
-
-    '''
-    gdf = read_data()
-    if not gdf.empty:
-        cursor.execute(create_table())
-        for index, row in gdf.iterrows():
-            query, data = insert_to_database(row)
-            cursor.execute(query, data)
-
-    # Only needed with insert_query1
-    cursor.execute(remove_duplicates())
-    '''
+#
+#   geonames_instances = pd.read_sql_query(query, conn_engine)
+#    print(geonames_instances)
 
 except(Exception, psycopg2.DatabaseError) as error:
     print(error)
@@ -72,3 +64,4 @@ finally:
     total = end - start
     print("Time taken: ")
     print(total)
+

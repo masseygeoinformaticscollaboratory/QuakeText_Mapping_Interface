@@ -19,7 +19,7 @@ def calculate_distance(geo_lat, geo_lon, ori_lat, ori_lon):
 
 
 def get_geonames_instance(place_entity, geonames):
-    geonames_instances = geonames[geonames['name'].str.lower() == place_entity.lower()]
+    geonames_instances = geonames[geonames['name'].fillna('').str.contains(place_entity, case=False)]
     geonames_instance_list = []
     if not geonames_instances.empty:
         for index, row in geonames_instances.iterrows():
