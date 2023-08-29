@@ -75,32 +75,38 @@ def get_geonames_instance(place_entity, conn_engine):
 
 
 def run(conn_engine):
+    print("Beginning process")
     start = time.time()
 
     # Initialise data
     path = 'test.csv'
-    text = 'tweet_text'
-    location = 'location'
+    text = 'tweet text'
+    location = 'place name'
     data = pd.read_csv(path, low_memory=False)
-
+    '''
     data["open ai"] = np.nan
     data["geonames_lat_openai"] = np.nan
     data["geonames_lon_openai"] = np.nan
     data["geonames_id_openai"] = np.nan
-
+    '''
     data["bert"] = np.nan
     data["geonames_lat_bert"] = np.nan
     data["geonames_lon_bert"] = np.nan
     data["geonames_id_bert"] = np.nan
 
     for index, row in data.iterrows():
+        print("Working on row:")
+        print(row)
+
         geonames_instances = get_geonames_instance(row[location], conn_engine)
         geonames_strings = []
+        print("Geonames instances retrieved")
+
         for item in geonames_instances:
             geonames_strings.append(item.get("Geonames String"))
         if len(geonames_instances) > 0:
             # For each row in the dataset retrieve the embeddings for the text and calculate the cos sim
-
+            '''
             input_string_embedding_openai = []
             for x in [row[text]]:
                 embedding = get_openai_embedding(x)
@@ -130,13 +136,57 @@ def run(conn_engine):
                 data.at[index, "geonames_lat_openai"] = np.nan
                 data.at[index, "geonames_lon_openai"] = np.nan
                 data.at[index, "geonames_id_openai"] = np.nan
+           
+            input_string_embedding_openai = []
+            for x in [row[text]]:
+                embedding = get_openai_embedding(x)
+                if embedding is not None:
+                    input_string_embedding_openai.append(embedding)
+
+            geo_names_embeddings_openai = []
+            for x in geonames_strings:
+                embedding = get_openai_embedding(x)
+                if embedding is not None:
+                    geo_names_embeddings_openai.append(embedding)
+
+            openai_cos_sim = calculate_cosine_similarity(input_string_embedding_openai, geo_names_embeddings_openai)
+            if openai_cos_sim is not None:
+                # Find the max cosine distance assuming this is < 1
+                max_sim_openai = np.max(openai_cos_sim)
+
+                data.at[index, "open ai"] = max_sim_openai
+                data.at[index, "geonames_lat_openai"] = geonames_instances[
+                    np.argwhere(openai_cos_sim[0] == max_sim_openai)[0][0]].get('Geonames Latitude')
+                data.at[index, "geonames_lon_openai"] = geonames_instances[
+                    np.argwhere(openai_cos_sim[0] == max_sim_openai)[0][0]].get('Geonames Longitude')
+                data.at[index, "geonames_id_openai"] = geonames_instances[
+                    np.argwhere(openai_cos_sim[0] == max_sim_openai)[0][0]].get('Geonames ID')
+            else:
+                data.at[index, "open ai"] = np.nan
+                data.at[index, "geonames_lat_openai"] = np.nan
+                data.at[index, "geonames_lon_openai"] = np.nan
+                data.at[index, "geonames_id_openai"] = np.nan
+            '''
+            print("Getting embeddings")
 
             input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[text]]]
             geo_names_embeddings_bert = [get_bert_embedding(x) for x in geonames_strings]
+            print("Getting Cos Sim")
+
             bert_cos_sim = calculate_cosine_similarity(input_string_embeddings_bert, geo_names_embeddings_bert)
 
             max_sim_bert = np.max(bert_cos_sim)
 
+            print("Adding to Panadas DF")
+            data.at[index, "bert"] = max_sim_bert
+            data.at[index, "geonames_lat_bert"] = geonames_instances[
+                np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Latitude')
+            data.at[index, "geonames_lon_bert"] = geonames_instances[
+                np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Longitude')
+            data.at[index, "geonames_id_bert"] = geonames_instances[
+                np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames ID')
+
+            print("Adding to Panadas DF")
             data.at[index, "bert"] = max_sim_bert
             data.at[index, "geonames_lat_bert"] = geonames_instances[
                 np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Latitude')
@@ -147,10 +197,8 @@ def run(conn_engine):
 
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
-    data = data.astype({'geonames_id_openai': 'int'})
-
-    data.to_csv('NPLEmbeddingCompleted.csv', index=False)
+    #data = data.astype({'geonames_id_openai': 'int'})
+    print("Writing to CSV")
+    data.to_csv('TestComp.csv', index=False)
     end = time.time()
     print(f"Total time taken: {end - start}")
-
-
