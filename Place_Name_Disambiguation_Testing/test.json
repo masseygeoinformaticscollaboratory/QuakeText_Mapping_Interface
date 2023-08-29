@@ -1,0 +1,6095 @@
+[
+  {
+    "tweet": [
+      "Saddened by powerful 7.7 magn.earthquake that killed 250 people in #Pakistan. Condolences for victims&amp;families and hope for a quick recovery"
+    ],
+    "tweetId": "382813501729017856",
+    "entities": [
+      [
+        64,
+        66,
+        "location modifier"
+      ],
+      [
+        53,
+        56,
+        "severity or quantity"
+      ],
+      [
+        46,
+        52,
+        "type of impact"
+      ],
+      [
+        68,
+        76,
+        "place name"
+      ],
+      [
+        57,
+        63,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        64,
+        66,
+        68,
+        76,
+        "modifier_place_rel"
+      ],
+      [
+        68,
+        76,
+        46,
+        52,
+        "place_impact_rel"
+      ],
+      [
+        53,
+        56,
+        46,
+        52,
+        "severity_impact_rel"
+      ],
+      [
+        57,
+        63,
+        46,
+        52,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @Zarina_Baloch: More than 230 killed in major earthquake in #Balochistan http://t.co/F4OHHYWyH4 via @reuters"
+    ],
+    "tweetId": "382814139623931904",
+    "entities": [
+      [
+        64,
+        75,
+        "place name"
+      ],
+      [
+        60,
+        62,
+        "location modifier"
+      ],
+      [
+        29,
+        32,
+        "severity or quantity"
+      ],
+      [
+        33,
+        39,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        64,
+        75,
+        33,
+        39,
+        "place_impact_rel"
+      ],
+      [
+        60,
+        62,
+        64,
+        75,
+        "modifier_place_rel"
+      ],
+      [
+        29,
+        32,
+        33,
+        39,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @ShakingEarth: Massive #earthquake in #Pakistan - At least 283 #killed and 400 #injured - many #updates + many #video's  - http://t.co/S\u2026"
+    ],
+    "tweetId": "382823476471803904",
+    "entities": [
+      [
+        38,
+        40,
+        "location modifier"
+      ],
+      [
+        42,
+        50,
+        "place name"
+      ],
+      [
+        53,
+        65,
+        "severity or quantity"
+      ],
+      [
+        67,
+        73,
+        "type of impact"
+      ],
+      [
+        78,
+        81,
+        "severity or quantity"
+      ],
+      [
+        83,
+        90,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        38,
+        40,
+        42,
+        50,
+        "modifier_place_rel"
+      ],
+      [
+        42,
+        50,
+        83,
+        90,
+        "place_impact_rel"
+      ],
+      [
+        42,
+        50,
+        67,
+        73,
+        "place_impact_rel"
+      ],
+      [
+        53,
+        65,
+        67,
+        73,
+        "severity_impact_rel"
+      ],
+      [
+        78,
+        81,
+        83,
+        90,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "20 more bodies recovered from a seminary in Balochistan's quake affected area. Death Toll now stands at 285 in total. #Pakistan"
+    ],
+    "tweetId": "382827172521443328",
+    "entities": [
+      [
+        104,
+        107,
+        "severity or quantity"
+      ],
+      [
+        79,
+        84,
+        "type of impact"
+      ],
+      [
+        119,
+        127,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        119,
+        127,
+        79,
+        84,
+        "place_impact_rel"
+      ],
+      [
+        104,
+        107,
+        79,
+        84,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Pakistan's Earthquake Was So Powerful It Created a New Island http://t.co/p3esyB28pj #earthquake"
+    ],
+    "tweetId": "382828825387618305",
+    "entities": [
+      [
+        0,
+        8,
+        "place name"
+      ],
+      [
+        41,
+        48,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        0,
+        8,
+        41,
+        48,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "In pictures: #Pakistan earthquake http://t.co/JtP87HE1gj"
+    ],
+    "tweetId": "382829594820096000",
+    "entities": [
+      [
+        14,
+        22,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "RT @CDACN: MT:@GSMAm4d Yests 7.7m #earthquake in #Pakistan causes fatalities &disrupts mobile nworks & #communication.http://t.co/W5xrBuP1M\u2026"
+    ],
+    "tweetId": "382830961110835200",
+    "entities": [
+      [
+        46,
+        48,
+        "location modifier"
+      ],
+      [
+        50,
+        58,
+        "place name"
+      ],
+      [
+        66,
+        76,
+        "type of impact"
+      ],
+      [
+        78,
+        86,
+        "type of impact"
+      ],
+      [
+        87,
+        100,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        87,
+        100,
+        78,
+        86,
+        "item_impact_rel"
+      ],
+      [
+        50,
+        58,
+        66,
+        76,
+        "place_impact_rel"
+      ],
+      [
+        50,
+        58,
+        78,
+        86,
+        "place_impact_rel"
+      ],
+      [
+        46,
+        48,
+        50,
+        58,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "@SaimaMohsin 1000+ deaths and disturbing figures of injuries - Not a 1 patient airlifted. Zero Rescue & Relief Operation - #Awaran"
+    ],
+    "tweetId": "382831603182882816",
+    "entities": [
+      [
+        13,
+        18,
+        "severity or quantity"
+      ],
+      [
+        19,
+        25,
+        "type of impact"
+      ],
+      [
+        52,
+        60,
+        "type of impact"
+      ],
+      [
+        71,
+        78,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        13,
+        18,
+        19,
+        25,
+        "severity_impact_rel"
+      ],
+      [
+        71,
+        78,
+        52,
+        60,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Pakistan The quake also created a small island in the Arabian Sea. Experts visited the island and found methane gas rising.RE"
+    ],
+    "tweetId": "382835224964759552",
+    "entities": [
+      [
+        25,
+        32,
+        "type of impact"
+      ],
+      [
+        1,
+        9,
+        "place name"
+      ],
+      [
+        35,
+        47,
+        "place name"
+      ],
+      [
+        48,
+        54,
+        "location modifier"
+      ],
+      [
+        55,
+        66,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        48,
+        54,
+        55,
+        66,
+        "modifier_place_rel"
+      ],
+      [
+        55,
+        66,
+        25,
+        32,
+        "place_impact_rel"
+      ],
+      [
+        35,
+        47,
+        25,
+        32,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @khaleejtimes: Pakistan quake island unlikely to last: Experts - http://t.co/dWgEVnhHIh #Dubai #Pakistan #World"
+    ],
+    "tweetId": "382835784673288192",
+    "entities": [
+      [
+        18,
+        26,
+        "place name"
+      ],
+      [
+        40,
+        56,
+        "type of impact"
+      ],
+      [
+        99,
+        107,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        18,
+        26,
+        40,
+        56,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Death toll from #Pakistan #Earthquake reaches 327 people - officials http://t.co/dW9F9ZxMqm via @VoiceofRussia #Pakistan"
+    ],
+    "tweetId": "382837286297415680",
+    "entities": [
+      [
+        50,
+        56,
+        "item affected"
+      ],
+      [
+        112,
+        120,
+        "place name"
+      ],
+      [
+        46,
+        49,
+        "severity or quantity"
+      ],
+      [
+        0,
+        5,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        50,
+        56,
+        0,
+        5,
+        "item_impact_rel"
+      ],
+      [
+        46,
+        49,
+        0,
+        5,
+        "severity_impact_rel"
+      ],
+      [
+        112,
+        120,
+        0,
+        5,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Death toll in #Pakistan earthquake reaches 210"
+    ],
+    "tweetId": "382839150358978560",
+    "entities": [
+      [
+        0,
+        5,
+        "type of impact"
+      ],
+      [
+        11,
+        13,
+        "location modifier"
+      ],
+      [
+        15,
+        23,
+        "place name"
+      ],
+      [
+        43,
+        46,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        15,
+        23,
+        0,
+        5,
+        "place_impact_rel"
+      ],
+      [
+        43,
+        46,
+        0,
+        5,
+        "severity_impact_rel"
+      ],
+      [
+        11,
+        13,
+        15,
+        23,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Pakistan earthquake: Hundreds dead in #Balochistan http://t.co/TS7Wa2Vy9g #Nepal Needs To Focus Preventive Measures Before It Is Too Late."
+    ],
+    "tweetId": "382839308643614720",
+    "entities": [
+      [
+        1,
+        9,
+        "place name"
+      ],
+      [
+        76,
+        81,
+        "place name"
+      ],
+      [
+        40,
+        51,
+        "place name"
+      ],
+      [
+        36,
+        38,
+        "location modifier"
+      ],
+      [
+        31,
+        35,
+        "type of impact"
+      ],
+      [
+        22,
+        30,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        36,
+        38,
+        40,
+        51,
+        "modifier_place_rel"
+      ],
+      [
+        1,
+        9,
+        31,
+        35,
+        "place_impact_rel"
+      ],
+      [
+        22,
+        30,
+        31,
+        35,
+        "severity_impact_rel"
+      ],
+      [
+        40,
+        51,
+        31,
+        35,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "250+ souls died in the earthquake and people jumping for miraculous island... Sad and funny at the same time. #earthquake"
+    ],
+    "tweetId": "382839945104093184",
+    "entities": [
+      [
+        0,
+        4,
+        "severity or quantity"
+      ],
+      [
+        5,
+        10,
+        "item affected"
+      ],
+      [
+        11,
+        15,
+        "type of impact"
+      ],
+      [
+        38,
+        44,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        5,
+        10,
+        11,
+        15,
+        "item_impact_rel"
+      ],
+      [
+        0,
+        4,
+        11,
+        15,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @CNBCPAKISTAN: #Breaking: 14 seminary student including Imam found dead under rubble of collapsed Madarsah in Kohlu #Balochistan #Earthq\u00e2\u20ac\u00a6"
+    ],
+    "tweetId": "382848981015228416",
+    "entities": [
+      [
+        59,
+        63,
+        "item affected"
+      ],
+      [
+        29,
+        31,
+        "severity or quantity"
+      ],
+      [
+        70,
+        74,
+        "type of impact"
+      ],
+      [
+        32,
+        48,
+        "item affected"
+      ],
+      [
+        91,
+        100,
+        "type of impact"
+      ],
+      [
+        113,
+        118,
+        "place name"
+      ],
+      [
+        101,
+        109,
+        "item affected"
+      ],
+      [
+        110,
+        112,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        32,
+        48,
+        70,
+        74,
+        "item_impact_rel"
+      ],
+      [
+        113,
+        118,
+        91,
+        100,
+        "place_impact_rel"
+      ],
+      [
+        29,
+        31,
+        70,
+        74,
+        "severity_impact_rel"
+      ],
+      [
+        101,
+        109,
+        91,
+        100,
+        "item_impact_rel"
+      ],
+      [
+        110,
+        112,
+        113,
+        118,
+        "modifier_place_rel"
+      ],
+      [
+        113,
+        118,
+        70,
+        74,
+        "place_impact_rel"
+      ],
+      [
+        101,
+        109,
+        70,
+        74,
+        "item_impact_rel"
+      ],
+      [
+        59,
+        63,
+        70,
+        74,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT@UNOCHA #Pakistan: at least45 ppl hv been killed&amp;100injured following a 7.7earthquake in Balochistan Province-http://t.co/i1vs2ERpvo v @UN"
+    ],
+    "tweetId": "382850881323933696",
+    "entities": [
+      [
+        95,
+        115,
+        "place name"
+      ],
+      [
+        29,
+        31,
+        "severity or quantity"
+      ],
+      [
+        55,
+        58,
+        "severity or quantity"
+      ],
+      [
+        44,
+        50,
+        "type of impact"
+      ],
+      [
+        58,
+        65,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        29,
+        31,
+        44,
+        50,
+        "severity_impact_rel"
+      ],
+      [
+        55,
+        58,
+        58,
+        65,
+        "severity_impact_rel"
+      ],
+      [
+        95,
+        115,
+        58,
+        65,
+        "place_impact_rel"
+      ],
+      [
+        95,
+        115,
+        44,
+        50,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Reuters: Death toll from #Pakistan quake reaches 327 - officials"
+    ],
+    "tweetId": "382850892586045440",
+    "entities": [
+      [
+        49,
+        52,
+        "severity or quantity"
+      ],
+      [
+        26,
+        34,
+        "place name"
+      ],
+      [
+        9,
+        14,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        26,
+        34,
+        9,
+        14,
+        "place_impact_rel"
+      ],
+      [
+        49,
+        52,
+        9,
+        14,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "182 ? Death toll ? I thought182 blink RT @FoxNews: Death toll in #Pakistan earthquake rises to 182 http://t.co/tSI7wKGSVZ"
+    ],
+    "tweetId": "382851622680133632",
+    "entities": [
+      [
+        66,
+        74,
+        "place name"
+      ],
+      [
+        95,
+        98,
+        "severity or quantity"
+      ],
+      [
+        0,
+        3,
+        "severity or quantity"
+      ],
+      [
+        6,
+        11,
+        "type of impact"
+      ],
+      [
+        51,
+        56,
+        "type of impact"
+      ],
+      [
+        57,
+        61,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        66,
+        74,
+        51,
+        56,
+        "place_impact_rel"
+      ],
+      [
+        66,
+        74,
+        6,
+        11,
+        "place_impact_rel"
+      ],
+      [
+        0,
+        3,
+        51,
+        56,
+        "severity_impact_rel"
+      ],
+      [
+        57,
+        61,
+        6,
+        11,
+        "severity_impact_rel"
+      ],
+      [
+        95,
+        98,
+        6,
+        11,
+        "severity_impact_rel"
+      ],
+      [
+        95,
+        98,
+        51,
+        56,
+        "severity_impact_rel"
+      ],
+      [
+        0,
+        3,
+        6,
+        11,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @Chawash_Baloch: 45,000 houses destroyed in Awaran and Kech #earthquake,more than 300 deadbodies recovered from rubles,victims need imme\u2026"
+    ],
+    "tweetId": "382852574577053696",
+    "entities": [
+      [
+        34,
+        43,
+        "type of impact"
+      ],
+      [
+        44,
+        46,
+        "location modifier"
+      ],
+      [
+        47,
+        53,
+        "place name"
+      ],
+      [
+        58,
+        62,
+        "place name"
+      ],
+      [
+        20,
+        26,
+        "severity or quantity"
+      ],
+      [
+        27,
+        33,
+        "item affected"
+      ],
+      [
+        85,
+        88,
+        "severity or quantity"
+      ],
+      [
+        93,
+        99,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        47,
+        53,
+        34,
+        43,
+        "place_impact_rel"
+      ],
+      [
+        44,
+        46,
+        47,
+        53,
+        "modifier_place_rel"
+      ],
+      [
+        44,
+        46,
+        58,
+        62,
+        "modifier_place_rel"
+      ],
+      [
+        27,
+        33,
+        34,
+        43,
+        "item_impact_rel"
+      ],
+      [
+        20,
+        26,
+        34,
+        43,
+        "severity_impact_rel"
+      ],
+      [
+        58,
+        62,
+        34,
+        43,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Natural disaster or man made disaster, end result is dead Pakistani, May God have mercy on us all #Awaran #Balochistan #PeshawarChurchBlast"
+    ],
+    "tweetId": "382853292482506752",
+    "entities": [
+      [
+        53,
+        57,
+        "type of impact"
+      ],
+      [
+        58,
+        67,
+        "item affected"
+      ],
+      [
+        107,
+        118,
+        "place name"
+      ],
+      [
+        120,
+        128,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        120,
+        128,
+        53,
+        57,
+        "place_impact_rel"
+      ],
+      [
+        107,
+        118,
+        53,
+        57,
+        "place_impact_rel"
+      ],
+      [
+        58,
+        67,
+        53,
+        57,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @geonews_english: Death toll rises to 285 in #Balochistan #earthquake http://t.co/ZszK6xbter"
+    ],
+    "tweetId": "382854584903151616",
+    "entities": [
+      [
+        21,
+        26,
+        "type of impact"
+      ],
+      [
+        41,
+        44,
+        "severity or quantity"
+      ],
+      [
+        49,
+        60,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        41,
+        44,
+        21,
+        26,
+        "severity_impact_rel"
+      ],
+      [
+        49,
+        60,
+        21,
+        26,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#QUETTA: At least 421 people have been killed, 21 thousand houses affected due to #earthquake in Balochistan, Chairman NDMA says."
+    ],
+    "tweetId": "382855724881043456",
+    "entities": [
+      [
+        9,
+        21,
+        "severity or quantity"
+      ],
+      [
+        22,
+        28,
+        "item affected"
+      ],
+      [
+        39,
+        45,
+        "type of impact"
+      ],
+      [
+        47,
+        58,
+        "severity or quantity"
+      ],
+      [
+        59,
+        65,
+        "item affected"
+      ],
+      [
+        94,
+        96,
+        "location modifier"
+      ],
+      [
+        97,
+        108,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        94,
+        96,
+        97,
+        108,
+        "modifier_place_rel"
+      ],
+      [
+        9,
+        21,
+        39,
+        45,
+        "severity_impact_rel"
+      ],
+      [
+        97,
+        108,
+        39,
+        45,
+        "place_impact_rel"
+      ],
+      [
+        22,
+        28,
+        39,
+        45,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Pakistan Pakistan earthquake: Hundreds dead in Balochistan | BBC - http://t.co/VAVCRQDrHW"
+    ],
+    "tweetId": "382856499808047104",
+    "entities": [
+      [
+        48,
+        59,
+        "place name"
+      ],
+      [
+        1,
+        9,
+        "place name"
+      ],
+      [
+        10,
+        18,
+        "place name"
+      ],
+      [
+        31,
+        39,
+        "severity or quantity"
+      ],
+      [
+        45,
+        47,
+        "location modifier"
+      ],
+      [
+        40,
+        44,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        1,
+        9,
+        40,
+        44,
+        "place_impact_rel"
+      ],
+      [
+        45,
+        47,
+        10,
+        18,
+        "modifier_place_rel"
+      ],
+      [
+        45,
+        47,
+        1,
+        9,
+        "modifier_place_rel"
+      ],
+      [
+        48,
+        59,
+        40,
+        44,
+        "place_impact_rel"
+      ],
+      [
+        45,
+        47,
+        48,
+        59,
+        "modifier_place_rel"
+      ],
+      [
+        31,
+        39,
+        40,
+        44,
+        "severity_impact_rel"
+      ],
+      [
+        10,
+        18,
+        40,
+        44,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @earthskyscience: New island off Pakistan's coast,... http://t.co/ueRxtmpdZ4 #Pakistan #Gwadar #Balochistan #Earthquake via @shawncable"
+    ],
+    "tweetId": "382858709871099904",
+    "entities": [
+      [
+        36,
+        52,
+        "place name"
+      ],
+      [
+        91,
+        97,
+        "place name"
+      ],
+      [
+        21,
+        31,
+        "type of impact"
+      ],
+      [
+        99,
+        109,
+        "place name"
+      ],
+      [
+        32,
+        35,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        36,
+        52,
+        21,
+        31,
+        "place_impact_rel"
+      ],
+      [
+        32,
+        35,
+        36,
+        52,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "@PatriciaLMalik The 7.8 magnitude #earthquake in #Pakistan creates island off the coast of Balochistan http://t.co/O6Y6ilAu9o #jetlagged"
+    ],
+    "tweetId": "382861569442713600",
+    "entities": [
+      [
+        46,
+        48,
+        "location modifier"
+      ],
+      [
+        91,
+        102,
+        "place name"
+      ],
+      [
+        59,
+        66,
+        "type of impact"
+      ],
+      [
+        74,
+        90,
+        "location modifier"
+      ],
+      [
+        50,
+        58,
+        "place name"
+      ],
+      [
+        67,
+        73,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        67,
+        73,
+        59,
+        66,
+        "item_impact_rel"
+      ],
+      [
+        50,
+        58,
+        59,
+        66,
+        "place_impact_rel"
+      ],
+      [
+        74,
+        90,
+        91,
+        102,
+        "modifier_place_rel"
+      ],
+      [
+        46,
+        48,
+        91,
+        102,
+        "modifier_place_rel"
+      ],
+      [
+        46,
+        48,
+        50,
+        58,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Today Show 'Situation in Baluchistan after Massive Earthquake' how #Pakistan response! any question?"
+    ],
+    "tweetId": "382862267340976128",
+    "entities": [
+      [
+        22,
+        24,
+        "location modifier"
+      ],
+      [
+        25,
+        36,
+        "place name"
+      ],
+      [
+        68,
+        76,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        22,
+        24,
+        25,
+        36,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "*@BBCBreaking: At least 328 people are known to have died in powerful #earthquake in Pakistan, hundreds more injured http://t.co/ZaYn3ayQWv*"
+    ],
+    "tweetId": "382863063818317824",
+    "entities": [
+      [
+        15,
+        27,
+        "severity or quantity"
+      ],
+      [
+        82,
+        84,
+        "location modifier"
+      ],
+      [
+        85,
+        93,
+        "place name"
+      ],
+      [
+        95,
+        108,
+        "severity or quantity"
+      ],
+      [
+        53,
+        57,
+        "type of impact"
+      ],
+      [
+        28,
+        34,
+        "item affected"
+      ],
+      [
+        109,
+        116,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        85,
+        93,
+        53,
+        57,
+        "place_impact_rel"
+      ],
+      [
+        28,
+        34,
+        53,
+        57,
+        "item_impact_rel"
+      ],
+      [
+        85,
+        93,
+        109,
+        116,
+        "place_impact_rel"
+      ],
+      [
+        95,
+        108,
+        109,
+        116,
+        "severity_impact_rel"
+      ],
+      [
+        28,
+        34,
+        109,
+        116,
+        "item_impact_rel"
+      ],
+      [
+        15,
+        27,
+        53,
+        57,
+        "severity_impact_rel"
+      ],
+      [
+        82,
+        84,
+        85,
+        93,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "A new Island emerged after #earthquake in #Gwadar,its called \ufffd??Zalzala Koh'' by the locals,Lets hope the gvt stays awy http://t.co/ibKLYcBsM9"
+    ],
+    "tweetId": "382864789304664065",
+    "entities": [
+      [
+        39,
+        41,
+        "location modifier"
+      ],
+      [
+        64,
+        75,
+        "place name"
+      ],
+      [
+        13,
+        20,
+        "type of impact"
+      ],
+      [
+        43,
+        49,
+        "place name"
+      ],
+      [
+        2,
+        12,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        43,
+        49,
+        13,
+        20,
+        "place_impact_rel"
+      ],
+      [
+        39,
+        41,
+        43,
+        49,
+        "modifier_place_rel"
+      ],
+      [
+        2,
+        12,
+        13,
+        20,
+        "item_impact_rel"
+      ],
+      [
+        64,
+        75,
+        13,
+        20,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @RT_com: BREAKING UPDATE: Death toll from #Pakistan earthquake rises to over 230 http://t.co/fmytyHEJf4"
+    ],
+    "tweetId": "382864830371069952",
+    "entities": [
+      [
+        66,
+        83,
+        "severity or quantity"
+      ],
+      [
+        46,
+        54,
+        "place name"
+      ],
+      [
+        29,
+        34,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        46,
+        54,
+        29,
+        34,
+        "place_impact_rel"
+      ],
+      [
+        66,
+        83,
+        29,
+        34,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @NoorulainK: Death toll continues to rise. Pakistani government confirms at least 327 people killed by 7.7-magnitude #earthquake in #Pak\u00e2\u20ac\u00a6"
+    ],
+    "tweetId": "382865192276590592",
+    "entities": [
+      [
+        85,
+        88,
+        "severity or quantity"
+      ],
+      [
+        89,
+        95,
+        "item affected"
+      ],
+      [
+        96,
+        102,
+        "type of impact"
+      ],
+      [
+        46,
+        54,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        46,
+        54,
+        96,
+        102,
+        "place_impact_rel"
+      ],
+      [
+        85,
+        88,
+        96,
+        102,
+        "severity_impact_rel"
+      ],
+      [
+        89,
+        95,
+        96,
+        102,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @marvisirmed: Over 265 people lose their lives #EarthQuake #Balochistan since yesterday afternoon. There are still many areas where no r\u2026"
+    ],
+    "tweetId": "382869958969270272",
+    "entities": [
+      [
+        17,
+        25,
+        "severity or quantity"
+      ],
+      [
+        26,
+        32,
+        "item affected"
+      ],
+      [
+        33,
+        49,
+        "type of impact"
+      ],
+      [
+        63,
+        74,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        17,
+        25,
+        33,
+        49,
+        "severity_impact_rel"
+      ],
+      [
+        26,
+        32,
+        33,
+        49,
+        "item_impact_rel"
+      ],
+      [
+        63,
+        74,
+        33,
+        49,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#pakistan #quake kills 39 and creates island - http://t.co/6PKacTEImh"
+    ],
+    "tweetId": "382873430808621056",
+    "entities": [
+      [
+        1,
+        9,
+        "place name"
+      ],
+      [
+        17,
+        22,
+        "type of impact"
+      ],
+      [
+        23,
+        25,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        1,
+        9,
+        17,
+        22,
+        "place_impact_rel"
+      ],
+      [
+        23,
+        25,
+        17,
+        22,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @Starseed52: #Sep24 New Island Rises Out of the Sea During 7.8 Earthquake in Pakistan http://t.co/XHXeSdEcd7 #Pakistan #quake #island"
+    ],
+    "tweetId": "382873664112590848",
+    "entities": [
+      [
+        34,
+        43,
+        "type of impact"
+      ],
+      [
+        23,
+        33,
+        "place name"
+      ],
+      [
+        77,
+        79,
+        "location modifier"
+      ],
+      [
+        80,
+        88,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        23,
+        33,
+        34,
+        43,
+        "place_impact_rel"
+      ],
+      [
+        77,
+        79,
+        80,
+        88,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "This is horrible - #Pakistan earthquake: Hundreds dead in Balochistan http://t.co/88HHJKM1uu"
+    ],
+    "tweetId": "382878439000133633",
+    "entities": [
+      [
+        50,
+        54,
+        "type of impact"
+      ],
+      [
+        41,
+        49,
+        "severity or quantity"
+      ],
+      [
+        58,
+        69,
+        "place name"
+      ],
+      [
+        20,
+        28,
+        "place name"
+      ],
+      [
+        55,
+        57,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        55,
+        57,
+        20,
+        28,
+        "modifier_place_rel"
+      ],
+      [
+        20,
+        28,
+        50,
+        54,
+        "place_impact_rel"
+      ],
+      [
+        55,
+        57,
+        58,
+        69,
+        "modifier_place_rel"
+      ],
+      [
+        41,
+        49,
+        50,
+        54,
+        "severity_impact_rel"
+      ],
+      [
+        58,
+        69,
+        50,
+        54,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Baluchistan: #Gwadar's #quake island unlikely to last: experts http://t.co/s3Q13BMbAe #Pakistan #Balochistan #Earthquake"
+    ],
+    "tweetId": "382879057676750848",
+    "entities": [
+      [
+        1,
+        12,
+        "place name"
+      ],
+      [
+        15,
+        21,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "In pictures: Pakistan earthquake (bbc) http://t.co/zyYuntd7FA #Earthquake"
+    ],
+    "tweetId": "382880919972872192",
+    "entities": [
+      [
+        13,
+        21,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "RT @CBCAlerts: Number of dead in 7.7-magnitude #Pakistan earthquake jumps to 327, according to local officials.  Strong aftershocks continu\u2026"
+    ],
+    "tweetId": "382881931899056129",
+    "entities": [
+      [
+        25,
+        29,
+        "type of impact"
+      ],
+      [
+        48,
+        56,
+        "place name"
+      ],
+      [
+        77,
+        80,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        48,
+        56,
+        25,
+        29,
+        "place_impact_rel"
+      ],
+      [
+        77,
+        80,
+        25,
+        29,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "meanwhile in Pakistan the death toll rises to 330. #Earthquake"
+    ],
+    "tweetId": "382890319273943041",
+    "entities": [
+      [
+        46,
+        49,
+        "severity or quantity"
+      ],
+      [
+        13,
+        21,
+        "place name"
+      ],
+      [
+        26,
+        36,
+        "type of impact"
+      ],
+      [
+        10,
+        12,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        46,
+        49,
+        26,
+        36,
+        "severity_impact_rel"
+      ],
+      [
+        13,
+        21,
+        26,
+        36,
+        "place_impact_rel"
+      ],
+      [
+        10,
+        12,
+        13,
+        21,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @Rabail26: More than 328 dead, 400 injured because of 7.8 magnitude #earthquake in 6 districts of #Balochistan. http://t.co/j6yqKL9c2l #\u2026"
+    ],
+    "tweetId": "382892438949752832",
+    "entities": [
+      [
+        102,
+        113,
+        "place name"
+      ],
+      [
+        28,
+        32,
+        "type of impact"
+      ],
+      [
+        34,
+        37,
+        "severity or quantity"
+      ],
+      [
+        38,
+        45,
+        "type of impact"
+      ],
+      [
+        14,
+        27,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        34,
+        37,
+        38,
+        45,
+        "severity_impact_rel"
+      ],
+      [
+        102,
+        113,
+        28,
+        32,
+        "place_impact_rel"
+      ],
+      [
+        14,
+        27,
+        28,
+        32,
+        "severity_impact_rel"
+      ],
+      [
+        102,
+        113,
+        38,
+        45,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @ajmaljami: death toll rises to 271 in #Balochistan #earthquake. tremors left 446 injured.  Chairman NDMA - #dunyatv"
+    ],
+    "tweetId": "382892467399303168",
+    "entities": [
+      [
+        15,
+        20,
+        "type of impact"
+      ],
+      [
+        35,
+        38,
+        "severity or quantity"
+      ],
+      [
+        43,
+        54,
+        "place name"
+      ],
+      [
+        81,
+        84,
+        "severity or quantity"
+      ],
+      [
+        85,
+        92,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        43,
+        54,
+        85,
+        92,
+        "place_impact_rel"
+      ],
+      [
+        43,
+        54,
+        15,
+        20,
+        "place_impact_rel"
+      ],
+      [
+        35,
+        38,
+        15,
+        20,
+        "severity_impact_rel"
+      ],
+      [
+        81,
+        84,
+        85,
+        92,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "WOW! MT @AnupKaphle: Here's island that rose from sea after #Pakistan earthquake\u2014It's 200m long, 100m wide & 20m high http://t.co/mAZj5Lw97B"
+    ],
+    "tweetId": "382893814752747521",
+    "entities": [
+      [
+        28,
+        34,
+        "item affected"
+      ],
+      [
+        61,
+        69,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "(Twitteralert) #Twitter alert: What would you #name the new #island? http://t.co/S6O24FKusw #Pakistan #Gwadar #Balochistan #earthquake\""
+    ],
+    "tweetId": "382898540252766208",
+    "entities": [
+      [
+        93,
+        101,
+        "place name"
+      ],
+      [
+        103,
+        109,
+        "place name"
+      ],
+      [
+        111,
+        122,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "#Earthquake M 5.4, 125km W of Attu Station, Alaska: Wednesday, September 25, 2013 13:58:14 UTCThursday, Septem... http://t.co/5WhyO9IMRO"
+    ],
+    "tweetId": "382900151943049217",
+    "entities": [
+      [
+        19,
+        29,
+        "location modifier"
+      ],
+      [
+        30,
+        42,
+        "place name"
+      ],
+      [
+        44,
+        50,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        19,
+        29,
+        30,
+        42,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "UK PM left everything when just one soldier died. Here a 1000 are feared dead and our PM is no where to be seen! #Balochistan #earthquake"
+    ],
+    "tweetId": "382900456324104192",
+    "entities": [
+      [
+        57,
+        61,
+        "severity or quantity"
+      ],
+      [
+        73,
+        77,
+        "type of impact"
+      ],
+      [
+        114,
+        125,
+        "place name"
+      ],
+      [
+        32,
+        35,
+        "severity or quantity"
+      ],
+      [
+        36,
+        43,
+        "item affected"
+      ],
+      [
+        44,
+        48,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        32,
+        35,
+        44,
+        48,
+        "severity_impact_rel"
+      ],
+      [
+        114,
+        125,
+        44,
+        48,
+        "place_impact_rel"
+      ],
+      [
+        57,
+        61,
+        73,
+        77,
+        "severity_impact_rel"
+      ],
+      [
+        114,
+        125,
+        73,
+        77,
+        "place_impact_rel"
+      ],
+      [
+        36,
+        43,
+        44,
+        48,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "New island formed by a M7.7 #earthquake yesterday off the coast of Pakistan. http://t.co/VbGavW3rDE"
+    ],
+    "tweetId": "382902298172588032",
+    "entities": [
+      [
+        50,
+        66,
+        "location modifier"
+      ],
+      [
+        67,
+        75,
+        "place name"
+      ],
+      [
+        4,
+        10,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        50,
+        66,
+        67,
+        75,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "New Island erupts off the coast of #pakistan #earthquake #MudVolcano http://t.co/D0mQxCeiom"
+    ],
+    "tweetId": "382905033525706752",
+    "entities": [
+      [
+        18,
+        34,
+        "location modifier"
+      ],
+      [
+        36,
+        44,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        18,
+        34,
+        36,
+        44,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "1.6 magnitude #earthquake. 35 mi from Oildale, CA, United States.http://t.co/QMs5Ykp5zD"
+    ],
+    "tweetId": "382907403714306049",
+    "entities": [
+      [
+        27,
+        37,
+        "location modifier"
+      ],
+      [
+        38,
+        45,
+        "place name"
+      ],
+      [
+        47,
+        49,
+        "place name"
+      ],
+      [
+        51,
+        64,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        27,
+        37,
+        38,
+        45,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "When 400 dead people get less coverage than a new island. #Balochistan  #moralities"
+    ],
+    "tweetId": "382908026966900737",
+    "entities": [
+      [
+        59,
+        70,
+        "place name"
+      ],
+      [
+        46,
+        56,
+        "type of impact"
+      ],
+      [
+        5,
+        8,
+        "severity or quantity"
+      ],
+      [
+        9,
+        13,
+        "type of impact"
+      ],
+      [
+        14,
+        20,
+        "item affected"
+      ]
+    ],
+    "relations": [
+      [
+        59,
+        70,
+        9,
+        13,
+        "place_impact_rel"
+      ],
+      [
+        5,
+        8,
+        9,
+        13,
+        "severity_impact_rel"
+      ],
+      [
+        14,
+        20,
+        9,
+        13,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "A significant #earthquake was reported by the USGS: M 6.8 - 80km SSW of Acari, Peru"
+    ],
+    "tweetId": "382913018046451712",
+    "entities": [
+      [
+        60,
+        71,
+        "location modifier"
+      ],
+      [
+        72,
+        77,
+        "place name"
+      ],
+      [
+        79,
+        83,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        60,
+        71,
+        72,
+        77,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#earthquake ML 4.0 SOUTHERN IRAN http://t.co/bfd1hFy3Ek #TomohonKota.Com"
+    ],
+    "tweetId": "382914193348755456",
+    "entities": [
+      [
+        19,
+        27,
+        "location modifier"
+      ],
+      [
+        28,
+        32,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        19,
+        27,
+        28,
+        32,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @SteveGrzanich: MORE: USGS downgrades #earthquake magnitude to 6.6. Epicenter S of Acari, Peru. No reports of damage yet."
+    ],
+    "tweetId": "382915749788278784",
+    "entities": [
+      [
+        71,
+        85,
+        "location modifier"
+      ],
+      [
+        86,
+        91,
+        "place name"
+      ],
+      [
+        93,
+        97,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        71,
+        85,
+        86,
+        91,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @VincentTongue: #Peru  #earthquake M6.8M, Depth:33km   25 Sep 2013 16:42UTC   About 14191 people within 100km http://t.co/cC0ICGysLX"
+    ],
+    "tweetId": "382917456257228800",
+    "entities": [
+      [
+        39,
+        43,
+        "severity or quantity"
+      ],
+      [
+        20,
+        24,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "7.7 on the riktor scale \u00f0\u0178\u02dc\u201d\u00f0\u0178\u02dc\u201d Earthquake powerful enough to create a knew island wow! Allah hu Akbar #Pakistan"
+    ],
+    "tweetId": "382917796352786432",
+    "entities": [
+      [
+        63,
+        69,
+        "type of impact"
+      ],
+      [
+        77,
+        83,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        77,
+        83,
+        63,
+        69,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Pakistan struggles to help quake victims; 285 dead     http://t.co/cAFA5Czs1J"
+    ],
+    "tweetId": "382918678884265984",
+    "entities": [
+      [
+        1,
+        9,
+        "place name"
+      ],
+      [
+        47,
+        51,
+        "type of impact"
+      ],
+      [
+        43,
+        46,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        1,
+        9,
+        47,
+        51,
+        "place_impact_rel"
+      ],
+      [
+        43,
+        46,
+        47,
+        51,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @AyishaBaloch: Army as usual the first ones to reach for rescue operations here in #Balochistan. #earthquake"
+    ],
+    "tweetId": "382919900169113600",
+    "entities": [
+      [
+        83,
+        85,
+        "location modifier"
+      ],
+      [
+        87,
+        98,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        83,
+        85,
+        87,
+        98,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Another new Island has appeared along the coastal belt of Balochistan between Omrara and Pasni near River Sabal due to the #EarthQuake"
+    ],
+    "tweetId": "382923086284472321",
+    "entities": [
+      [
+        42,
+        54,
+        "location modifier"
+      ],
+      [
+        58,
+        69,
+        "place name"
+      ],
+      [
+        78,
+        84,
+        "place name"
+      ],
+      [
+        89,
+        94,
+        "place name"
+      ],
+      [
+        95,
+        99,
+        "location modifier"
+      ],
+      [
+        100,
+        111,
+        "place name"
+      ],
+      [
+        12,
+        18,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        95,
+        99,
+        100,
+        111,
+        "modifier_place_rel"
+      ],
+      [
+        42,
+        54,
+        58,
+        69,
+        "modifier_place_rel"
+      ],
+      [
+        95,
+        99,
+        89,
+        94,
+        "modifier_place_rel"
+      ],
+      [
+        12,
+        18,
+        100,
+        111,
+        "modifier_place_rel"
+      ],
+      [
+        12,
+        18,
+        58,
+        69,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @AbrarUlHaqPK: Methane #gas has been discovered from #Gawadar after yesterday #earthquake"
+    ],
+    "tweetId": "382923307462709248",
+    "entities": [
+      [
+        57,
+        64,
+        "place name"
+      ],
+      [
+        18,
+        25,
+        "item affected"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "Island that emerged near #Gwadar due to yesterday's earthquake is temporary, say experts. I think TTP office should establish there #Awaran"
+    ],
+    "tweetId": "382923669917294592",
+    "entities": [
+      [
+        26,
+        32,
+        "place name"
+      ],
+      [
+        133,
+        139,
+        "place name"
+      ],
+      [
+        20,
+        24,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        20,
+        24,
+        26,
+        32,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "College of Charleston professor says Pakistan earthquake was felt in South Carolina http://t.co/yxyYSzSVl6 #chsnews #scnews #pakistan"
+    ],
+    "tweetId": "382924141810024449",
+    "entities": [
+      [
+        75,
+        83,
+        "place name"
+      ],
+      [
+        125,
+        133,
+        "place name"
+      ],
+      [
+        37,
+        45,
+        "place name"
+      ],
+      [
+        69,
+        74,
+        "location modifier"
+      ],
+      [
+        66,
+        68,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        69,
+        74,
+        75,
+        83,
+        "modifier_place_rel"
+      ],
+      [
+        66,
+        68,
+        75,
+        83,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "*@TheIslamicUmmah: #Pakistan scrambles to reach quake victims http://t.co/pH0Hc9n3xy #Aljazeera Inna Lillah wa inna ilayhi rajioon* Ameen"
+    ],
+    "tweetId": "382929068024668160",
+    "entities": [
+      [
+        20,
+        28,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "NYTimes: Toll in #Pakistani #Earthquake Rises Past 300 http://t.co/6rtW6NVKzs"
+    ],
+    "tweetId": "382930417776861184",
+    "entities": [
+      [
+        14,
+        16,
+        "location modifier"
+      ],
+      [
+        46,
+        54,
+        "severity or quantity"
+      ],
+      [
+        18,
+        26,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        14,
+        16,
+        18,
+        26,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "At least 327 people have been killed in #Pakistan's 7.7 magnitude earthquake. http://t.co/nLvaRxonuk"
+    ],
+    "tweetId": "382934883942686721",
+    "entities": [
+      [
+        41,
+        49,
+        "place name"
+      ],
+      [
+        37,
+        39,
+        "location modifier"
+      ],
+      [
+        13,
+        19,
+        "item affected"
+      ],
+      [
+        0,
+        12,
+        "severity or quantity"
+      ],
+      [
+        30,
+        36,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        0,
+        12,
+        30,
+        36,
+        "severity_impact_rel"
+      ],
+      [
+        37,
+        39,
+        41,
+        49,
+        "modifier_place_rel"
+      ],
+      [
+        41,
+        49,
+        30,
+        36,
+        "place_impact_rel"
+      ],
+      [
+        13,
+        19,
+        30,
+        36,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Over 330 peoples are killed in #Earthquake in #Baluchistan. Many are still missing. #Pakistan"
+    ],
+    "tweetId": "382936209753767938",
+    "entities": [
+      [
+        47,
+        58,
+        "place name"
+      ],
+      [
+        9,
+        16,
+        "item affected"
+      ],
+      [
+        43,
+        45,
+        "location modifier"
+      ],
+      [
+        0,
+        8,
+        "severity or quantity"
+      ],
+      [
+        21,
+        27,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        0,
+        8,
+        21,
+        27,
+        "severity_impact_rel"
+      ],
+      [
+        43,
+        45,
+        47,
+        58,
+        "modifier_place_rel"
+      ],
+      [
+        9,
+        16,
+        21,
+        27,
+        "item_impact_rel"
+      ],
+      [
+        47,
+        58,
+        21,
+        27,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @NewsweekPak: Seismologist says quake island will disappear over time #Balochistan #Gwadar http://t.co/LHw10iHLSc"
+    ],
+    "tweetId": "382937561850593280",
+    "entities": [
+      [
+        74,
+        85,
+        "place name"
+      ],
+      [
+        87,
+        93,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "RT @DashhacksDan: Meanwhile in melbourne #melbourne #thunder #storm #lightning #earthquake http://t.co/HKAKc06qJD"
+    ],
+    "tweetId": "382938296671666176",
+    "entities": [
+      [
+        28,
+        30,
+        "location modifier"
+      ],
+      [
+        31,
+        40,
+        "place name"
+      ],
+      [
+        42,
+        51,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        28,
+        30,
+        42,
+        51,
+        "modifier_place_rel"
+      ],
+      [
+        28,
+        30,
+        31,
+        40,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "USGS reports a M1.1 #earthquake 6km W of Cobb, California on 9/25/13 @ 18:43:18 UTC http://t.co/0ZBUBhh7uu #quake"
+    ],
+    "tweetId": "382938832259133440",
+    "entities": [
+      [
+        41,
+        45,
+        "place name"
+      ],
+      [
+        47,
+        57,
+        "place name"
+      ],
+      [
+        32,
+        40,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        32,
+        40,
+        41,
+        45,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "CofC: Pakistan earthquake felt in South Carolina: An MUSC employee has been disciplined after   http://t.co/XiKyErtznz #pakistan #news"
+    ],
+    "tweetId": "382939414785036288",
+    "entities": [
+      [
+        6,
+        14,
+        "place name"
+      ],
+      [
+        122,
+        130,
+        "place name"
+      ],
+      [
+        34,
+        39,
+        "location modifier"
+      ],
+      [
+        40,
+        48,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        34,
+        39,
+        40,
+        48,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @NewsBreaker: BREAKING: Death toll in #Pakistan earthquake jumps to 328: officials - @AFP"
+    ],
+    "tweetId": "382942471778353152",
+    "entities": [
+      [
+        27,
+        32,
+        "type of impact"
+      ],
+      [
+        42,
+        50,
+        "place name"
+      ],
+      [
+        71,
+        74,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        71,
+        74,
+        27,
+        32,
+        "severity_impact_rel"
+      ],
+      [
+        42,
+        50,
+        27,
+        32,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Earthquake at 270km SE of Lambasa, Fiji 4.5 M. Detph 552.2 Km. - 2013-09-24 22:41:51 UTC http://t.co/PdTsVMDKdQ"
+    ],
+    "tweetId": "382947629736681472",
+    "entities": [
+      [
+        15,
+        26,
+        "location modifier"
+      ],
+      [
+        27,
+        34,
+        "place name"
+      ],
+      [
+        36,
+        40,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        15,
+        26,
+        27,
+        34,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @alabamaquake: NEW #earthquake, PERU, M7.0, 11:42a CT today, much damage, no casualties report yet - seismogram http://t.co/37nDopViUR"
+    ],
+    "tweetId": "382948237860405248",
+    "entities": [
+      [
+        35,
+        39,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "RT @AlertNet: Magnitude 6.8 #earthquake strikes off southern coast of #Peru http://t.co/ToUHT6yqdr"
+    ],
+    "tweetId": "382952457371803648",
+    "entities": [
+      [
+        71,
+        75,
+        "place name"
+      ],
+      [
+        48,
+        69,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        48,
+        69,
+        71,
+        75,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @MsIntervention: Week of Islamic terrorism: #Kenya: 130+ killed; #Nigeria: 142+; #Pakistan 82; #Iraq; 100+; #Afghanistan: 40+. It's real\u2026"
+    ],
+    "tweetId": "382953598667456512",
+    "entities": [
+      [
+        48,
+        53,
+        "place name"
+      ],
+      [
+        55,
+        59,
+        "severity or quantity"
+      ],
+      [
+        60,
+        66,
+        "type of impact"
+      ],
+      [
+        69,
+        76,
+        "place name"
+      ],
+      [
+        78,
+        82,
+        "severity or quantity"
+      ],
+      [
+        85,
+        93,
+        "place name"
+      ],
+      [
+        94,
+        96,
+        "severity or quantity"
+      ],
+      [
+        99,
+        103,
+        "place name"
+      ],
+      [
+        105,
+        109,
+        "severity or quantity"
+      ],
+      [
+        112,
+        123,
+        "place name"
+      ],
+      [
+        125,
+        128,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        125,
+        128,
+        60,
+        66,
+        "severity_impact_rel"
+      ],
+      [
+        94,
+        96,
+        60,
+        66,
+        "severity_impact_rel"
+      ],
+      [
+        55,
+        59,
+        60,
+        66,
+        "severity_impact_rel"
+      ],
+      [
+        48,
+        53,
+        60,
+        66,
+        "place_impact_rel"
+      ],
+      [
+        105,
+        109,
+        60,
+        66,
+        "severity_impact_rel"
+      ],
+      [
+        78,
+        82,
+        60,
+        66,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "USGS reports a M1.8 #earthquake 26km ENE of Pine Valley, California on 9/25/13 @ 20:04:48 UTC http://t.co/z3OQ1rhadM #quake"
+    ],
+    "tweetId": "382959972507607040",
+    "entities": [
+      [
+        44,
+        55,
+        "place name"
+      ],
+      [
+        57,
+        67,
+        "place name"
+      ],
+      [
+        32,
+        43,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        32,
+        43,
+        44,
+        55,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Pakistan quake death toll rises to over 300 #UFO4UBlogAsia http://t.co/blHMdM41V8"
+    ],
+    "tweetId": "382964275817365506",
+    "entities": [
+      [
+        16,
+        21,
+        "type of impact"
+      ],
+      [
+        36,
+        44,
+        "severity or quantity"
+      ],
+      [
+        1,
+        9,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        36,
+        44,
+        16,
+        21,
+        "severity_impact_rel"
+      ],
+      [
+        1,
+        9,
+        16,
+        21,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Death toll in #Pakistan earthquake rises to at least 328. http://t.co/b6DQq8iYKI"
+    ],
+    "tweetId": "382967617918881792",
+    "entities": [
+      [
+        53,
+        56,
+        "severity or quantity"
+      ],
+      [
+        15,
+        23,
+        "place name"
+      ],
+      [
+        11,
+        13,
+        "location modifier"
+      ],
+      [
+        0,
+        5,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        15,
+        23,
+        0,
+        5,
+        "place_impact_rel"
+      ],
+      [
+        11,
+        13,
+        15,
+        23,
+        "modifier_place_rel"
+      ],
+      [
+        53,
+        56,
+        0,
+        5,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @AQpk: Just when #Pakistan mobilizes to help #Balochistan #earthquake victims @ReutersPakistan releases a story supporting #BLA terroris\u2026"
+    ],
+    "tweetId": "382968147265216512",
+    "entities": [
+      [
+        21,
+        29,
+        "place name"
+      ],
+      [
+        49,
+        60,
+        "place name"
+      ],
+      [
+        73,
+        80,
+        "item affected"
+      ],
+      [
+        89,
+        97,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "\u3010#USGS #alert\u3011 M 2.9, Puerto Rico region: September 25, 2013 20:07:56 GMT http://t.co/0lJAJRDbwZ #earthquake #tsunami #prayfromjapan"
+    ],
+    "tweetId": "382969541677961216",
+    "entities": [
+      [
+        22,
+        33,
+        "place name"
+      ],
+      [
+        127,
+        132,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "RT @FoxNews: Death toll in #Pakistan earthquake rises to 182 http://t.co/BCVKARh4LT"
+    ],
+    "tweetId": "382978487046246400",
+    "entities": [
+      [
+        13,
+        18,
+        "type of impact"
+      ],
+      [
+        28,
+        36,
+        "place name"
+      ],
+      [
+        24,
+        26,
+        "location modifier"
+      ],
+      [
+        57,
+        60,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        24,
+        26,
+        28,
+        36,
+        "modifier_place_rel"
+      ],
+      [
+        57,
+        60,
+        13,
+        18,
+        "severity_impact_rel"
+      ],
+      [
+        28,
+        36,
+        13,
+        18,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @weatherchannel: Less than an hour ago (11:42am CDT) a magnitude-7.0 #earthquake struck just off the coast of Peru, 300mi S of Lima."
+    ],
+    "tweetId": "382978720434507776",
+    "entities": [
+      [
+        96,
+        109,
+        "location modifier"
+      ],
+      [
+        113,
+        117,
+        "place name"
+      ],
+      [
+        130,
+        134,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        96,
+        109,
+        113,
+        117,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Pakistan quake island off Gwadar 'emits flammable gas' http://t.co/guiyS32lJY #geology"
+    ],
+    "tweetId": "382978793473712128",
+    "entities": [
+      [
+        1,
+        9,
+        "place name"
+      ],
+      [
+        27,
+        33,
+        "place name"
+      ],
+      [
+        16,
+        26,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        16,
+        26,
+        27,
+        33,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "??\ufffd#USGS #alert??? M 1.8, Nevada: September 25, 2013 21:20:43 GMT http://t.co/tgZdmiwWQH #earthquake #tsunami #prayfromjapan"
+    ],
+    "tweetId": "382981221912809472",
+    "entities": [
+      [
+        26,
+        32,
+        "place name"
+      ],
+      [
+        102,
+        109,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        26,
+        32,
+        102,
+        109,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @AnasMallick: 90% of houses in Awaran, Balochistan have been totally destroyed due to the #EarthQuake."
+    ],
+    "tweetId": "382989427196178432",
+    "entities": [
+      [
+        31,
+        33,
+        "location modifier"
+      ],
+      [
+        17,
+        20,
+        "severity or quantity"
+      ],
+      [
+        24,
+        30,
+        "item affected"
+      ],
+      [
+        72,
+        81,
+        "type of impact"
+      ],
+      [
+        34,
+        40,
+        "place name"
+      ],
+      [
+        42,
+        53,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        34,
+        40,
+        72,
+        81,
+        "place_impact_rel"
+      ],
+      [
+        31,
+        33,
+        34,
+        40,
+        "modifier_place_rel"
+      ],
+      [
+        24,
+        30,
+        72,
+        81,
+        "item_impact_rel"
+      ],
+      [
+        31,
+        33,
+        42,
+        53,
+        "modifier_place_rel"
+      ],
+      [
+        17,
+        20,
+        72,
+        81,
+        "severity_impact_rel"
+      ],
+      [
+        42,
+        53,
+        72,
+        81,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Earthquake at 113km S of Atka, Alaska 2.7 M. Detph 22.1 Km. - 2013-09-25 19:12:34 UTC http://t.co/Kmj5KkuQ8g"
+    ],
+    "tweetId": "383010540848951296",
+    "entities": [
+      [
+        15,
+        25,
+        "location modifier"
+      ],
+      [
+        26,
+        30,
+        "place name"
+      ],
+      [
+        32,
+        38,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        15,
+        25,
+        26,
+        30,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "USGS reports a M1.8 #earthquake 4km NW of Boron, California on 9/25/13 @ 23:33:16 UTC http://t.co/8BjK14e27E #quake"
+    ],
+    "tweetId": "383012295284387840",
+    "entities": [
+      [
+        32,
+        41,
+        "location modifier"
+      ],
+      [
+        42,
+        47,
+        "place name"
+      ],
+      [
+        49,
+        59,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        32,
+        41,
+        42,
+        47,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @DrAwab: 250+ people have been killed in #Balochistan didn't we have a Chief Minister there? Missing? Abducted? Or has he gone island ho\u00e2\u20ac\u00a6"
+    ],
+    "tweetId": "383016216995954688",
+    "entities": [
+      [
+        12,
+        16,
+        "severity or quantity"
+      ],
+      [
+        45,
+        56,
+        "place name"
+      ],
+      [
+        41,
+        43,
+        "location modifier"
+      ],
+      [
+        17,
+        23,
+        "item affected"
+      ],
+      [
+        34,
+        40,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        41,
+        43,
+        45,
+        56,
+        "modifier_place_rel"
+      ],
+      [
+        45,
+        56,
+        34,
+        40,
+        "place_impact_rel"
+      ],
+      [
+        12,
+        16,
+        34,
+        40,
+        "severity_impact_rel"
+      ],
+      [
+        17,
+        23,
+        34,
+        40,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Earthquake in #Peru 6.8 ; Earthquake on #Iran &amp; #Pakistan border 7.7"
+    ],
+    "tweetId": "383016689333710848",
+    "entities": [
+      [
+        16,
+        20,
+        "place name"
+      ],
+      [
+        54,
+        62,
+        "place name"
+      ],
+      [
+        63,
+        69,
+        "location modifier"
+      ],
+      [
+        38,
+        40,
+        "location modifier"
+      ],
+      [
+        12,
+        14,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        12,
+        14,
+        16,
+        20,
+        "modifier_place_rel"
+      ],
+      [
+        38,
+        40,
+        54,
+        62,
+        "modifier_place_rel"
+      ],
+      [
+        63,
+        69,
+        54,
+        62,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @RT_com: UPDATE: Devastating #Pakistan quake kills 370 http://t.co/fmytyHEJf4"
+    ],
+    "tweetId": "383033293593006080",
+    "entities": [
+      [
+        33,
+        41,
+        "place name"
+      ],
+      [
+        48,
+        53,
+        "type of impact"
+      ],
+      [
+        54,
+        57,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        33,
+        41,
+        48,
+        53,
+        "place_impact_rel"
+      ],
+      [
+        54,
+        57,
+        48,
+        53,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "2.0 magnitude #earthquake. 48 km from Alpine, CA, United States.http://t.co/I20XjSiN2c"
+    ],
+    "tweetId": "383034477934436353",
+    "entities": [
+      [
+        27,
+        37,
+        "location modifier"
+      ],
+      [
+        38,
+        44,
+        "place name"
+      ],
+      [
+        46,
+        48,
+        "place name"
+      ],
+      [
+        50,
+        63,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        27,
+        37,
+        38,
+        44,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @abc13houston: UPDATE: Massive quake in southwest #Pakistan kills 210 http://t.co/zifus0VpNU #abc13"
+    ],
+    "tweetId": "383060559177854977",
+    "entities": [
+      [
+        54,
+        62,
+        "place name"
+      ],
+      [
+        63,
+        68,
+        "type of impact"
+      ],
+      [
+        69,
+        72,
+        "severity or quantity"
+      ],
+      [
+        43,
+        52,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        54,
+        62,
+        63,
+        68,
+        "place_impact_rel"
+      ],
+      [
+        69,
+        72,
+        63,
+        68,
+        "severity_impact_rel"
+      ],
+      [
+        43,
+        52,
+        54,
+        62,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "WATCH: 300 confirmed dead after a powerful earthquake hit southern #Pakistan. http://t.co/tZtmGaL75V #9MorningNews"
+    ],
+    "tweetId": "383061845822562304",
+    "entities": [
+      [
+        7,
+        10,
+        "severity or quantity"
+      ],
+      [
+        21,
+        25,
+        "type of impact"
+      ],
+      [
+        58,
+        66,
+        "place name"
+      ],
+      [
+        68,
+        76,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        68,
+        76,
+        21,
+        25,
+        "place_impact_rel"
+      ],
+      [
+        7,
+        10,
+        21,
+        25,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#earthquake: M 4.4 - North-America United States [Alaska] Port Alexander: Preliminary Earthquake Report:  Da  http://t.co/6M9KwQdo3i"
+    ],
+    "tweetId": "383064916698992640",
+    "entities": [
+      [
+        21,
+        34,
+        "place name"
+      ],
+      [
+        35,
+        48,
+        "place name"
+      ],
+      [
+        50,
+        56,
+        "place name"
+      ],
+      [
+        58,
+        72,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "Strong #earthquake Near The Coast Of Southern Peru Mag 6.8 Depth 33 km #PocketWeather http://t.co/Iu0wLQpzfr"
+    ],
+    "tweetId": "383068462567796736",
+    "entities": [
+      [
+        19,
+        36,
+        "location modifier"
+      ],
+      [
+        46,
+        50,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        19,
+        36,
+        46,
+        50,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @bbcworldservice: #Pakistan military and relief groups still trying to reach all areas hit by #quake in #Balochistan. 330 dead, expected\u00e2\u20ac\u00a6"
+    ],
+    "tweetId": "383069058180345857",
+    "entities": [
+      [
+        104,
+        106,
+        "location modifier"
+      ],
+      [
+        108,
+        119,
+        "place name"
+      ],
+      [
+        121,
+        124,
+        "severity or quantity"
+      ],
+      [
+        125,
+        129,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        108,
+        119,
+        125,
+        129,
+        "place_impact_rel"
+      ],
+      [
+        121,
+        124,
+        125,
+        129,
+        "severity_impact_rel"
+      ],
+      [
+        104,
+        106,
+        108,
+        119,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Death Toll Rises to 327 in Pakistan Quake - Voice of America | http://t.co/jfPqGrnPwg | #Pakistan"
+    ],
+    "tweetId": "383072124480794624",
+    "entities": [
+      [
+        0,
+        5,
+        "type of impact"
+      ],
+      [
+        20,
+        23,
+        "severity or quantity"
+      ],
+      [
+        27,
+        35,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        20,
+        23,
+        0,
+        5,
+        "severity_impact_rel"
+      ],
+      [
+        27,
+        35,
+        0,
+        5,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @ErumManzoor: Island that emerged near Gwadar #earthquake is temporary, say experts. Hmmm.  How about setting up a TTP office there? via\u2026"
+    ],
+    "tweetId": "383075250852102144",
+    "entities": [
+      [
+        42,
+        48,
+        "place name"
+      ],
+      [
+        37,
+        41,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        37,
+        41,
+        42,
+        48,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @SaimaMohsin: No emergency or surgical medical facilities in #Awaran - seriously injured have to be airlifted out. 264 dead, more than 4\u2026"
+    ],
+    "tweetId": "383076873615314944",
+    "entities": [
+      [
+        65,
+        71,
+        "place name"
+      ],
+      [
+        118,
+        121,
+        "severity or quantity"
+      ],
+      [
+        122,
+        126,
+        "type of impact"
+      ],
+      [
+        128,
+        139,
+        "severity or quantity"
+      ],
+      [
+        84,
+        91,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        65,
+        71,
+        122,
+        126,
+        "place_impact_rel"
+      ],
+      [
+        65,
+        71,
+        84,
+        91,
+        "place_impact_rel"
+      ],
+      [
+        118,
+        121,
+        122,
+        126,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#earthquake M 4.4, off the coast of Southeastern Alaska http://t.co/hJ1cEOkqY6"
+    ],
+    "tweetId": "383077229275516928",
+    "entities": [
+      [
+        19,
+        35,
+        "location modifier"
+      ],
+      [
+        36,
+        55,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        19,
+        35,
+        36,
+        55,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Unfortunately more than 200 killed in massive #Pakistan #Earthquake"
+    ],
+    "tweetId": "383084326146957312",
+    "entities": [
+      [
+        14,
+        27,
+        "severity or quantity"
+      ],
+      [
+        28,
+        34,
+        "type of impact"
+      ],
+      [
+        47,
+        55,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        14,
+        27,
+        28,
+        34,
+        "severity_impact_rel"
+      ],
+      [
+        47,
+        55,
+        28,
+        34,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @NazBalochPTI: Balochistan tragic #earthquake kiling more thn 300 ppl. PTI Balochistan team &amp; volunteers will visit these areas for reco\u00e2\u20ac\u00a6"
+    ],
+    "tweetId": "383087232288301056",
+    "entities": [
+      [
+        49,
+        55,
+        "type of impact"
+      ],
+      [
+        18,
+        29,
+        "place name"
+      ],
+      [
+        69,
+        72,
+        "item affected"
+      ],
+      [
+        56,
+        68,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        69,
+        72,
+        49,
+        55,
+        "item_impact_rel"
+      ],
+      [
+        56,
+        68,
+        49,
+        55,
+        "severity_impact_rel"
+      ],
+      [
+        18,
+        29,
+        49,
+        55,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "348 dead, 500 injured and rising. You are in my prayers #Balochistan #earthquake"
+    ],
+    "tweetId": "383090514758610944",
+    "entities": [
+      [
+        0,
+        3,
+        "severity or quantity"
+      ],
+      [
+        4,
+        8,
+        "type of impact"
+      ],
+      [
+        10,
+        13,
+        "severity or quantity"
+      ],
+      [
+        14,
+        21,
+        "type of impact"
+      ],
+      [
+        57,
+        68,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        57,
+        68,
+        14,
+        21,
+        "place_impact_rel"
+      ],
+      [
+        0,
+        3,
+        4,
+        8,
+        "severity_impact_rel"
+      ],
+      [
+        57,
+        68,
+        4,
+        8,
+        "place_impact_rel"
+      ],
+      [
+        10,
+        13,
+        14,
+        21,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "At least 500 people have been killed by a powerful earthquake in #Awaran #khuzdar #Turbat #Dandar #Mashky #geshkoor #Pasni."
+    ],
+    "tweetId": "383091774807236608",
+    "entities": [
+      [
+        0,
+        12,
+        "severity or quantity"
+      ],
+      [
+        13,
+        19,
+        "item affected"
+      ],
+      [
+        30,
+        36,
+        "type of impact"
+      ],
+      [
+        62,
+        64,
+        "location modifier"
+      ],
+      [
+        66,
+        72,
+        "place name"
+      ],
+      [
+        74,
+        81,
+        "place name"
+      ],
+      [
+        83,
+        89,
+        "place name"
+      ],
+      [
+        91,
+        97,
+        "place name"
+      ],
+      [
+        99,
+        105,
+        "place name"
+      ],
+      [
+        107,
+        115,
+        "place name"
+      ],
+      [
+        117,
+        122,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        62,
+        64,
+        91,
+        97,
+        "modifier_place_rel"
+      ],
+      [
+        107,
+        115,
+        30,
+        36,
+        "place_impact_rel"
+      ],
+      [
+        62,
+        64,
+        99,
+        105,
+        "modifier_place_rel"
+      ],
+      [
+        62,
+        64,
+        74,
+        81,
+        "modifier_place_rel"
+      ],
+      [
+        91,
+        97,
+        30,
+        36,
+        "place_impact_rel"
+      ],
+      [
+        62,
+        64,
+        117,
+        122,
+        "modifier_place_rel"
+      ],
+      [
+        13,
+        19,
+        30,
+        36,
+        "item_impact_rel"
+      ],
+      [
+        83,
+        89,
+        30,
+        36,
+        "place_impact_rel"
+      ],
+      [
+        0,
+        12,
+        30,
+        36,
+        "severity_impact_rel"
+      ],
+      [
+        62,
+        64,
+        66,
+        72,
+        "modifier_place_rel"
+      ],
+      [
+        66,
+        72,
+        30,
+        36,
+        "place_impact_rel"
+      ],
+      [
+        62,
+        64,
+        107,
+        115,
+        "modifier_place_rel"
+      ],
+      [
+        62,
+        64,
+        83,
+        89,
+        "modifier_place_rel"
+      ],
+      [
+        74,
+        81,
+        30,
+        36,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Earthquakes in #Pakistan timeline http://t.co/Y20lGxf9Pi Worst earthquake in 2005. 80,000 dead, 200,000 injured, 4 million ppl left homeless"
+    ],
+    "tweetId": "383097622254608384",
+    "entities": [
+      [
+        16,
+        24,
+        "place name"
+      ],
+      [
+        83,
+        89,
+        "severity or quantity"
+      ],
+      [
+        90,
+        94,
+        "type of impact"
+      ],
+      [
+        96,
+        103,
+        "severity or quantity"
+      ],
+      [
+        104,
+        111,
+        "type of impact"
+      ],
+      [
+        113,
+        122,
+        "severity or quantity"
+      ],
+      [
+        123,
+        126,
+        "item affected"
+      ],
+      [
+        127,
+        140,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        16,
+        24,
+        104,
+        111,
+        "place_impact_rel"
+      ],
+      [
+        16,
+        24,
+        90,
+        94,
+        "place_impact_rel"
+      ],
+      [
+        113,
+        122,
+        127,
+        140,
+        "severity_impact_rel"
+      ],
+      [
+        83,
+        89,
+        90,
+        94,
+        "severity_impact_rel"
+      ],
+      [
+        96,
+        103,
+        104,
+        111,
+        "severity_impact_rel"
+      ],
+      [
+        16,
+        24,
+        127,
+        140,
+        "place_impact_rel"
+      ],
+      [
+        123,
+        126,
+        127,
+        140,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Earthquake in Edmond just now?"
+    ],
+    "tweetId": "383099644999643136",
+    "entities": [
+      [
+        12,
+        14,
+        "location modifier"
+      ],
+      [
+        15,
+        21,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        12,
+        14,
+        15,
+        21,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @bbcworldservice: #Pakistan mud homes totally collapsed, medical teams still unable to reach far-flung areas hit by #Balochistan #quake \u00e2\u20ac\u00a6"
+    ],
+    "tweetId": "383100450956136448",
+    "entities": [
+      [
+        41,
+        58,
+        "type of impact"
+      ],
+      [
+        31,
+        40,
+        "item affected"
+      ],
+      [
+        120,
+        131,
+        "place name"
+      ],
+      [
+        22,
+        30,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        31,
+        40,
+        41,
+        58,
+        "item_impact_rel"
+      ],
+      [
+        22,
+        30,
+        41,
+        58,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @EarthquakesData: #Earthquake at 10km E of Edmond, Oklahoma 2.8 M. Detph 5.4 Km. - 2013-09-26 07:17:11 UTC http://t.co/YvAchpQdKr"
+    ],
+    "tweetId": "383102834868121600",
+    "entities": [
+      [
+        46,
+        52,
+        "place name"
+      ],
+      [
+        54,
+        62,
+        "place name"
+      ],
+      [
+        36,
+        45,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        36,
+        45,
+        46,
+        52,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @dawn_com: Massive #earthquake hits #Balochistan: death toll rises to 328 | Latest-News http://t.co/zabXDEzhiH #Pakistan #Awaran #Gwadar"
+    ],
+    "tweetId": "383105446287917056",
+    "entities": [
+      [
+        40,
+        51,
+        "place name"
+      ],
+      [
+        53,
+        58,
+        "type of impact"
+      ],
+      [
+        115,
+        123,
+        "place name"
+      ],
+      [
+        125,
+        131,
+        "place name"
+      ],
+      [
+        133,
+        139,
+        "place name"
+      ],
+      [
+        73,
+        76,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        115,
+        123,
+        53,
+        58,
+        "place_impact_rel"
+      ],
+      [
+        40,
+        51,
+        53,
+        58,
+        "place_impact_rel"
+      ],
+      [
+        73,
+        76,
+        53,
+        58,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Dr.Hafeez, President AKF left from bela to Awaraan, the most affected Area with 3relief trucks,10 Ambulances and 50 volunteers. #Balochistan"
+    ],
+    "tweetId": "383107409956204544",
+    "entities": [
+      [
+        43,
+        50,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "Five Indian Soldiers and Six Policemen dead in Indian occupied Kashmir. #Pakistan http://t.co/es7W944i9S"
+    ],
+    "tweetId": "383111645859311616",
+    "entities": [
+      [
+        5,
+        20,
+        "item affected"
+      ],
+      [
+        0,
+        4,
+        "severity or quantity"
+      ],
+      [
+        44,
+        46,
+        "location modifier"
+      ],
+      [
+        54,
+        62,
+        "type of impact"
+      ],
+      [
+        25,
+        28,
+        "severity or quantity"
+      ],
+      [
+        73,
+        81,
+        "place name"
+      ],
+      [
+        29,
+        38,
+        "item affected"
+      ],
+      [
+        39,
+        43,
+        "type of impact"
+      ],
+      [
+        63,
+        70,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        29,
+        38,
+        39,
+        43,
+        "item_impact_rel"
+      ],
+      [
+        25,
+        28,
+        39,
+        43,
+        "severity_impact_rel"
+      ],
+      [
+        44,
+        46,
+        63,
+        70,
+        "modifier_place_rel"
+      ],
+      [
+        63,
+        70,
+        54,
+        62,
+        "place_impact_rel"
+      ],
+      [
+        0,
+        4,
+        39,
+        43,
+        "severity_impact_rel"
+      ],
+      [
+        5,
+        20,
+        39,
+        43,
+        "item_impact_rel"
+      ],
+      [
+        63,
+        70,
+        39,
+        43,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Pakistan earthquake death toll rises to 350 http://t.co/S4cvjThzSc #Pakistan"
+    ],
+    "tweetId": "383112632665767936",
+    "entities": [
+      [
+        0,
+        8,
+        "place name"
+      ],
+      [
+        20,
+        25,
+        "type of impact"
+      ],
+      [
+        31,
+        43,
+        "severity or quantity"
+      ],
+      [
+        68,
+        76,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        68,
+        76,
+        20,
+        25,
+        "place_impact_rel"
+      ],
+      [
+        0,
+        8,
+        20,
+        25,
+        "place_impact_rel"
+      ],
+      [
+        31,
+        43,
+        20,
+        25,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "USGS reports a M0.9 #earthquake 5km WNW of Cobb, California on 9/26/13 @ 6:14:06 UTC http://t.co/bya5jJQtCU #quake"
+    ],
+    "tweetId": "383112728736317440",
+    "entities": [
+      [
+        32,
+        42,
+        "location modifier"
+      ],
+      [
+        43,
+        47,
+        "place name"
+      ],
+      [
+        49,
+        59,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        32,
+        42,
+        43,
+        47,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Pakistan #News Balochistan quake death toll nears 350 http://t.co/JgzWdvmii3"
+    ],
+    "tweetId": "383119751053967362",
+    "entities": [
+      [
+        45,
+        54,
+        "severity or quantity"
+      ],
+      [
+        1,
+        9,
+        "place name"
+      ],
+      [
+        16,
+        27,
+        "place name"
+      ],
+      [
+        34,
+        39,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        45,
+        54,
+        34,
+        39,
+        "severity_impact_rel"
+      ],
+      [
+        1,
+        9,
+        34,
+        39,
+        "place_impact_rel"
+      ],
+      [
+        16,
+        27,
+        34,
+        39,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Death toll of Balochistan earthquake hits 350 with more casualties feared #Pakistan http://t.co/JYxR9O1f7V \ufffd??"
+    ],
+    "tweetId": "383122537850212352",
+    "entities": [
+      [
+        42,
+        45,
+        "severity or quantity"
+      ],
+      [
+        14,
+        25,
+        "place name"
+      ],
+      [
+        11,
+        13,
+        "location modifier"
+      ],
+      [
+        0,
+        5,
+        "type of impact"
+      ],
+      [
+        75,
+        83,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        42,
+        45,
+        0,
+        5,
+        "severity_impact_rel"
+      ],
+      [
+        14,
+        25,
+        0,
+        5,
+        "place_impact_rel"
+      ],
+      [
+        11,
+        13,
+        75,
+        83,
+        "modifier_place_rel"
+      ],
+      [
+        11,
+        13,
+        14,
+        25,
+        "modifier_place_rel"
+      ],
+      [
+        75,
+        83,
+        0,
+        5,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @AccessAid: The death toll in #Pakistan now passed 300 &amp; over 500 people confirmed injured. Government &amp; non-government #aid workers con\u00e2\u20ac\u00a6"
+    ],
+    "tweetId": "383124139005181952",
+    "entities": [
+      [
+        64,
+        72,
+        "severity or quantity"
+      ],
+      [
+        90,
+        97,
+        "type of impact"
+      ],
+      [
+        73,
+        79,
+        "item affected"
+      ],
+      [
+        19,
+        24,
+        "type of impact"
+      ],
+      [
+        34,
+        42,
+        "place name"
+      ],
+      [
+        47,
+        57,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        34,
+        42,
+        19,
+        24,
+        "place_impact_rel"
+      ],
+      [
+        47,
+        57,
+        19,
+        24,
+        "severity_impact_rel"
+      ],
+      [
+        73,
+        79,
+        90,
+        97,
+        "item_impact_rel"
+      ],
+      [
+        34,
+        42,
+        90,
+        97,
+        "place_impact_rel"
+      ],
+      [
+        64,
+        72,
+        90,
+        97,
+        "severity_impact_rel"
+      ],
+      [
+        73,
+        79,
+        19,
+        24,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Toll in Quake in #Pakistan Rises Past 300 http://t.co/pnGpwrxdbg #Earthquake"
+    ],
+    "tweetId": "383125870291853313",
+    "entities": [
+      [
+        27,
+        41,
+        "severity or quantity"
+      ],
+      [
+        0,
+        4,
+        "type of impact"
+      ],
+      [
+        18,
+        26,
+        "place name"
+      ],
+      [
+        14,
+        16,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        18,
+        26,
+        0,
+        4,
+        "place_impact_rel"
+      ],
+      [
+        27,
+        41,
+        0,
+        4,
+        "severity_impact_rel"
+      ],
+      [
+        14,
+        16,
+        18,
+        26,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Earthquake in Mexico. #2013 #earthquake #eq #esri #usgs http://t.co/t1KQdD09d7"
+    ],
+    "tweetId": "383128637727580160",
+    "entities": [
+      [
+        14,
+        20,
+        "place name"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "USGS reports a M2.6 #earthquake 20km SSE of Redoubt Volcano, Alaska on 9/26/13 @ 7:39:54 UTC http://t.co/CWMeuzqGwE #quake"
+    ],
+    "tweetId": "383135122934878208",
+    "entities": [
+      [
+        32,
+        43,
+        "location modifier"
+      ],
+      [
+        44,
+        59,
+        "place name"
+      ],
+      [
+        61,
+        67,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        32,
+        43,
+        44,
+        59,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @nk_achakzai: #Balochistan quake death toll nears 400 http://t.co/3q3fLvtNy5 \ufffd?? #Pakistan . Prayers are good but they want food &amp; Shelter\ufffd??"
+    ],
+    "tweetId": "383136085649260544",
+    "entities": [
+      [
+        18,
+        29,
+        "place name"
+      ],
+      [
+        85,
+        93,
+        "place name"
+      ],
+      [
+        47,
+        56,
+        "severity or quantity"
+      ],
+      [
+        36,
+        46,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        47,
+        56,
+        36,
+        46,
+        "severity_impact_rel"
+      ],
+      [
+        18,
+        29,
+        36,
+        46,
+        "place_impact_rel"
+      ],
+      [
+        85,
+        93,
+        36,
+        46,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "\u201cAt least 328 people have been confirmed dead and more than 450 injured\u201d  Plz. Pray for the victims of #earthquake. http://t.co/EM0Kp2KFoE"
+    ],
+    "tweetId": "383136601456377857",
+    "entities": [
+      [
+        14,
+        20,
+        "item affected"
+      ],
+      [
+        41,
+        45,
+        "type of impact"
+      ],
+      [
+        50,
+        63,
+        "severity or quantity"
+      ],
+      [
+        64,
+        71,
+        "type of impact"
+      ],
+      [
+        92,
+        99,
+        "item affected"
+      ],
+      [
+        10,
+        13,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        50,
+        63,
+        64,
+        71,
+        "severity_impact_rel"
+      ],
+      [
+        14,
+        20,
+        41,
+        45,
+        "item_impact_rel"
+      ],
+      [
+        92,
+        99,
+        41,
+        45,
+        "item_impact_rel"
+      ],
+      [
+        92,
+        99,
+        64,
+        71,
+        "item_impact_rel"
+      ],
+      [
+        10,
+        13,
+        41,
+        45,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Death toll in #Balochistan #earthquake jumps to 531 #Awaran #Pakistan #Dunyatv"
+    ],
+    "tweetId": "383137327863701504",
+    "entities": [
+      [
+        0,
+        5,
+        "type of impact"
+      ],
+      [
+        11,
+        13,
+        "location modifier"
+      ],
+      [
+        15,
+        26,
+        "place name"
+      ],
+      [
+        53,
+        59,
+        "place name"
+      ],
+      [
+        61,
+        69,
+        "place name"
+      ],
+      [
+        48,
+        51,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        11,
+        13,
+        15,
+        26,
+        "modifier_place_rel"
+      ],
+      [
+        11,
+        13,
+        61,
+        69,
+        "modifier_place_rel"
+      ],
+      [
+        48,
+        51,
+        0,
+        5,
+        "severity_impact_rel"
+      ],
+      [
+        11,
+        13,
+        53,
+        59,
+        "modifier_place_rel"
+      ],
+      [
+        53,
+        59,
+        0,
+        5,
+        "place_impact_rel"
+      ],
+      [
+        15,
+        26,
+        0,
+        5,
+        "place_impact_rel"
+      ],
+      [
+        61,
+        69,
+        0,
+        5,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @Meher_J: @AFP @UNO @UNESCO @UNICEF [1/2] Shame On Pak Govt.. #EarthQuake Effectees Surrounded DCO Offc #Awaran, People Crying For #AID.\ufffd??"
+    ],
+    "tweetId": "383138139432566784",
+    "entities": [
+      [
+        116,
+        122,
+        "item affected"
+      ]
+    ],
+    "relations": []
+  },
+  {
+    "tweet": [
+      "Hundreds dead in #Pakistan earthquake http://t.co/oEc5tjN3ul"
+    ],
+    "tweetId": "383138450708250624",
+    "entities": [
+      [
+        0,
+        8,
+        "severity or quantity"
+      ],
+      [
+        14,
+        16,
+        "location modifier"
+      ],
+      [
+        18,
+        26,
+        "place name"
+      ],
+      [
+        9,
+        13,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        14,
+        16,
+        18,
+        26,
+        "modifier_place_rel"
+      ],
+      [
+        18,
+        26,
+        9,
+        13,
+        "place_impact_rel"
+      ],
+      [
+        0,
+        8,
+        9,
+        13,
+        "severity_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "~ BBC News - #Pakistan quake island off #Gwadar 'emits flammable gas' http://t.co/tns3BfTCT2 #paperli"
+    ],
+    "tweetId": "383142103301124096",
+    "entities": [
+      [
+        14,
+        22,
+        "place name"
+      ],
+      [
+        36,
+        39,
+        "location modifier"
+      ],
+      [
+        41,
+        47,
+        "place name"
+      ],
+      [
+        55,
+        68,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        36,
+        39,
+        41,
+        47,
+        "modifier_place_rel"
+      ],
+      [
+        14,
+        22,
+        55,
+        68,
+        "place_impact_rel"
+      ],
+      [
+        41,
+        47,
+        55,
+        68,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @AnasMallick: Army Helicopter which was on survey of #EarthQuake affected area over Mashke came under rocket attack, Major General Saeed\u2026"
+    ],
+    "tweetId": "383142323703398400",
+    "entities": [
+      [
+        82,
+        86,
+        "location modifier"
+      ],
+      [
+        87,
+        93,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        82,
+        86,
+        87,
+        93,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @AJStream: Following the earthquake in #Balochistan, the island that sprung up near #Gwadar has people tweeting - http://t.co/XxwAx5NSms"
+    ],
+    "tweetId": "383142929956880384",
+    "entities": [
+      [
+        60,
+        66,
+        "item affected"
+      ],
+      [
+        72,
+        81,
+        "type of impact"
+      ],
+      [
+        82,
+        86,
+        "location modifier"
+      ],
+      [
+        88,
+        94,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        60,
+        66,
+        72,
+        81,
+        "item_impact_rel"
+      ],
+      [
+        82,
+        86,
+        88,
+        94,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Pakistan #Islamabad #Death toll in #Balochistan #earthquake jumps to 531"
+    ],
+    "tweetId": "383143161242980352",
+    "entities": [
+      [
+        37,
+        48,
+        "place name"
+      ],
+      [
+        70,
+        73,
+        "severity or quantity"
+      ],
+      [
+        22,
+        27,
+        "type of impact"
+      ]
+    ],
+    "relations": [
+      [
+        70,
+        73,
+        22,
+        27,
+        "severity_impact_rel"
+      ],
+      [
+        37,
+        48,
+        22,
+        27,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "#Earthquake at 112km WSW of Puerto Madero, Mexico 4.4 M. Detph 39.1 Km. - 2013-09-26 09:57:19 UTC http://t.co/FfBRSt0YOT"
+    ],
+    "tweetId": "383143928331243520",
+    "entities": [
+      [
+        12,
+        27,
+        "location modifier"
+      ],
+      [
+        50,
+        70,
+        "severity or quantity"
+      ],
+      [
+        28,
+        41,
+        "place name"
+      ],
+      [
+        43,
+        49,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        12,
+        27,
+        28,
+        41,
+        "modifier_place_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @CNBCPAKISTAN: Details: 13 Yr Old Girl Found Dead At Sea View :: CNBC #Pakistan :: http://t.co/Mwgnvvx088 #Karachi, #Crime #News"
+    ],
+    "tweetId": "383144810749509632",
+    "entities": [
+      [
+        56,
+        64,
+        "place name"
+      ],
+      [
+        48,
+        52,
+        "type of impact"
+      ],
+      [
+        27,
+        41,
+        "item affected"
+      ],
+      [
+        74,
+        82,
+        "place name"
+      ],
+      [
+        53,
+        55,
+        "location modifier"
+      ]
+    ],
+    "relations": [
+      [
+        53,
+        55,
+        56,
+        64,
+        "modifier_place_rel"
+      ],
+      [
+        56,
+        64,
+        48,
+        52,
+        "place_impact_rel"
+      ],
+      [
+        27,
+        41,
+        48,
+        52,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Very sad @ShababLibya  Over 320 people killed in #Pakistan #earthquake.  Thoughts and prayers with the families who lost loved ones. RIP RT"
+    ],
+    "tweetId": "383145353102381056",
+    "entities": [
+      [
+        32,
+        38,
+        "item affected"
+      ],
+      [
+        50,
+        58,
+        "place name"
+      ],
+      [
+        39,
+        45,
+        "type of impact"
+      ],
+      [
+        28,
+        31,
+        "severity or quantity"
+      ]
+    ],
+    "relations": [
+      [
+        50,
+        58,
+        39,
+        45,
+        "place_impact_rel"
+      ],
+      [
+        28,
+        31,
+        39,
+        45,
+        "severity_impact_rel"
+      ],
+      [
+        32,
+        38,
+        39,
+        45,
+        "item_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "RT @dunyanetwork: Death toll in #Balochistan quake can further rise as some areas are still inaccessible, says Interior Minister #PMLN #ear\u2026"
+    ],
+    "tweetId": "383147680152563712",
+    "entities": [
+      [
+        18,
+        23,
+        "type of impact"
+      ],
+      [
+        33,
+        44,
+        "place name"
+      ]
+    ],
+    "relations": [
+      [
+        33,
+        44,
+        18,
+        23,
+        "place_impact_rel"
+      ]
+    ]
+  },
+  {
+    "tweet": [
+      "Pakistan's 'Earthquake mountain': The island that appeared from the sea - http://t.co/1hFQms6EMm | http://t.co/Mhrgr7eSzz | #Pakistan"
+    ],
+    "tweetId": "383148981372878848",
+    "entities": [
+      [
+        0,
+        8,
+        "place name"
+      ],
+      [
+        125,
+        133,
+        "place name"
+      ]
+    ],
+    "relations": []
+  }
+]

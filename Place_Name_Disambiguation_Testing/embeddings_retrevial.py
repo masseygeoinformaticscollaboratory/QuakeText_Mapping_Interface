@@ -1,6 +1,7 @@
 import time
 import numpy as np
 import pandas as pd
+from sqlalchemy import text
 from transformers import AutoTokenizer, AutoModel
 import torch
 from sklearn.metrics.pairwise import cosine_similarity
@@ -34,34 +35,36 @@ def get_bert_embedding(sentence):
     return outputs.last_hidden_state.mean(dim=1).squeeze().numpy()
 
 
-def get_geonames_instance(place_entity, geonames, country_info, feature_codes):
+def get_geonames_instance(place_entity, conn_engine):
     geonames_instances_lst = []
-    geonames_instances = geonames[geonames['name'].fillna('').str.contains(place_entity, case=False)]
+    place_entity_escaped = place_entity.replace("'", "")
+    query = text(f"SELECT * FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
+    matching_rows = conn_engine.execute(query)
+    geonames_instances = pd.DataFrame(matching_rows.fetchall(), columns=matching_rows.keys())
 
     if not geonames_instances.empty:
         for index, row in geonames_instances.iterrows():
-            if row['country'] is not np.nan:
-                mask = country_info['ISO'] == row['country']
-                country = country_info[mask]
-                country = country.values[0]
-                country_name = country[1]
-                continent = country[2]
-            else:
-                country_name = np.nan
-                continent = np.nan
+            country_name = None
+            continent = None
+            if row['country'] is not None:
+                query = text(f"SELECT * FROM countryinfo WHERE ISO = '{row['country']}'")
+                country = conn_engine.execute(query).fetchone()
+                if country is not None:
+                    country_name = country[1]
+                    continent = country[2]
 
-            if row['fcode'] is not np.nan and row["fclass"] is not np.nan:
+            fcode = None
+            if row['fcode'] is not None and row["fclass"] is not None:
                 code = row['fclass'] + '.' + row['fcode']
-                mask = feature_codes['Code'] == code
-                fcode = feature_codes[mask]
-                fcode = fcode.values[0][1]
-            else:
-                fcode = np.nan
+                query = text(f"SELECT * FROM featurecodes WHERE code = '{code}'")
+                features = conn_engine.execute(query).fetchone()
+                if features is not None:
+                    fcode = features[1]
 
             geonames_list = [row['name'], row['alternatenames'],
-                             country_name, continent, fcode, row['timezone']]
+                             country_name, continent, fcode]
 
-            cleaned_geonames_list = [item for item in geonames_list if item is not np.nan]
+            cleaned_geonames_list = [item for item in geonames_list if item is not None]
 
             geonames_instances_lst.append({"Geonames String": ', '.join(cleaned_geonames_list),
                                            "Geonames ID": row['geonameid'],
@@ -71,19 +74,14 @@ def get_geonames_instance(place_entity, geonames, country_info, feature_codes):
     return geonames_instances_lst
 
 
-def run():
+def run(conn_engine):
     start = time.time()
 
     # Initialise data
     path = 'test.csv'
     text = 'tweet_text'
     location = 'location'
-    '''
     data = pd.read_csv(path, low_memory=False)
-    country_info = pd.read_csv("local_data_base_test/countryInfo.csv", low_memory=False)
-    country_info = country_info[['ISO', 'Country', 'Continent']]
-    feature_codes = pd.read_csv("local_data_base_test/featureCodes.csv", low_memory=False)
-    geonames = pd.read_csv("local_data_base_test/geonames.csv", low_memory=False)
 
     data["open ai"] = np.nan
     data["geonames_lat_openai"] = np.nan
@@ -96,7 +94,7 @@ def run():
     data["geonames_id_bert"] = np.nan
 
     for index, row in data.iterrows():
-        geonames_instances = get_geonames_instance(row[location], geonames, country_info, feature_codes)
+        geonames_instances = get_geonames_instance(row[location], conn_engine)
         geonames_strings = []
         for item in geonames_instances:
             geonames_strings.append(item.get("Geonames String"))
@@ -152,31 +150,7 @@ def run():
     data = data.astype({'geonames_id_openai': 'int'})
 
     data.to_csv('NPLEmbeddingCompleted.csv', index=False)
-    '''
-    input = ["Pakistan", "Wellington NZ","Russia", " USA"]
-    input_string_embedding_openai = []
-
-    for x in input:
-        embedding = get_bert_embedding(x)
-        if embedding is not None:
-            input_string_embedding_openai.append(embedding)
-
-    geonames_strings = ["Pakistan's Earthquake Was So Powerful It Created a New Island http://t.co/p3esyB28pj #earthquake"]
-    geo_names_embeddings_openai = []
-    for x in geonames_strings:
-        embedding = get_bert_embedding(x)
-        if embedding is not None:
-            geo_names_embeddings_openai.append(embedding)
-
-    openai_cos_sim = calculate_cosine_similarity(input_string_embedding_openai, geo_names_embeddings_openai)
-    if openai_cos_sim is not None:
-        # Find the max cosine distance assuming this is < 1
-        max_sim_openai = np.max(openai_cos_sim)
-
-    print(max_sim_openai)
-
     end = time.time()
     print(f"Total time taken: {end - start}")
 
 
-run()
