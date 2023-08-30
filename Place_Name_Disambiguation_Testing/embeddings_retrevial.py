@@ -38,8 +38,11 @@ def get_bert_embedding(sentence):
 def get_geonames_instance(place_entity, conn_engine):
     geonames_instances_lst = []
     place_entity_escaped = place_entity.replace("'", "")
-    query = text(f"SELECT * FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
+    query = text(f"SELECT geonameid, name, country, fcode, fclass, alternatenames, latitude, longitude FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
+    #query = text(f"SELECT * FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
+
     matching_rows = conn_engine.execute(query)
+
     geonames_instances = pd.DataFrame(matching_rows.fetchall(), columns=matching_rows.keys())
 
     if not geonames_instances.empty:
@@ -49,6 +52,7 @@ def get_geonames_instance(place_entity, conn_engine):
             if row['country'] is not None:
                 query = text(f"SELECT * FROM countryinfo WHERE ISO = '{row['country']}'")
                 country = conn_engine.execute(query).fetchone()
+
                 if country is not None:
                     country_name = country[1]
                     continent = country[2]
@@ -95,12 +99,14 @@ def run(conn_engine):
     data["geonames_id_bert"] = np.nan
 
     for index, row in data.iterrows():
-        print("Working on row:")
         print(row)
+        time_start_geo = time.time()
 
         geonames_instances = get_geonames_instance(row[location], conn_engine)
+        time_end_geo = time.time()
+        print(f"Geonames instance Time:   {time_end_geo - time_start_geo}")
+
         geonames_strings = []
-        print("Geonames instances retrieved")
 
         for item in geonames_instances:
             geonames_strings.append(item.get("Geonames String"))
@@ -167,17 +173,21 @@ def run(conn_engine):
                 data.at[index, "geonames_lon_openai"] = np.nan
                 data.at[index, "geonames_id_openai"] = np.nan
             '''
-            print("Getting embeddings")
-
+            time_start_embeddings = time.time()
             input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[text]]]
             geo_names_embeddings_bert = [get_bert_embedding(x) for x in geonames_strings]
-            print("Getting Cos Sim")
+            time_end_embeddings = time.time()
+            print(f"Embedding Retrival Time:: {time_end_embeddings - time_start_embeddings}")
+
+            time_start_cos = time.time()
 
             bert_cos_sim = calculate_cosine_similarity(input_string_embeddings_bert, geo_names_embeddings_bert)
-
             max_sim_bert = np.max(bert_cos_sim)
+            time_end_cos = time.time()
 
-            print("Adding to Panadas DF")
+            print(f"Cos Calc Time:: {time_end_cos - time_start_cos}")
+
+            time_start_Pandas = time.time()
             data.at[index, "bert"] = max_sim_bert
             data.at[index, "geonames_lat_bert"] = geonames_instances[
                 np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Latitude')
@@ -185,20 +195,17 @@ def run(conn_engine):
                 np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Longitude')
             data.at[index, "geonames_id_bert"] = geonames_instances[
                 np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames ID')
-
-            print("Adding to Panadas DF")
-            data.at[index, "bert"] = max_sim_bert
-            data.at[index, "geonames_lat_bert"] = geonames_instances[
-                np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Latitude')
-            data.at[index, "geonames_lon_bert"] = geonames_instances[
-                np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Longitude')
-            data.at[index, "geonames_id_bert"] = geonames_instances[
-                np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames ID')
+            time_end_Pandas = time.time()
+            print(f"Pandas data frame add time: {time_end_Pandas - time_start_Pandas}")
 
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
-    #data = data.astype({'geonames_id_openai': 'int'})
-    print("Writing to CSV")
+    # data = data.astype({'geonames_id_openai': 'int'})
+
+    time_start_CSV = time.time()
     data.to_csv('TestComp.csv', index=False)
+    time_end_CSV = time.time()
+    print(f"CSV writing time take: {time_end_CSV - time_start_CSV}")
+
     end = time.time()
     print(f"Total time taken: {end - start}")

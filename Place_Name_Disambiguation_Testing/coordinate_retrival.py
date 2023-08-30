@@ -3,8 +3,9 @@ import time
 import numpy as np
 import pandas as pd
 from geopy.distance import geodesic as gd
+from sqlalchemy import text
 
-path = 'Cleaned_Data_Ready_For_Embeddings/CleanedNERData_Bio.csv'
+path = 'test.csv'
 location = 'location'
 first_min = []
 second_min = []
@@ -18,8 +19,12 @@ def calculate_distance(geo_lat, geo_lon, ori_lat, ori_lon):
     return gd(geonames_coordinates, original_coordinates).km
 
 
-def get_geonames_instance(place_entity, geonames):
-    geonames_instances = geonames[geonames['name'].fillna('').str.contains(place_entity, case=False)]
+def get_geonames_instance(place_entity, conn_engine):
+    place_entity_escaped = place_entity.replace("'", "")
+    query = text(
+        f"SELECT geonameid, name, latitude, longitude FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
+    matching_rows = conn_engine.execute(query)
+    geonames_instances = pd.DataFrame(matching_rows.fetchall(), columns=matching_rows.keys())
     geonames_instance_list = []
     if not geonames_instances.empty:
         for index, row in geonames_instances.iterrows():
@@ -27,7 +32,8 @@ def get_geonames_instance(place_entity, geonames):
                 {"Location": row['name'], "Latitude": row['latitude'],
                  "Longitude": row['longitude'], "Geonames ID": row['geonameid']})
     else:
-        geonames_instance_list.append(np.nan)
+        geonames_instance_list.append({"Location": np.nan, "Latitude": np.nan,
+                 "Longitude": np.nan, "Geonames ID": np.nan})
     return geonames_instance_list
 
 
@@ -54,16 +60,13 @@ def get_ranks(data):
                 min_list.append({})
 
 
-def run():
+def run(conn_engine):
     start = time.time()
-
-    geonames = pd.read_csv('local_data_base_test/geonames.csv', low_memory=False)
-    start_2 = time.time()
 
     data = pd.read_csv(path, low_memory=False)
 
     for index, row in data.iterrows():
-        instances.append(get_geonames_instance(row[location], geonames))
+        instances.append(get_geonames_instance(row[location], conn_engine))
 
     data['Instances'] = instances
 
@@ -77,10 +80,6 @@ def run():
     data = data[data['First Minimum'].apply(lambda d: 'Latitude' not in d or not pd.isna(d['Latitude']))]
 
     data.reset_index(drop=True, inplace=True)
-    data.to_csv("nerDataCleanedWithDistanceCalc.csv", index=False)
+    data.to_csv("testCALC.csv", index=False)
     end = time.time()
     print(f"Total Time Taken: {end - start}")
-    print(f"Time Taken without reading Geonames in: {end - start_2}")
-
-
-run()

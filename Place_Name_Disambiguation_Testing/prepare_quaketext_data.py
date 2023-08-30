@@ -1,5 +1,3 @@
-import time
-
 import pandas as pd
 from sqlalchemy import text
 
@@ -30,11 +28,8 @@ def clean_df(data_frame: pd.DataFrame, conn_engine):
     i = 0
     for items in entity_relations:
         [tweet] = tweets[i]
-        start = time.time()
         rows = get_database_rows(items, tweet, conn_engine)
-        end = time.time()
-        print(f"Time taken to get rows for database: {end - start}")
-        print(f"Rows Size: {len(rows)}")
+
 
         for row in rows:
             row_list.append(row)
@@ -54,13 +49,9 @@ def get_database_rows(items, tweet, conn_engine):
 
     for place in place_entities:
         place_entity = tweet[place[0]:place[1]]
-        start = time.time()
         get_geonames_instance(place_entity, rows, tweet, conn_engine)
-        end = time.time()
-        print("Time taken for single retrival: " + place_entity)
-        print(end - start)
 
-    end = time.time()
+
 
     return rows
 
