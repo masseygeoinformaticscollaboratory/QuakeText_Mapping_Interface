@@ -30,3 +30,4 @@ ENV/
 node_modules/
 /Place_Name_Disambiguation_Testing/config.py
 /Place_Name_Disambiguation_Testing/local_data_base_test/geonames.csv
+/Place_Name_Disambiguation_Testing/Completed_Evaluation/QuakeTextCompleted.csv

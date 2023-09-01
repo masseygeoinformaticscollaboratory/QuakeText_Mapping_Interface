@@ -5,7 +5,8 @@ import pandas as pd
 from geopy.distance import geodesic as gd
 from sqlalchemy import text
 
-path = 'test.csv'
+count = 1
+path = 'Cleaned_Data_Ready_For_Embeddings/nerNPLDataCleaned.csv'
 location = 'location'
 first_min = []
 second_min = []
@@ -33,17 +34,21 @@ def get_geonames_instance(place_entity, conn_engine):
                  "Longitude": row['longitude'], "Geonames ID": row['geonameid']})
     else:
         geonames_instance_list.append({"Location": np.nan, "Latitude": np.nan,
-                 "Longitude": np.nan, "Geonames ID": np.nan})
+                                       "Longitude": np.nan, "Geonames ID": np.nan})
     return geonames_instance_list
 
 
 def get_ranks(data):
+    print("Starting Ranks:")
+    global count
+    count = 0
     sorted_lst = []
     for index, row in data.iterrows():
         if row['Instances']:
+            print(f"Tweet Number {count}: {row['tweet_text']}")
             for instance in row["Instances"]:
                 if instance.get('Latitude') is not np.nan:
-                    instance['Distance'] = calculate_distance(row['text_latitude'], row['text_longitude'],
+                    instance['Distance'] = calculate_distance(row['tweet_lat'], row['tweet_lat'],
                                                               instance.get('Latitude'),
                                                               instance.get('Longitude'))
                 else:
@@ -61,12 +66,19 @@ def get_ranks(data):
 
 
 def run(conn_engine):
+    global count
     start = time.time()
 
     data = pd.read_csv(path, low_memory=False)
 
     for index, row in data.iterrows():
+        print(f"Tweet number {count}: {row['tweet_text']}")
+        count += 1
+        start = time.time()
         instances.append(get_geonames_instance(row[location], conn_engine))
+        end = time.time()
+        print(f"Time taken: {end - start}")
+        print()
 
     data['Instances'] = instances
 
@@ -80,6 +92,6 @@ def run(conn_engine):
     data = data[data['First Minimum'].apply(lambda d: 'Latitude' not in d or not pd.isna(d['Latitude']))]
 
     data.reset_index(drop=True, inplace=True)
-    data.to_csv("testCALC.csv", index=False)
+    data.to_csv("nplCoordinateComplete.csv", index=False)
     end = time.time()
     print(f"Total Time Taken: {end - start}")

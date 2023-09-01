@@ -1,7 +1,6 @@
 import psycopg2
 from sqlalchemy import create_engine, URL
 import time
-from prepare_quaketext_data import read_data
 from coordinate_retrival import run
 
 # from embeddings_retrevial import run
@@ -39,12 +38,7 @@ try:
     engine = create_engine(url)
     conn_engine = engine.connect()
     connection.autocommit = True
-    # run(conn_engine)
-    # Code for prepare_quake_text.py
-    data = read_data(conn_engine)
-    data.reset_index(drop=True, inplace=True)
-    data.to_csv("testCALC.csv", index=False)
-
+    run(conn_engine)
 
 
 except(Exception, psycopg2.DatabaseError) as error:

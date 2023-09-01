@@ -1,10 +1,14 @@
+import time
+
 import pandas as pd
 from sqlalchemy import text
+
+count = 1
 
 
 def read_data(conn_engine):
     print("Reading files...")
-    path = 'test.json'
+    path = 'quaketext.json'
 
     # files = Path(path).glob('*.json')
     dfs = list()
@@ -30,7 +34,6 @@ def clean_df(data_frame: pd.DataFrame, conn_engine):
         [tweet] = tweets[i]
         rows = get_database_rows(items, tweet, conn_engine)
 
-
         for row in rows:
             row_list.append(row)
 
@@ -44,14 +47,19 @@ def clean_df(data_frame: pd.DataFrame, conn_engine):
 
 
 def get_database_rows(items, tweet, conn_engine):
+    global count
     rows = []
     place_entities = get_relations(items, "place name")
-
+    print(f"Tweet number {count}: " + tweet)
+    count += 1
     for place in place_entities:
         place_entity = tweet[place[0]:place[1]]
+        print("Place name in tweet: " + place_entity)
+        start = time.time()
         get_geonames_instance(place_entity, rows, tweet, conn_engine)
-
-
+        end = time.time()
+        print(f"Time taken for retreival: {end - start}")
+    print()
 
     return rows
 
