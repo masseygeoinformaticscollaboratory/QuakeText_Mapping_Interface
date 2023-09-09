@@ -1,9 +1,9 @@
 import psycopg2
 from sqlalchemy import create_engine, URL
 import time
-from coordinate_retrival import run
+#from coordinate_retrival import run
 
-# from embeddings_retrevial import run
+from embeddings_retrevial import run
 
 from configDB import config
 

@@ -38,8 +38,7 @@ def get_bert_embedding(sentence):
 def get_geonames_instance(place_entity, conn_engine):
     geonames_instances_lst = []
     place_entity_escaped = place_entity.replace("'", "")
-    query = text(f"SELECT geonameid, name, country, fcode, fclass, alternatenames, latitude, longitude FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
-    #query = text(f"SELECT * FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
+    query = text(f"SELECT * FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
 
     matching_rows = conn_engine.execute(query)
 
@@ -84,15 +83,15 @@ def run(conn_engine):
 
     # Initialise data
     path = 'test.csv'
-    text = 'tweet text'
-    location = 'place name'
+    text = 'tweet_text'
+    location = 'location'
     data = pd.read_csv(path, low_memory=False)
-    '''
+
     data["open ai"] = np.nan
     data["geonames_lat_openai"] = np.nan
     data["geonames_lon_openai"] = np.nan
     data["geonames_id_openai"] = np.nan
-    '''
+
     data["bert"] = np.nan
     data["geonames_lat_bert"] = np.nan
     data["geonames_lon_bert"] = np.nan
@@ -100,19 +99,16 @@ def run(conn_engine):
 
     for index, row in data.iterrows():
         print(row)
-        time_start_geo = time.time()
 
         geonames_instances = get_geonames_instance(row[location], conn_engine)
-        time_end_geo = time.time()
-        print(f"Geonames instance Time:   {time_end_geo - time_start_geo}")
-
         geonames_strings = []
 
         for item in geonames_instances:
             geonames_strings.append(item.get("Geonames String"))
         if len(geonames_instances) > 0:
             # For each row in the dataset retrieve the embeddings for the text and calculate the cos sim
-            '''
+            time_start_open_embeddings = time.time()
+
             input_string_embedding_openai = []
             for x in [row[text]]:
                 embedding = get_openai_embedding(x)
@@ -124,6 +120,9 @@ def run(conn_engine):
                 embedding = get_openai_embedding(x)
                 if embedding is not None:
                     geo_names_embeddings_openai.append(embedding)
+
+            time_end_open_embeddings = time.time()
+            print(f"Embedding Retrival OpenAI Time: {time_end_open_embeddings - time_start_open_embeddings}")
 
             openai_cos_sim = calculate_cosine_similarity(input_string_embedding_openai, geo_names_embeddings_openai)
             if openai_cos_sim is not None:
@@ -142,52 +141,16 @@ def run(conn_engine):
                 data.at[index, "geonames_lat_openai"] = np.nan
                 data.at[index, "geonames_lon_openai"] = np.nan
                 data.at[index, "geonames_id_openai"] = np.nan
-           
-            input_string_embedding_openai = []
-            for x in [row[text]]:
-                embedding = get_openai_embedding(x)
-                if embedding is not None:
-                    input_string_embedding_openai.append(embedding)
 
-            geo_names_embeddings_openai = []
-            for x in geonames_strings:
-                embedding = get_openai_embedding(x)
-                if embedding is not None:
-                    geo_names_embeddings_openai.append(embedding)
-
-            openai_cos_sim = calculate_cosine_similarity(input_string_embedding_openai, geo_names_embeddings_openai)
-            if openai_cos_sim is not None:
-                # Find the max cosine distance assuming this is < 1
-                max_sim_openai = np.max(openai_cos_sim)
-
-                data.at[index, "open ai"] = max_sim_openai
-                data.at[index, "geonames_lat_openai"] = geonames_instances[
-                    np.argwhere(openai_cos_sim[0] == max_sim_openai)[0][0]].get('Geonames Latitude')
-                data.at[index, "geonames_lon_openai"] = geonames_instances[
-                    np.argwhere(openai_cos_sim[0] == max_sim_openai)[0][0]].get('Geonames Longitude')
-                data.at[index, "geonames_id_openai"] = geonames_instances[
-                    np.argwhere(openai_cos_sim[0] == max_sim_openai)[0][0]].get('Geonames ID')
-            else:
-                data.at[index, "open ai"] = np.nan
-                data.at[index, "geonames_lat_openai"] = np.nan
-                data.at[index, "geonames_lon_openai"] = np.nan
-                data.at[index, "geonames_id_openai"] = np.nan
-            '''
-            time_start_embeddings = time.time()
+            time_start_bert_embeddings = time.time()
             input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[text]]]
             geo_names_embeddings_bert = [get_bert_embedding(x) for x in geonames_strings]
-            time_end_embeddings = time.time()
-            print(f"Embedding Retrival Time:: {time_end_embeddings - time_start_embeddings}")
-
-            time_start_cos = time.time()
+            time_end_bert_embeddings = time.time()
+            print(f"Embedding Retrival Bert Time: {time_end_bert_embeddings - time_start_bert_embeddings}")
 
             bert_cos_sim = calculate_cosine_similarity(input_string_embeddings_bert, geo_names_embeddings_bert)
             max_sim_bert = np.max(bert_cos_sim)
-            time_end_cos = time.time()
 
-            print(f"Cos Calc Time:: {time_end_cos - time_start_cos}")
-
-            time_start_Pandas = time.time()
             data.at[index, "bert"] = max_sim_bert
             data.at[index, "geonames_lat_bert"] = geonames_instances[
                 np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Latitude')
@@ -195,17 +158,12 @@ def run(conn_engine):
                 np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Longitude')
             data.at[index, "geonames_id_bert"] = geonames_instances[
                 np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames ID')
-            time_end_Pandas = time.time()
-            print(f"Pandas data frame add time: {time_end_Pandas - time_start_Pandas}")
 
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
-    # data = data.astype({'geonames_id_openai': 'int'})
+    data = data.astype({'geonames_id_openai': 'int'})
 
-    time_start_CSV = time.time()
-    data.to_csv('TestComp.csv', index=False)
-    time_end_CSV = time.time()
-    print(f"CSV writing time take: {time_end_CSV - time_start_CSV}")
+    data.to_csv('TestOutput.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")

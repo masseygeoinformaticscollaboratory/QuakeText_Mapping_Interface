@@ -6,7 +6,7 @@ from geopy.distance import geodesic as gd
 from sqlalchemy import text
 
 count = 1
-path = 'Cleaned_Data_Ready_For_Embeddings/nerNPLDataCleaned.csv'
+path = 'Cleaned_NER_Data/nerNPLDataCleaned.csv'
 location = 'location'
 first_min = []
 second_min = []

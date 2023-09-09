@@ -152,13 +152,24 @@ def get_impact_category(data):
     return data
 
 
+count = 1
+
+
 def get_coordinates(data):
+    global count
+
     data["latitude"] = np.nan
     data["longitude"] = np.nan
 
     for index, row in data.iterrows():
         # Looked at GeoTxt but it is not going to work
-        g = geocoder.geonames(row['place name'], key='QuakeText')
+        print(f"Getting Coords {count}")
+
+        if count < 1001:
+            g = geocoder.geonames(row['place name'], key='QuakeText')
+        else:
+            g = geocoder.geonames(row['place name'], key='lp_20004521')
+        count += 1
         if g.current_result:
             data.loc[[index], 'latitude'] = g.lat
             data.loc[[index], 'longitude'] = g.lng
@@ -174,7 +185,3 @@ def create_gdf(data: pd.DataFrame) -> gpd.GeoDataFrame:
         data, crs='EPSG:4326', geometry=gpd.points_from_xy(data.longitude, data.latitude))
     gdf = gdf.drop(columns=["latitude", "longitude"])
     return gdf
-
-
-completed = read_data()
-completed.to_csv('quake_text_prepped_data.csv', index=False)
