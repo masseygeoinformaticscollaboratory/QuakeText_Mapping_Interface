@@ -6,11 +6,11 @@ from geopy.distance import geodesic as gd
 from sqlalchemy import text
 
 count = 1
-path = 'Cleaned_NER_Data/CleanedNERData_Bio.csv'
+path = 'Cleaned_NER_Data/nerNPLDataCleaned.csv'
 location = 'location'
-tweet = 'text'
-lat = 'text_latitude'
-lng = 'text_longitude'
+tweet = 'tweet_text'
+lat = 'tweet_lat'
+lng = 'tweet_lon'
 first_min = []
 second_min = []
 third_min = []
@@ -26,7 +26,7 @@ def calculate_distance(geo_lat, geo_lon, ori_lat, ori_lon):
 def get_geonames_instance(place_entity, conn_engine):
     place_entity_escaped = place_entity.replace("'", "")
     query = text(
-        f"SELECT geonameid, name, latitude, longitude FROM geoname WHERE name ILIKE '% {place_entity_escaped} %'")
+        f"SELECT geonameid, name, latitude, longitude FROM geoname WHERE name ILIKE '% {place_entity_escaped} %' OR name ILIKE '{place_entity_escaped} %' OR name ILIKE '% {place_entity_escaped}' OR name ILIKE '{place_entity_escaped}'")
     matching_rows = conn_engine.execute(query)
     geonames_instances = pd.DataFrame(matching_rows.fetchall(), columns=matching_rows.keys())
     geonames_instance_list = []
@@ -95,6 +95,6 @@ def run(conn_engine):
     data = data[data['First Minimum'].apply(lambda d: 'Latitude' not in d or not pd.isna(d['Latitude']))]
 
     data.reset_index(drop=True, inplace=True)
-    data.to_csv("BioCoordinateCompleted.csv", index=False)
+    data.to_csv("NPLCoordinateCompleted.csv", index=False)
     end = time.time()
     print(f"Total Time Taken: {end - start}")
