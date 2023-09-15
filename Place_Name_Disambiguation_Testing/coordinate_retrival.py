@@ -6,11 +6,11 @@ from geopy.distance import geodesic as gd
 from sqlalchemy import text
 
 count = 1
-path = 'Cleaned_NER_Data/nerNPLDataCleaned.csv'
+path = 'Cleaned_NER_Data/CleanedNERData_Bio.csv'
 location = 'location'
-tweet = 'tweet_text'
-lat = 'tweet_lat'
-lng = 'tweet_lon'
+tweet = 'text'
+lat = 'text_latitude'
+lng = 'text_longitude'
 first_min = []
 second_min = []
 third_min = []
