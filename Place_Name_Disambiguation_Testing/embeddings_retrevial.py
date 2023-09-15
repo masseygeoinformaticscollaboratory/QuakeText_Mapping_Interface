@@ -38,7 +38,7 @@ def get_bert_embedding(sentence):
 def get_geonames_instance(place_entity, conn_engine):
     geonames_instances_lst = []
     place_entity_escaped = place_entity.replace("'", "")
-    query = text(f"SELECT * FROM geoname WHERE name ILIKE '% {place_entity_escaped} %'")
+    query = text(f"SELECT * FROM geoname WHERE name ILIKE '% {place_entity_escaped} %' OR name ILIKE '{place_entity_escaped} %' OR name ILIKE '% {place_entity_escaped}' OR name ILIKE '{place_entity_escaped}'")
 
     matching_rows = conn_engine.execute(query)
 
