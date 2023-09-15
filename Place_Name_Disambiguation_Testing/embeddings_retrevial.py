@@ -82,11 +82,11 @@ def run(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'test.csv'
+    path = 'NLPBertCompleted.csv'
     text = 'tweet_text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
-    '''
+
     data["open ai"] = np.nan
     data["geonames_lat_openai"] = np.nan
     data["geonames_lon_openai"] = np.nan
@@ -96,7 +96,7 @@ def run(conn_engine):
     data["geonames_lat_bert"] = np.nan
     data["geonames_lon_bert"] = np.nan
     data["geonames_id_bert"] = np.nan
-
+    '''
     count = 1
     for index, row in data.iterrows():
         start = time.time()
@@ -110,7 +110,7 @@ def run(conn_engine):
             geonames_strings.append(item.get("Geonames String"))
         if len(geonames_instances) > 0:
             print(f"Number of Geonames Instances: {len(geonames_instances)}")
-            '''
+
             #OpenAI Embeddings:
             input_string_embedding_openai = []
             for x in [row[text]]:
@@ -123,9 +123,6 @@ def run(conn_engine):
                 embedding = get_openai_embedding(x)
                 if embedding is not None:
                     geo_names_embeddings_openai.append(embedding)
-
-            time_end_open_embeddings = time.time()
-            print(f"Embedding Retrival OpenAI Time: {time_end_open_embeddings - time_start_open_embeddings}")
 
             openai_cos_sim = calculate_cosine_similarity(input_string_embedding_openai, geo_names_embeddings_openai)
             if openai_cos_sim is not None:
@@ -144,7 +141,7 @@ def run(conn_engine):
                 data.at[index, "geonames_lat_openai"] = np.nan
                 data.at[index, "geonames_lon_openai"] = np.nan
                 data.at[index, "geonames_id_openai"] = np.nan
-'''
+            '''
             #Get bert embeddings and add to dataframe:
             input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[text]]]
             geo_names_embeddings_bert = [get_bert_embedding(x) for x in geonames_strings]
@@ -161,12 +158,15 @@ def run(conn_engine):
 
             end = time.time()
             print(f"Time taken: {end - start}")
+            '''
+            end = time.time()
+            print(f"Time taken: {end - start}")
 
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
     # data = data.astype({'geonames_id_openai': 'int'})
 
-    data.to_csv('TestOutput.csv', index=False)
+    data.to_csv('NLPEmbeddingsComplete.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
