@@ -1,11 +1,11 @@
 import psycopg2
 from sqlalchemy import create_engine, URL
 import time
-#from coordinate_retrival import run
+from coordinatesMultiThreaded import run
 
 #from embeddings_retrevial import run
 
-from prepare_quaketext_data import read_data
+#from prepare_quaketext_data import read_data
 
 from configDB import config
 
@@ -40,9 +40,7 @@ try:
     engine = create_engine(url)
     conn_engine = engine.connect()
     connection.autocommit = True
-    data = read_data(conn_engine)
-    data.reset_index(drop=True, inplace=True)
-    data.to_csv("QuakeTextDataForAnnotation.csv", index=False)
+    run(conn_engine)
 
 
 

@@ -1,3 +1,4 @@
+import threading
 import time
 
 import numpy as np
@@ -6,8 +7,11 @@ from geopy.distance import geodesic as gd
 from sqlalchemy import text
 
 count = 1
-path = 'Cleaned_NER_Data/nerNPLDataCleaned.csv'
+path = 'test.csv'
 location = 'location'
+tweet = 'text'
+lat = 'text_latitude'
+lng = 'text_longitude'
 first_min = []
 second_min = []
 third_min = []
@@ -43,26 +47,47 @@ def get_ranks(data):
     global count
     count = 0
     sorted_lst = []
+    threads = []
+
     for index, row in data.iterrows():
-        if row['Instances']:
-            print(f"Tweet Number {count}: {row['tweet_text']}")
-            for instance in row["Instances"]:
-                if instance.get('Latitude') is not np.nan:
-                    instance['Distance'] = calculate_distance(row['tweet_lat'], row['tweet_lat'],
-                                                              instance.get('Latitude'),
-                                                              instance.get('Longitude'))
-                else:
-                    instance['Distance'] = np.nan
+        thread = threading.Thread(target=calculate_ranks, args=(count, row, sorted_lst))
+        threads.append(thread)
+        thread.start()
 
-            # print(row['Instances'])
-            sorted_lst = sorted(row['Instances'], key=lambda x: x['Distance'])
+    for thread in threads:
+        thread.join()
 
-        min_lists = [first_min, second_min, third_min]
-        for idx, min_list in enumerate(min_lists):
-            if len(sorted_lst) > idx:
-                min_list.append(sorted_lst[idx])
-            else:
-                min_list.append({})
+
+
+def calculate_ranks(count, row, sorted_lst):
+    if row['Instances']:
+        print(f"Tweet Number {count}: {row[tweet]}")
+        threads = []
+        for instance in row["Instances"]:
+            thread = threading.Thread(target=calculate_threaded, args=(instance, row))
+            threads.append(thread)
+            thread.start()
+
+        for thread in threads:
+            thread.join()
+
+        # print(row['Instances'])
+        sorted_lst = sorted(row['Instances'], key=lambda x: x['Distance'])
+    min_lists = [first_min, second_min, third_min]
+    for idx, min_list in enumerate(min_lists):
+        if len(sorted_lst) > idx:
+            min_list.append(sorted_lst[idx])
+        else:
+            min_list.append({})
+
+
+def calculate_threaded(instance, row):
+    if instance.get('Latitude') is not np.nan:
+        instance['Distance'] = calculate_distance(row[lat], row[lng],
+                                                  instance.get('Latitude'),
+                                                  instance.get('Longitude'))
+    else:
+        instance['Distance'] = np.nan
 
 
 def run(conn_engine):
@@ -70,15 +95,15 @@ def run(conn_engine):
     start = time.time()
 
     data = pd.read_csv(path, low_memory=False)
+    threads = []
 
     for index, row in data.iterrows():
-        print(f"Tweet number {count}: {row['tweet_text']}")
-        count += 1
-        start = time.time()
-        instances.append(get_geonames_instance(row[location], conn_engine))
-        end = time.time()
-        print(f"Time taken: {end - start}")
-        print()
+        thread = threading.Thread(target=getInstanceThreaded, args=(conn_engine, row))
+        threads.append(thread)
+        thread.start()
+
+    for thread in threads:
+        thread.join()
 
     data['Instances'] = instances
 
@@ -92,6 +117,10 @@ def run(conn_engine):
     data = data[data['First Minimum'].apply(lambda d: 'Latitude' not in d or not pd.isna(d['Latitude']))]
 
     data.reset_index(drop=True, inplace=True)
-    data.to_csv("nplCoordinateComplete.csv", index=False)
+    data.to_csv("testcompcoord.csv", index=False)
     end = time.time()
     print(f"Total Time Taken: {end - start}")
+
+
+def getInstanceThreaded(conn_engine, row):
+    instances.append(get_geonames_instance(row[location], conn_engine))
