@@ -7,7 +7,7 @@ from geopy.distance import geodesic as gd
 from sqlalchemy import text
 
 count = 1
-path = 'test.csv'
+path = 'Cleaned_NER_Data/CleanedNERData_Bio.csv'
 location = 'location'
 tweet = 'text'
 lat = 'text_latitude'
@@ -117,7 +117,7 @@ def run(conn_engine):
     data = data[data['First Minimum'].apply(lambda d: 'Latitude' not in d or not pd.isna(d['Latitude']))]
 
     data.reset_index(drop=True, inplace=True)
-    data.to_csv("testcompcoord.csv", index=False)
+    data.to_csv("BioCoordCompleted.csv", index=False)
     end = time.time()
     print(f"Total Time Taken: {end - start}")
 
