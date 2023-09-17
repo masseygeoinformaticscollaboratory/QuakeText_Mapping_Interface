@@ -6,9 +6,7 @@ from transformers import AutoTokenizer, AutoModel
 import torch
 from sklearn.metrics.pairwise import cosine_similarity
 import openai
-import config
-
-openai.api_key = config.api_key
+import concurrent.futures
 
 model_name = "bert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -86,12 +84,7 @@ def run(conn_engine):
     tweet = 'text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
-    '''
-    data["open ai"] = np.nan
-    data["geonames_lat_openai"] = np.nan
-    data["geonames_lon_openai"] = np.nan
-    data["geonames_id_openai"] = np.nan
-    '''
+
     data["bert"] = np.nan
     data["geonames_lat_bert"] = np.nan
     data["geonames_lon_bert"] = np.nan
@@ -110,41 +103,18 @@ def run(conn_engine):
             geonames_strings.append(item.get("Geonames String"))
         if len(geonames_instances) > 0:
             print(f"Number of Geonames Instances: {len(geonames_instances)}")
-            '''
-            #OpenAI Embeddings:
-            input_string_embedding_openai = []
-            for x in [row[text]]:
-                embedding = get_openai_embedding(x)
-                if embedding is not None:
-                    input_string_embedding_openai.append(embedding)
 
-            geo_names_embeddings_openai = []
-            for x in geonames_strings:
-                embedding = get_openai_embedding(x)
-                if embedding is not None:
-                    geo_names_embeddings_openai.append(embedding)
-
-            openai_cos_sim = calculate_cosine_similarity(input_string_embedding_openai, geo_names_embeddings_openai)
-            if openai_cos_sim is not None:
-                # Find the max cosine distance assuming this is < 1
-                max_sim_openai = np.max(openai_cos_sim)
-
-                data.at[index, "open ai"] = max_sim_openai
-                data.at[index, "geonames_lat_openai"] = geonames_instances[
-                    np.argwhere(openai_cos_sim[0] == max_sim_openai)[0][0]].get('Geonames Latitude')
-                data.at[index, "geonames_lon_openai"] = geonames_instances[
-                    np.argwhere(openai_cos_sim[0] == max_sim_openai)[0][0]].get('Geonames Longitude')
-                data.at[index, "geonames_id_openai"] = geonames_instances[
-                    np.argwhere(openai_cos_sim[0] == max_sim_openai)[0][0]].get('Geonames ID')
-            else:
-                data.at[index, "open ai"] = np.nan
-                data.at[index, "geonames_lat_openai"] = np.nan
-                data.at[index, "geonames_lon_openai"] = np.nan
-                data.at[index, "geonames_id_openai"] = np.nan
-            '''
-            #Get bert embeddings and add to dataframe:
             input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[tweet]]]
-            geo_names_embeddings_bert = [get_bert_embedding(x) for x in geonames_strings]
+
+            num_threads = len(geonames_strings)  # Adjust this based on your requirements
+
+            # Create a ThreadPoolExecutor with the specified number of threads
+            with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+                # Submit the tasks to the executor and retrieve the results
+                results = list(executor.map(get_bert_embedding, geonames_strings))
+
+            geo_names_embeddings_bert = results
+
             bert_cos_sim = calculate_cosine_similarity(input_string_embeddings_bert, geo_names_embeddings_bert)
             max_sim_bert = np.max(bert_cos_sim)
 
