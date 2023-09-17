@@ -87,11 +87,33 @@ def run(conn_engine):
     data["geonames_lon_bert"] = np.nan
     data["geonames_id_bert"] = np.nan
 
-    with ThreadPoolExecutor(max_workers=16) as executor:
-        threads = [executor.submit(processRow, conn_engine, data, index, row) for index, row in data.iterrows()]
+    for index, row in data.iterrows():
+        geonames_instances = get_geonames_instance(row[location], conn_engine)
+        geonames_strings = []
+        for item in geonames_instances:
+            geonames_strings.append(item.get("Geonames String"))
+        if len(geonames_instances) > 0:
+            input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[tweet]]]
 
-    # Wait for all tasks to complete
-    concurrent.futures.wait(threads)
+            num_threads = 16
+
+            # Create a ThreadPoolExecutor with the specified number of threads
+            with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+                # Submit the tasks to the executor and retrieve the results
+                results = list(executor.map(get_bert_embedding, geonames_strings))
+
+            geo_names_embeddings_bert = results
+
+            bert_cos_sim = calculate_cosine_similarity(input_string_embeddings_bert, geo_names_embeddings_bert)
+            max_sim_bert = np.max(bert_cos_sim)
+
+            data.at[index, "bert"] = max_sim_bert
+            data.at[index, "geonames_lat_bert"] = geonames_instances[
+                np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Latitude')
+            data.at[index, "geonames_lon_bert"] = geonames_instances[
+                np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Longitude')
+            data.at[index, "geonames_id_bert"] = geonames_instances[
+                np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames ID')
 
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
@@ -100,32 +122,3 @@ def run(conn_engine):
 
     end = time.time()
     print(f"Total time taken: {end - start}")
-
-
-def processRow(conn_engine, data, index, row):
-    geonames_instances = get_geonames_instance(row[location], conn_engine)
-    geonames_strings = []
-    for item in geonames_instances:
-        geonames_strings.append(item.get("Geonames String"))
-    if len(geonames_instances) > 0:
-        input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[tweet]]]
-
-        num_threads = 16
-
-        # Create a ThreadPoolExecutor with the specified number of threads
-        with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
-            # Submit the tasks to the executor and retrieve the results
-            results = list(executor.map(get_bert_embedding, geonames_strings))
-
-        geo_names_embeddings_bert = results
-
-        bert_cos_sim = calculate_cosine_similarity(input_string_embeddings_bert, geo_names_embeddings_bert)
-        max_sim_bert = np.max(bert_cos_sim)
-
-        data.at[index, "bert"] = max_sim_bert
-        data.at[index, "geonames_lat_bert"] = geonames_instances[
-            np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Latitude')
-        data.at[index, "geonames_lon_bert"] = geonames_instances[
-            np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Longitude')
-        data.at[index, "geonames_id_bert"] = geonames_instances[
-            np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames ID')
