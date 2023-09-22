@@ -38,7 +38,7 @@ def get_bert_embedding(sentence):
 def get_geonames_instance(place_entity, conn_engine):
     geonames_instances_lst = []
     place_entity_escaped = place_entity.replace("'", "")
-    query = text(f"SELECT * FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
+    query = text(f"SELECT * FROM geoname WHERE name ILIKE '% {place_entity_escaped} %' OR name ILIKE '{place_entity_escaped} %' OR name ILIKE '% {place_entity_escaped}' OR name ILIKE '{place_entity_escaped}'")
 
     matching_rows = conn_engine.execute(query)
 
@@ -83,22 +83,25 @@ def run(conn_engine):
 
     # Initialise data
     path = 'test.csv'
-    text = 'tweet_text'
+    tweet = 'text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
-
+    '''
     data["open ai"] = np.nan
     data["geonames_lat_openai"] = np.nan
     data["geonames_lon_openai"] = np.nan
     data["geonames_id_openai"] = np.nan
-
+    '''
     data["bert"] = np.nan
     data["geonames_lat_bert"] = np.nan
     data["geonames_lon_bert"] = np.nan
     data["geonames_id_bert"] = np.nan
 
+    count = 1
     for index, row in data.iterrows():
-        print(row)
+        start = time.time()
+        print(f"Tweet Number {count}: {row[tweet]}")
+        count += 1
 
         geonames_instances = get_geonames_instance(row[location], conn_engine)
         geonames_strings = []
@@ -106,9 +109,9 @@ def run(conn_engine):
         for item in geonames_instances:
             geonames_strings.append(item.get("Geonames String"))
         if len(geonames_instances) > 0:
-            # For each row in the dataset retrieve the embeddings for the text and calculate the cos sim
-            time_start_open_embeddings = time.time()
-
+            print(f"Number of Geonames Instances: {len(geonames_instances)}")
+            '''
+            #OpenAI Embeddings:
             input_string_embedding_openai = []
             for x in [row[text]]:
                 embedding = get_openai_embedding(x)
@@ -120,9 +123,6 @@ def run(conn_engine):
                 embedding = get_openai_embedding(x)
                 if embedding is not None:
                     geo_names_embeddings_openai.append(embedding)
-
-            time_end_open_embeddings = time.time()
-            print(f"Embedding Retrival OpenAI Time: {time_end_open_embeddings - time_start_open_embeddings}")
 
             openai_cos_sim = calculate_cosine_similarity(input_string_embedding_openai, geo_names_embeddings_openai)
             if openai_cos_sim is not None:
@@ -141,13 +141,10 @@ def run(conn_engine):
                 data.at[index, "geonames_lat_openai"] = np.nan
                 data.at[index, "geonames_lon_openai"] = np.nan
                 data.at[index, "geonames_id_openai"] = np.nan
-
-            time_start_bert_embeddings = time.time()
-            input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[text]]]
+            '''
+            #Get bert embeddings and add to dataframe:
+            input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[tweet]]]
             geo_names_embeddings_bert = [get_bert_embedding(x) for x in geonames_strings]
-            time_end_bert_embeddings = time.time()
-            print(f"Embedding Retrival Bert Time: {time_end_bert_embeddings - time_start_bert_embeddings}")
-
             bert_cos_sim = calculate_cosine_similarity(input_string_embeddings_bert, geo_names_embeddings_bert)
             max_sim_bert = np.max(bert_cos_sim)
 
@@ -159,11 +156,15 @@ def run(conn_engine):
             data.at[index, "geonames_id_bert"] = geonames_instances[
                 np.argwhere(bert_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames ID')
 
+            end = time.time()
+            print(f"Time taken: {end - start}")
+
+
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
-    data = data.astype({'geonames_id_openai': 'int'})
+    # data = data.astype({'geonames_id_openai': 'int'})
 
-    data.to_csv('TestOutput.csv', index=False)
+    data.to_csv('TestSingleBert.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
