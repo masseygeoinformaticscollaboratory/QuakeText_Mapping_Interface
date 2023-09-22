@@ -66,7 +66,7 @@ def get_database_rows(items, tweet, conn_engine):
 
 def get_geonames_instance(place_entity, rows, tweet, conn_engine):
     place_entity_escaped = place_entity.replace("'", "")
-    query = text(f"SELECT * FROM geoname WHERE name ILIKE '%%{place_entity_escaped}%%'")
+    query = text(f"SELECT * FROM geoname WHERE name ILIKE '% {place_entity_escaped} %' OR name ILIKE '{place_entity_escaped} %' OR name ILIKE '% {place_entity_escaped}' OR name ILIKE '{place_entity_escaped}'")
     matching_rows = conn_engine.execute(query)
     geonames_instances = pd.DataFrame(matching_rows.fetchall(), columns=matching_rows.keys())
 

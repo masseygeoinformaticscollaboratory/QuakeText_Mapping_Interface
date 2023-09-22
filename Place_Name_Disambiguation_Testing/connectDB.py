@@ -1,9 +1,13 @@
 import psycopg2
 from sqlalchemy import create_engine, URL
 import time
-#from coordinate_retrival import run
+from coordinatesMultiThreaded import run
 
 #from embeddings_retrevial import run
+
+
+#from prepare_quaketext_data import read_data
+
 from mutliThreadedEmbeddings import run
 
 from configDB import config
@@ -40,6 +44,7 @@ try:
     conn_engine = engine.connect()
     connection.autocommit = True
     run(conn_engine)
+
 
 
 except(Exception, psycopg2.DatabaseError) as error:
