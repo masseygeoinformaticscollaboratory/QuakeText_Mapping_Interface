@@ -10,8 +10,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 import concurrent.futures
 
 # Initialise data
-path = 'test.csv'
-tweet = 'text'
+path = 'Cleaned_NER_Data/nerNPLDataCleaned.csv'
+tweet = 'tweet_text'
 location = 'location'
 
 model_name = "bert-base-uncased"
@@ -118,7 +118,7 @@ def run(conn_engine):
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
 
-    data.to_csv('TestMultiBert.csv', index=False)
+    data.to_csv('NLPCompleted.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")

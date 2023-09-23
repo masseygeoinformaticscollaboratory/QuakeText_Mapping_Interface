@@ -1,14 +1,14 @@
 import psycopg2
 from sqlalchemy import create_engine, URL
 import time
-from coordinatesMultiThreaded import run
+#from coordinatesMultiThreaded import run
 
-#from embeddings_retrevial import run
+from embeddings_retrevial import run
 
 
 #from prepare_quaketext_data import read_data
 
-from mutliThreadedEmbeddings import run
+#from mutliThreadedEmbeddings import run
 
 from configDB import config
 

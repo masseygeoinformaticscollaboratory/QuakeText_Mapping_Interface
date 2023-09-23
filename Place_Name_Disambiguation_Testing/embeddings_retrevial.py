@@ -82,8 +82,8 @@ def run(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'test.csv'
-    tweet = 'text'
+    path = 'Cleaned_NER_Data/nerNPLDataCleaned.csv'
+    tweet = 'tweet_text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
     '''
@@ -164,7 +164,7 @@ def run(conn_engine):
     data = data.astype({'geonames_id_bert': 'int'})
     # data = data.astype({'geonames_id_openai': 'int'})
 
-    data.to_csv('TestSingleBert.csv', index=False)
+    data.to_csv('NLPEmbeddingsBert.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
