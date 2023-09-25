@@ -1,7 +1,9 @@
 import psycopg2
 from sqlalchemy import create_engine, URL
 import time
+
 from embeddings_retrevial import run
+
 from configDB import config
 
 start = time.time()
