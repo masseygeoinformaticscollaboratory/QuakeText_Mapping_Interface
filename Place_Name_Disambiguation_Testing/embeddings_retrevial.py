@@ -9,12 +9,12 @@ import openai
 import config
 from InstructorEmbedding import INSTRUCTOR
 
-
 openai.api_key = config.api_key
 
 model_name = "bert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModel.from_pretrained(model_name)
+bert_model = AutoModel.from_pretrained(model_name)
+instructor_model = INSTRUCTOR('hkunlp/instructor-large')
 
 
 def get_openai_embedding(text, model="text-embedding-ada-002"):
@@ -26,6 +26,16 @@ def get_openai_embedding(text, model="text-embedding-ada-002"):
         return None
 
 
+def get_instructor_embedding(sentence):
+    instruction = 'Represent the sentence for retrieving location'
+    return instructor_model.encode([[instruction, sentence]])
+
+
+def cosine_similarity_instructor(single_embedding, list_of_embeddings):
+    similarities = cosine_similarity(single_embedding, list_of_embeddings)
+    return similarities.flatten()
+
+
 def calculate_cosine_similarity(embeddings_1, embeddings_2):
     return cosine_similarity(embeddings_1, embeddings_2)
 
@@ -33,19 +43,15 @@ def calculate_cosine_similarity(embeddings_1, embeddings_2):
 def get_bert_embedding(sentence):
     inputs = tokenizer(sentence, return_tensors="pt", padding=True, truncation=True)
     with torch.no_grad():
-        outputs = model(**inputs)
+        outputs = bert_model(**inputs)
     return outputs.last_hidden_state.mean(dim=1).squeeze().numpy()
-
-def get_instructor_embedding(sentence):
-    model = INSTRUCTOR('hkunlp/instructor-large')
-    instruction = ''
-    return model.encode([[instruction, sentence]])
 
 
 def get_geonames_instance(place_entity, conn_engine):
     geonames_instances_lst = []
     place_entity_escaped = place_entity.replace("'", "")
-    query = text(f"SELECT * FROM geoname WHERE name ILIKE '% {place_entity_escaped} %' OR name ILIKE '{place_entity_escaped} %' OR name ILIKE '% {place_entity_escaped}' OR name ILIKE '{place_entity_escaped}'")
+    query = text(
+        f"SELECT * FROM geoname WHERE name ILIKE '% {place_entity_escaped} %' OR name ILIKE '{place_entity_escaped} %' OR name ILIKE '% {place_entity_escaped}' OR name ILIKE '{place_entity_escaped}'")
 
     matching_rows = conn_engine.execute(query)
 
@@ -83,15 +89,22 @@ def get_geonames_instance(place_entity, conn_engine):
 
     return geonames_instances_lst
 
+
 def run_instuctor(conn_engine):
     print("Beginning process")
     start = time.time()
-    count = 1
 
     # Initialise data
     path = 'test.csv'
-    tweet = 'text'
+    tweet = 'tweet_text'
     location = 'location'
+    data = pd.read_csv(path, low_memory=False)
+
+    data["instructor"] = np.nan
+    data["geonames_lat_instructor"] = np.nan
+    data["geonames_lon_instructor"] = np.nan
+    data["geonames_id_instructor"] = np.nan
+    count = 1
     data = pd.read_csv(path, low_memory=False)
 
 
@@ -106,36 +119,46 @@ def run_instuctor(conn_engine):
         for item in geonames_instances:
             geonames_strings.append(item.get("Geonames String"))
         if len(geonames_instances) > 0:
+
             print(f"Number of Geonames Instances: {len(geonames_instances)}")
 
-            # Get bert embeddings and add to dataframe:
-            input_string_embeddings_instructor = [get_instructor_embedding(x) for x in [row[tweet]]]
-            geo_names_embeddings_instructor= [get_instructor_embedding(x) for x in geonames_strings]
-            instructor_cos_sim = calculate_cosine_similarity(input_string_embeddings_instructor, geo_names_embeddings_instructor)
-            max_sim_bert = np.max(instructor_cos_sim)
+            instruction = 'Represent the sentence for retrieving geonames location:'
 
-            data.at[index, "instructor"] = max_sim_bert
+            prep_geonames = []
+            prep_tweet = [[instruction, row[tweet]]]
+
+            for x in geonames_strings:
+                prep_geonames.append([instruction, x])
+
+            tweet_embeddings = instructor_model.encode(prep_tweet)
+            geonames_embeddings = instructor_model.encode(prep_geonames)
+
+            instructor_cos_sim = calculate_cosine_similarity(tweet_embeddings,
+                                                             geonames_embeddings)
+
+            max_sim_instructor = np.max(instructor_cos_sim)
+
+            data.at[index, "instructor"] = max_sim_instructor
             data.at[index, "geonames_lat_instructor"] = geonames_instances[
-                np.argwhere(instructor_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Latitude')
+                np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames Latitude')
             data.at[index, "geonames_lon_instructor"] = geonames_instances[
-                np.argwhere(instructor_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Longitude')
+                np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames Longitude')
             data.at[index, "geonames_id_instructor"] = geonames_instances[
-                np.argwhere(instructor_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames ID')
+                np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames ID')
 
             end = time.time()
             print(f"Time taken: {end - start}")
 
-    data = data.dropna(subset=["bert"])
+    data = data.dropna(subset=["instructor"])
     data = data.astype({'geonames_id_instructor': 'int'})
-    # data = data.astype({'geonames_id_openai': 'int'})
 
-    data.to_csv('testComplete.csv', index=False)
+    data.to_csv('NLPCompletedInstructorBert.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
 
 
-def run(conn_engine):
+def run_open_ai_embeddings(conn_engine):
     print("Beginning process")
     start = time.time()
 
@@ -144,17 +167,11 @@ def run(conn_engine):
     tweet = 'text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
-    '''
+
     data["open ai"] = np.nan
     data["geonames_lat_openai"] = np.nan
     data["geonames_lon_openai"] = np.nan
     data["geonames_id_openai"] = np.nan
-    '''
-    data["bert"] = np.nan
-    data["geonames_lat_bert"] = np.nan
-    data["geonames_lon_bert"] = np.nan
-    data["geonames_id_bert"] = np.nan
-
     count = 1
     for index, row in data.iterrows():
         start = time.time()
@@ -169,8 +186,7 @@ def run(conn_engine):
         if len(geonames_instances) > 0:
             print(f"Number of Geonames Instances: {len(geonames_instances)}")
 
-            '''
-            #OpenAI Embeddings:
+            # OpenAI Embeddings:
             input_string_embedding_openai = []
             for x in [row[text]]:
                 embedding = get_openai_embedding(x)
@@ -200,8 +216,46 @@ def run(conn_engine):
                 data.at[index, "geonames_lat_openai"] = np.nan
                 data.at[index, "geonames_lon_openai"] = np.nan
                 data.at[index, "geonames_id_openai"] = np.nan
-            '''
-            #Get bert embeddings and add to dataframe:
+
+    data = data.dropna(subset=["bert"])
+    data = data.astype({'geonames_id_openai': 'int'})
+
+    data.to_csv('OpenAIComplete.csv', index=False)
+
+    end = time.time()
+    print(f"Total time taken: {end - start}")
+
+
+def run_bert_embeddings(conn_engine):
+    print("Beginning process")
+    start = time.time()
+
+    # Initialise data
+    path = 'test.csv'
+    tweet = 'tweet text'
+    location = 'place name'
+    data = pd.read_csv(path, low_memory=False)
+
+    data["bert"] = np.nan
+    data["geonames_lat_bert"] = np.nan
+    data["geonames_lon_bert"] = np.nan
+    data["geonames_id_bert"] = np.nan
+
+    count = 1
+    for index, row in data.iterrows():
+        start = time.time()
+        print(f"Tweet Number {count}: {row[tweet]}")
+        count += 1
+
+        geonames_instances = get_geonames_instance(row[location], conn_engine)
+        geonames_strings = []
+
+        for item in geonames_instances:
+            geonames_strings.append(item.get("Geonames String"))
+        if len(geonames_instances) > 0:
+            print(f"Number of Geonames Instances: {len(geonames_instances)}")
+
+            # Get bert embeddings and add to dataframe:
             input_string_embeddings_bert = [get_bert_embedding(x) for x in [row[tweet]]]
             geo_names_embeddings_bert = [get_bert_embedding(x) for x in geonames_strings]
             bert_cos_sim = calculate_cosine_similarity(input_string_embeddings_bert, geo_names_embeddings_bert)
@@ -218,10 +272,9 @@ def run(conn_engine):
             end = time.time()
             print(f"Time taken: {end - start}")
 
-
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
-    # data = data.astype({'geonames_id_openai': 'int'})
+    data = data.astype({'geonames_id_openai': 'int'})
 
     data.to_csv('LGLBertCompleted.csv', index=False)
 
