@@ -7,6 +7,8 @@ import torch
 from sklearn.metrics.pairwise import cosine_similarity
 import openai
 import config
+from InstructorEmbedding import INSTRUCTOR
+
 
 openai.api_key = config.api_key
 
@@ -33,6 +35,11 @@ def get_bert_embedding(sentence):
     with torch.no_grad():
         outputs = model(**inputs)
     return outputs.last_hidden_state.mean(dim=1).squeeze().numpy()
+
+def get_instructor_embedding(sentence):
+    model = INSTRUCTOR('hkunlp/instructor-large')
+    instruction = ''
+    return model.encode([[instruction, sentence]])
 
 
 def get_geonames_instance(place_entity, conn_engine):
@@ -76,6 +83,57 @@ def get_geonames_instance(place_entity, conn_engine):
 
     return geonames_instances_lst
 
+def run_instuctor(conn_engine):
+    print("Beginning process")
+    start = time.time()
+    count = 1
+
+    # Initialise data
+    path = 'test.csv'
+    tweet = 'text'
+    location = 'location'
+    data = pd.read_csv(path, low_memory=False)
+
+
+    for index, row in data.iterrows():
+        start = time.time()
+        print(f"Tweet Number {count}: {row[tweet]}")
+        count += 1
+
+        geonames_instances = get_geonames_instance(row[location], conn_engine)
+        geonames_strings = []
+
+        for item in geonames_instances:
+            geonames_strings.append(item.get("Geonames String"))
+        if len(geonames_instances) > 0:
+            print(f"Number of Geonames Instances: {len(geonames_instances)}")
+
+            # Get bert embeddings and add to dataframe:
+            input_string_embeddings_instructor = [get_instructor_embedding(x) for x in [row[tweet]]]
+            geo_names_embeddings_instructor= [get_instructor_embedding(x) for x in geonames_strings]
+            instructor_cos_sim = calculate_cosine_similarity(input_string_embeddings_instructor, geo_names_embeddings_instructor)
+            max_sim_bert = np.max(instructor_cos_sim)
+
+            data.at[index, "instructor"] = max_sim_bert
+            data.at[index, "geonames_lat_instructor"] = geonames_instances[
+                np.argwhere(instructor_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Latitude')
+            data.at[index, "geonames_lon_instructor"] = geonames_instances[
+                np.argwhere(instructor_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames Longitude')
+            data.at[index, "geonames_id_instructor"] = geonames_instances[
+                np.argwhere(instructor_cos_sim[0] == max_sim_bert)[0][0]].get('Geonames ID')
+
+            end = time.time()
+            print(f"Time taken: {end - start}")
+
+    data = data.dropna(subset=["bert"])
+    data = data.astype({'geonames_id_instructor': 'int'})
+    # data = data.astype({'geonames_id_openai': 'int'})
+
+    data.to_csv('testComplete.csv', index=False)
+
+    end = time.time()
+    print(f"Total time taken: {end - start}")
+
 
 def run(conn_engine):
     print("Beginning process")
@@ -110,6 +168,7 @@ def run(conn_engine):
             geonames_strings.append(item.get("Geonames String"))
         if len(geonames_instances) > 0:
             print(f"Number of Geonames Instances: {len(geonames_instances)}")
+
             '''
             #OpenAI Embeddings:
             input_string_embedding_openai = []

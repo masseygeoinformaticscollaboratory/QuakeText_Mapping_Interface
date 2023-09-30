@@ -1,7 +1,7 @@
 import psycopg2
 from sqlalchemy import create_engine, URL
 import time
-from embeddings_retrevial import run
+from embeddings_retrevial import run_instuctor
 from configDB import config
 
 start = time.time()
@@ -35,7 +35,7 @@ try:
     engine = create_engine(url)
     conn_engine = engine.connect()
     connection.autocommit = True
-    run(conn_engine)
+    run_instuctor(conn_engine)
 
 
 
