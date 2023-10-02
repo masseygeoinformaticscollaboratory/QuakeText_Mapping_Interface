@@ -20,7 +20,7 @@ instructor_model = INSTRUCTOR('hkunlp/instructor-large')
 def get_openai_embedding(text, model="text-embedding-ada-002"):
     try:
         text = text.replace("\n", " ")
-        return openai.Embedding.create(input=[text], model=model, timeout=2000)['data'][0]['embedding']
+        return openai.Embedding.create(input=[text], model=model, timeout=1000)['data'][0]['embedding']
     except openai.error.Timeout as e:
         print(f"Request timed out for input text: {text} ", e)
         return None
@@ -95,9 +95,9 @@ def run_instuctor(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'test.csv'
-    tweet = 'tweet_text'
-    location = 'location'
+    path = 'CompletedBertEmbeddings/QuakeTextCompletedBert.csv'
+    tweet = 'tweet text'
+    location = 'place name'
     data = pd.read_csv(path, low_memory=False)
 
     data["instructor"] = np.nan
@@ -152,7 +152,7 @@ def run_instuctor(conn_engine):
     data = data.dropna(subset=["instructor"])
     data = data.astype({'geonames_id_instructor': 'int'})
 
-    data.to_csv('NLPCompletedInstructorBert.csv', index=False)
+    data.to_csv('QuakeTextCompleteBertInstructor.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
@@ -163,8 +163,8 @@ def run_open_ai_embeddings(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'Completed_Coordinate_Data/LGLProcessed.csv'
-    tweet = 'text'
+    path = 'CompletedEmbeddings/CompletedInstructorBertEmbeddings/NLPCompletedInstructorBert.csv'
+    tweet = 'tweet text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
 
