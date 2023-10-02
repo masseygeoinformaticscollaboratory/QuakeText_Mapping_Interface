@@ -188,7 +188,8 @@ def run_open_ai_embeddings(conn_engine):
 
             # OpenAI Embeddings:
             input_string_embedding_openai = []
-            for x in [row[text]]:
+
+            for x in [row[tweet]]:
                 embedding = get_openai_embedding(x)
                 if embedding is not None:
                     input_string_embedding_openai.append(embedding)
@@ -216,6 +217,9 @@ def run_open_ai_embeddings(conn_engine):
                 data.at[index, "geonames_lat_openai"] = np.nan
                 data.at[index, "geonames_lon_openai"] = np.nan
                 data.at[index, "geonames_id_openai"] = np.nan
+
+            end = time.time()
+            print(f"Time taken: {end - start}")
 
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_openai': 'int'})
