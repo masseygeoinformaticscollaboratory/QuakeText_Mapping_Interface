@@ -165,7 +165,7 @@ def run_open_ai_embeddings(conn_engine):
     # Initialise data
     path = 'CompletedEmbeddings/CompletedInstructorBertEmbeddings/QuakeTextCompleteBertInstructor.csv'
     tweet = 'tweet text'
-    location = 'location'
+    location = 'place name'
     data = pd.read_csv(path, low_memory=False)
 
     data["open ai"] = np.nan
