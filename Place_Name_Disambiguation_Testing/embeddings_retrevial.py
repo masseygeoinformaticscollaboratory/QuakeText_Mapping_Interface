@@ -95,18 +95,17 @@ def run_instuctor(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'CompletedBertEmbeddings/QuakeTextCompletedBert.csv'
-    tweet = 'tweet text'
-    location = 'place name'
+    path = 'test.csv'
+    tweet = 'text'
+    location = 'location'
     data = pd.read_csv(path, low_memory=False)
 
     data["instructor"] = np.nan
-    data["geonames_lat_instructor"] = np.nan
-    data["geonames_lon_instructor"] = np.nan
-    data["geonames_id_instructor"] = np.nan
+    data["geonames_lat_instructor_1"] = np.nan
+    data["geonames_lon_instructor_1"] = np.nan
+    data["geonames_id_instructor_1"] = np.nan
     count = 1
     data = pd.read_csv(path, low_memory=False)
-
 
     for index, row in data.iterrows():
         start = time.time()
@@ -122,13 +121,17 @@ def run_instuctor(conn_engine):
 
             print(f"Number of Geonames Instances: {len(geonames_instances)}")
 
-            instruction = 'Represent the sentence for retrieving geonames location:'
+            instruction_text = 'Represent the disaster tweet for retrieving location:'
+            # instruction_text = 'Represent the geographic location description for retrieving location:'
+            # instruction_text = 'Represent the news article for retrieving location:'
+
+            instruction_geonames = 'Represent the geographic location description for retrieving geonames location:'
 
             prep_geonames = []
-            prep_tweet = [[instruction, row[tweet]]]
+            prep_tweet = [[instruction_text, row[tweet]]]
 
             for x in geonames_strings:
-                prep_geonames.append([instruction, x])
+                prep_geonames.append([instruction_geonames, x])
 
             tweet_embeddings = instructor_model.encode(prep_tweet)
             geonames_embeddings = instructor_model.encode(prep_geonames)
@@ -139,11 +142,11 @@ def run_instuctor(conn_engine):
             max_sim_instructor = np.max(instructor_cos_sim)
 
             data.at[index, "instructor"] = max_sim_instructor
-            data.at[index, "geonames_lat_instructor"] = geonames_instances[
+            data.at[index, "geonames_lat_instructor_1"] = geonames_instances[
                 np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames Latitude')
-            data.at[index, "geonames_lon_instructor"] = geonames_instances[
+            data.at[index, "geonames_lon_instructor_1"] = geonames_instances[
                 np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames Longitude')
-            data.at[index, "geonames_id_instructor"] = geonames_instances[
+            data.at[index, "geonames_id_instructor_1"] = geonames_instances[
                 np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames ID')
 
             end = time.time()
@@ -152,7 +155,7 @@ def run_instuctor(conn_engine):
     data = data.dropna(subset=["instructor"])
     data = data.astype({'geonames_id_instructor': 'int'})
 
-    data.to_csv('QuakeTextCompleteBertInstructor.csv', index=False)
+    data.to_csv('Test.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
@@ -163,9 +166,9 @@ def run_open_ai_embeddings(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'CompletedEmbeddings/CompletedInstructorBertEmbeddings/QuakeTextCompleteBertInstructor.csv'
-    tweet = 'tweet text'
-    location = 'place name'
+    path = 'CompletedEmbeddings/CompletedInstructorBertEmbeddings/NLPCompletedInstructorBert.csv'
+    tweet = 'tweet_text'
+    location = 'location'
     data = pd.read_csv(path, low_memory=False)
 
     data["open ai"] = np.nan
@@ -224,7 +227,7 @@ def run_open_ai_embeddings(conn_engine):
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_openai': 'int'})
 
-    data.to_csv('QuakeTextCompleteBertInstructorOpenAI.csv', index=False)
+    data.to_csv('NLPCompleteBertInstructorOpenAI.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")

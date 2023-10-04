@@ -4,13 +4,13 @@ import pandas as pd
 import statistics
 from geopy.distance import geodesic as gd
 
-path = "../CompletedBertEmbeddings/LGLBertCompleted.csv"
+path = "../CompletedEmbeddings/CompletedInstructorBertEmbeddings/NLPCompletedInstructorBert.csv"
 
 
-def calculate_distance(bert_lat, bert_lng, coord_lat, coord_lng):
-    bert_coords = (bert_lat, bert_lng)
+def calculate_distance(LLM_lat, LLM_lon, coord_lat, coord_lng):
+    LLM_coords = (LLM_lat, LLM_lon)
     coord_cords = (coord_lat, coord_lng)
-    return gd(bert_coords, coord_cords).km
+    return gd(LLM_coords, coord_cords).km
 
 
 def condition(x):
@@ -23,7 +23,11 @@ def main():
     distance_error = []
 
     for index, row in data.iterrows():
-        '''
+        lat = 'geonames_lat_instructor'
+        lon = 'geonames_lon_instructor'
+
+
+
         first_minimum = row['First Minimum']
         first_minimum = ast.literal_eval(first_minimum)
         coord_lat = first_minimum['Latitude']
@@ -31,10 +35,11 @@ def main():
         '''
         coord_lat = row['lat']
         coord_lng = row['lon']
-        bert_lat = row['geonames_lat_bert']
-        bert_lng = row['geonames_lon_bert']
+        '''
+        LLM_lat = row[lat]
+        LLM_lon = row[lon]
 
-        distance_error.append(calculate_distance(bert_lat, bert_lng, coord_lat, coord_lng))
+        distance_error.append(calculate_distance(LLM_lat, LLM_lon, coord_lat, coord_lng))
 
     average_error = sum(distance_error) / len(distance_error)
     median_error = statistics.median(distance_error)
