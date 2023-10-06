@@ -121,9 +121,9 @@ def run_instuctor(conn_engine):
 
             print(f"Number of Geonames Instances: {len(geonames_instances)}")
 
-            instruction_text = 'Represent the disaster tweet for retrieving location:'
-            #instruction_text = 'Represent the geographic location description for retrieving location:'
-            # instruction_text = 'Represent the news article for retrieving location:'
+            # instruction_text = 'Represent the disaster tweet for retrieving location:'
+            # instruction_text = 'Represent the geographic location description for retrieving location:'
+            instruction_text = 'Represent the news article for retrieving location:'
 
             instruction_geonames = 'Represent the geographic location description for retrieving geonames location:'
 
