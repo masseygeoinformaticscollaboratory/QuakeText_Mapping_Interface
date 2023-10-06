@@ -95,9 +95,9 @@ def run_instuctor(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'CompletedEmbeddings/CompletedInstructorBertEmbeddings'
-    tweet = 'text'
-    location = 'location'
+    path = 'CompletedEmbeddings/CompletedInstructorBertEmbeddings/QuakeTextCompleteBertInstructor.csv'
+    tweet = 'tweet text'
+    location = 'place name'
     data = pd.read_csv(path, low_memory=False)
 
     data["instructor_2"] = np.nan
@@ -121,8 +121,8 @@ def run_instuctor(conn_engine):
 
             print(f"Number of Geonames Instances: {len(geonames_instances)}")
 
-            #instruction_text = 'Represent the disaster tweet for retrieving location:'
-            instruction_text = 'Represent the geographic location description for retrieving location:'
+            instruction_text = 'Represent the disaster tweet for retrieving location:'
+            #instruction_text = 'Represent the geographic location description for retrieving location:'
             # instruction_text = 'Represent the news article for retrieving location:'
 
             instruction_geonames = 'Represent the geographic location description for retrieving geonames location:'
@@ -155,7 +155,7 @@ def run_instuctor(conn_engine):
     data = data.dropna(subset=["instructor_2"])
     data = data.astype({'geonames_id_instructor': 'int'})
 
-    data.to_csv('Bio5000-041023-CompleteEmbeddings.csv', index=False)
+    data.to_csv('QuakeText-041023-CompleteEmbeddings.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
