@@ -4,7 +4,7 @@ import pandas as pd
 import statistics
 from geopy.distance import geodesic as gd
 
-path = "../CompletedEmbeddings/NLP-041023-CompleteEmbeddings.csv"
+path = "../CompletedEmbeddings/Bio5000-041023-CompleteEmbeddings.csv"
 
 
 def calculate_distance(LLM_lat, LLM_lon, coord_lat, coord_lng):
