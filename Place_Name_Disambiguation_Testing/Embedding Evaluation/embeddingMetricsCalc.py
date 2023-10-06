@@ -4,7 +4,7 @@ import pandas as pd
 import statistics
 from geopy.distance import geodesic as gd
 
-path = "../CompletedEmbeddings/CompletedInstructorBertEmbeddings/NLPCompletedInstructorBert.csv"
+path = "../CompletedEmbeddings/NLP-041023-CompleteEmbeddings.csv"
 
 
 def calculate_distance(LLM_lat, LLM_lon, coord_lat, coord_lng):
@@ -23,9 +23,8 @@ def main():
     distance_error = []
 
     for index, row in data.iterrows():
-        lat = 'geonames_lat_instructor'
-        lon = 'geonames_lon_instructor'
-
+        lat = 'geonames_lat_instructor_2'
+        lon = 'geonames_lon_instructor_2'
 
 
         first_minimum = row['First Minimum']
