@@ -95,7 +95,7 @@ def run_instuctor(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'CompletedEmbeddings/Bio5000-041023-CompleteEmbeddings.csv'
+    path = 'CompletedEmbeddings/CompletedInstructorBertEmbeddings/LGLCompletedInstructorBert.csv'
     tweet = 'text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
@@ -121,9 +121,9 @@ def run_instuctor(conn_engine):
 
             print(f"Number of Geonames Instances: {len(geonames_instances)}")
 
-            instruction_text = f'Represent the disaster tweet for retrieving {row[location]} location:'
+            # instruction_text = f'Represent the disaster tweet for retrieving {row[location]} location:'
             # instruction_text = f'Represent the geographic location description for retrieving {row[location]} location:'
-            # instruction_text = f'Represent the news article for retrieving {row[location]} location:'
+            instruction_text = f'Represent the news article for retrieving {row[location]} location:'
 
             instruction_geonames = f'Represent the geographic location description for retrieving {row[location]} location:'
 
@@ -141,21 +141,21 @@ def run_instuctor(conn_engine):
 
             max_sim_instructor = np.max(instructor_cos_sim)
 
-            data.at[index, "instructor_3"] = max_sim_instructor
-            data.at[index, "geonames_lat_instructor_3"] = geonames_instances[
+            data.at[index, "instructor_2"] = max_sim_instructor
+            data.at[index, "geonames_lat_instructor_2"] = geonames_instances[
                 np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames Latitude')
-            data.at[index, "geonames_lon_instructor_3"] = geonames_instances[
+            data.at[index, "geonames_lon_instructor_2"] = geonames_instances[
                 np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames Longitude')
-            data.at[index, "geonames_id_instructor_3"] = geonames_instances[
+            data.at[index, "geonames_id_instructor_2"] = geonames_instances[
                 np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames ID')
 
             end = time.time()
             print(f"Time taken: {end - start}")
 
-    data = data.dropna(subset=["instructor_3"])
+    data = data.dropna(subset=["instructor_2"])
     data = data.astype({'geonames_id_instructor': 'int'})
 
-    data.to_csv('Bio5000-071023-CompleteEmbeddings.csv', index=False)
+    data.to_csv('LGL-041023-CompleteEmbeddings.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
