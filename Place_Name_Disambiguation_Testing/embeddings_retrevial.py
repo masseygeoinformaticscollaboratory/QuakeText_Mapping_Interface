@@ -100,10 +100,10 @@ def run_instuctor(conn_engine):
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
 
-    data["instructor_3"] = np.nan
-    data["geonames_lat_instructor_3"] = np.nan
-    data["geonames_lon_instructor_3"] = np.nan
-    data["geonames_id_instructor_3"] = np.nan
+    data["instructor_2"] = np.nan
+    data["geonames_lat_instructor_2"] = np.nan
+    data["geonames_lon_instructor_2"] = np.nan
+    data["geonames_id_instructor_2"] = np.nan
     count = 1
     data = pd.read_csv(path, low_memory=False)
 
