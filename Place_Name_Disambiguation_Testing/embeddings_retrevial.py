@@ -123,9 +123,11 @@ def run_instuctor(conn_engine):
 
             # instruction_text = f'Represent the disaster tweet for retrieving {row[location]} location:'
             # instruction_text = f'Represent the geographic location description for retrieving {row[location]} location:'
-            instruction_text = f'Represent the news article for retrieving {row[location]} location:'
+            # instruction_text = f'Represent the news article for retrieving {row[location]} location:'
+            instruction_text = f'Represent the news article for retrieving location:'
 
-            instruction_geonames = f'Represent the geographic location description for retrieving {row[location]} location:'
+            # instruction_geonames = f'Represent the geographic location description for retrieving {row[location]} location:'
+            instruction_geonames = f'Represent the geographic location description for retrieving location:'
 
             prep_geonames = []
             prep_tweet = [[instruction_text, row[tweet]]]
