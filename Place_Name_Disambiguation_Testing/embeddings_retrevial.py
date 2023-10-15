@@ -240,9 +240,9 @@ def run_bert_embeddings(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'test.csv'
-    tweet = 'tweet text'
-    location = 'place name'
+    path = 'LGLProcessed512.csv'
+    tweet = 'text'
+    location = 'location'
     data = pd.read_csv(path, low_memory=False)
 
     data["bert"] = np.nan
@@ -285,7 +285,7 @@ def run_bert_embeddings(conn_engine):
     data = data.astype({'geonames_id_bert': 'int'})
     data = data.astype({'geonames_id_openai': 'int'})
 
-    data.to_csv('LGLBertCompleted.csv', index=False)
+    data.to_csv('LGLBertCompleted512.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
