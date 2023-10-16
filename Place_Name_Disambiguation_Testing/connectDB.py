@@ -4,6 +4,8 @@ import time
 from embeddings_retrevial import run_instuctor
 from configDB import config
 
+from annotationProcess import get_coordinates
+
 start = time.time()
 
 cursor = None
@@ -35,7 +37,7 @@ try:
     engine = create_engine(url)
     conn_engine = engine.connect()
     connection.autocommit = True
-    run_instuctor(conn_engine)
+    get_coordinates(conn_engine)
 
 
 
