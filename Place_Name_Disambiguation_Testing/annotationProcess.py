@@ -4,7 +4,7 @@ from sqlalchemy import text
 
 
 def combine_data():
-    path = '../../CompletedEmbeddings/QuakeText-071023-CompleteEmbeddings.csv'
+    path = '../../CompletedEmbeddings/QuadTred-071023-CompleteEmbeddings.csv'
     quakeCore = pd.read_csv(path, low_memory=False)
     dataset_1 = pd.read_csv("GeorgiaFullSet.csv", low_memory=False)
     dataset_1['True/False'] = dataset_1['True/False'].fillna(0)
@@ -23,11 +23,11 @@ def combine_data():
     quakeCore.dropna(subset=["correct_instance"], inplace=True)
     quakeCore = quakeCore.astype({'correct_instance': 'int'})
     quakeCore.reset_index(drop=True, inplace=True)
-    quakeCore.to_csv('QuakeText-071023-CompleteEmbeddings.csv', index=False)
+    quakeCore.to_csv('QuadTred-071023-CompleteEmbeddings.csv', index=False)
 
 
 def get_coordinates(conn_engine):
-    path = 'CompletedEmbeddings/QuakeText-071023-CompleteEmbeddings.csv'
+    path = 'CompletedEmbeddings/QuadTred-071023-CompleteEmbeddings.csv'
     data = pd.read_csv(path, low_memory=False)
     data["correct_instance_lat"] = np.nan
     data["correct_instance_lon"] = np.nan
@@ -46,4 +46,4 @@ def get_coordinates(conn_engine):
 
     data.dropna(subset=["correct_instance_lat"], inplace=True)
     data.reset_index(drop=True, inplace=True)
-    data.to_csv('QuakeText-071023-CompleteEmbeddings.csv', index=False)
+    data.to_csv('QuadTred-071023-CompleteEmbeddings.csv', index=False)

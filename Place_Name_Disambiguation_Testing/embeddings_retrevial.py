@@ -283,7 +283,6 @@ def run_bert_embeddings(conn_engine):
 
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
-    data = data.astype({'geonames_id_openai': 'int'})
 
     data.to_csv('LGLBertCompleted512.csv', index=False)
 
