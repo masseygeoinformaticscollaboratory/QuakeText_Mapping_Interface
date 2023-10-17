@@ -42,7 +42,7 @@ def get_coordinates(conn_engine):
         if result:
             geonameid, latitude, longitude = result
             data.at[index, "correct_instance_lat"] = latitude
-            data.at[index, "correct_instance_lon"] = latitude
+            data.at[index, "correct_instance_lon"] = longitude
 
     data.dropna(subset=["correct_instance_lat"], inplace=True)
     data.reset_index(drop=True, inplace=True)
