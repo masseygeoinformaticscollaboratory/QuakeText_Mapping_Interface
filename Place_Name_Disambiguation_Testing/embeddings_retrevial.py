@@ -100,10 +100,10 @@ def run_instuctor(conn_engine):
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
 
-    data["instructor_2"] = np.nan
-    data["geonames_lat_instructor_2"] = np.nan
-    data["geonames_lon_instructor_2"] = np.nan
-    data["geonames_id_instructor_2"] = np.nan
+    data["instructor"] = np.nan
+    data["geonames_lat_instructor"] = np.nan
+    data["geonames_lon_instructor"] = np.nan
+    data["geonames_id_instructor"] = np.nan
     count = 1
     data = pd.read_csv(path, low_memory=False)
 
@@ -124,10 +124,12 @@ def run_instuctor(conn_engine):
             # instruction_text = f'Represent the disaster tweet for retrieving {row[location]} location:'
             # instruction_text = f'Represent the geographic location description for retrieving {row[location]} location:'
             # instruction_text = f'Represent the news article for retrieving {row[location]} location:'
-            instruction_text = f'Represent the news article for retrieving location:'
+            # instruction_text = f'Represent the news article for retrieving location:'
+            instruction_text = "Represent the sentence for retrieving geonames location"
 
             # instruction_geonames = f'Represent the geographic location description for retrieving {row[location]} location:'
-            instruction_geonames = f'Represent the geographic location description for retrieving location:'
+            # instruction_geonames = f'Represent the geographic location description for retrieving location:'
+            instruction_geonames = "Represent the sentence for retrieving geonames location"
 
             prep_geonames = []
             prep_tweet = [[instruction_text, row[tweet]]]
@@ -144,20 +146,20 @@ def run_instuctor(conn_engine):
             max_sim_instructor = np.max(instructor_cos_sim)
 
             data.at[index, "instructor_3"] = max_sim_instructor
-            data.at[index, "geonames_lat_instructor_3"] = geonames_instances[
+            data.at[index, "geonames_lat_instructor"] = geonames_instances[
                 np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames Latitude')
-            data.at[index, "geonames_lon_instructor_3"] = geonames_instances[
+            data.at[index, "geonames_lon_instructor"] = geonames_instances[
                 np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames Longitude')
-            data.at[index, "geonames_id_instructor_3"] = geonames_instances[
+            data.at[index, "geonames_id_instructor"] = geonames_instances[
                 np.argwhere(instructor_cos_sim[0] == max_sim_instructor)[0][0]].get('Geonames ID')
 
             end = time.time()
             print(f"Time taken: {end - start}")
 
-    data = data.dropna(subset=["instructor_3"])
+    data = data.dropna(subset=["instructor"])
     data = data.astype({'geonames_id_instructor': 'int'})
 
-    data.to_csv('LGL-071023-CompleteEmbeddings.csv', index=False)
+    data.to_csv('LGL-Instructor1-CompleteEmbeddings.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
