@@ -23,8 +23,8 @@ def main():
     distance_error = []
 
     for index, row in data.iterrows():
-        lat = 'geonames_lat_bert'
-        lon = 'geonames_lon_bert'
+        lat = 'geonames_lat_instructor_3'
+        lon = 'geonames_lon_instructor_3'
 
         '''
         # For BioWhere and NLP Data
