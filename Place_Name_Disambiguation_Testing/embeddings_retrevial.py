@@ -17,13 +17,18 @@ bert_model = AutoModel.from_pretrained(model_name)
 instructor_model = INSTRUCTOR('hkunlp/instructor-large')
 
 
-def get_openai_embedding(text, model="text-embedding-ada-002"):
-    try:
-        text = text.replace("\n", " ")
-        return openai.Embedding.create(input=[text], model=model, timeout=1000)['data'][0]['embedding']
-    except openai.error.Timeout as e:
-        print(f"Request timed out for input text: {text} ", e)
-        return None
+def get_openai_embedding(text):
+    model="text-embedding-ada-002"
+    for i in range(0, 5, 1):
+        try:
+            text = text.replace("\n", " ")
+            embedding = openai.Embedding.create(input=[text], model=model, timeout=1000)['data'][0]['embedding']
+            return embedding
+        except openai.error as e:
+            time.sleep(1000)
+            print(f"ERROR OCCURRED: {text} ", e)
+
+    return None
 
 
 def get_instructor_embedding(sentence):
@@ -159,7 +164,7 @@ def run_instuctor(conn_engine):
     data = data.dropna(subset=["instructor"])
     data = data.astype({'geonames_id_instructor': 'int'})
 
-    data.to_csv('LGL-Instructor1-CompleteEmbeddings.csv', index=False)
+    data.to_csv('LGL512-Instructor1-CompleteEmbeddings.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
@@ -170,7 +175,7 @@ def run_open_ai_embeddings(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'CompletedEmbeddings/CompletedInstructorBertEmbeddings/NLPCompletedInstructorBert.csv'
+    path = 'CompletedEmbeddings/NLP-071023-CompleteEmbeddings.csv'
     tweet = 'tweet_text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
@@ -231,7 +236,7 @@ def run_open_ai_embeddings(conn_engine):
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_openai': 'int'})
 
-    data.to_csv('NLPCompleteBertInstructorOpenAI.csv', index=False)
+    data.to_csv('NLP-221023-CompletedEmbeddings.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
