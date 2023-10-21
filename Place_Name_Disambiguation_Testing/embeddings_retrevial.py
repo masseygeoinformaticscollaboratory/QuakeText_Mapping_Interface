@@ -100,12 +100,12 @@ def run_instuctor(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'CompletedEmbeddings/LGL512-Instructor1-CompleteEmbeddings.csv.csv'
+    path = 'CompletedEmbeddings/LGL512-Instructor1-CompleteEmbeddings.csv'
     tweet = 'text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
 
-    data["instructor"] = np.nan
+    data["instructor_2"] = np.nan
     data["geonames_lat_instructor_2"] = np.nan
     data["geonames_lon_instructor_2"] = np.nan
     data["geonames_id_instructor_2"] = np.nan
