@@ -4,7 +4,7 @@ import pandas as pd
 import statistics
 from geopy.distance import geodesic as gd
 
-path = "../CompletedEmbeddings/LGL-071023-CompleteEmbeddings.csv"
+path = "../CompletedEmbeddings/QuadTred-071023-CompleteEmbeddings.csv"
 
 
 def calculate_distance(LLM_lat, LLM_lon, coord_lat, coord_lng):
@@ -27,13 +27,24 @@ def main():
         lon = 'geonames_lon_instructor_3'
 
         '''
+        # For BioWhere and NLP Data
         first_minimum = row['First Minimum']
         first_minimum = ast.literal_eval(first_minimum)
         coord_lat = first_minimum['Latitude']
         coord_lng = first_minimum['Longitude']
         '''
+
+
+        # For QuadTred
+        coord_lat = row['correct_instance_lat']
+        coord_lng = row['correct_instance_lon']
+
+        '''   
+        For LGL
         coord_lat = row['lat']
         coord_lng = row['lon']
+
+        '''
 
         LLM_lat = row[lat]
         LLM_lon = row[lon]

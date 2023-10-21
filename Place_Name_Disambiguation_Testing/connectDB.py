@@ -4,6 +4,7 @@ import time
 from embeddings_retrevial import run_instuctor, run_bert_embeddings
 from configDB import config
 
+
 start = time.time()
 
 cursor = None
