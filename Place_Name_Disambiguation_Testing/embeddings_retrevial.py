@@ -24,7 +24,7 @@ def get_openai_embedding(text):
             text = text.replace("\n", " ")
             embedding = openai.Embedding.create(input=[text], model=model, timeout=1000)['data'][0]['embedding']
             return embedding
-        except openai.error as e:
+        except Exception as e:
             time.sleep(1000)
             print(f"ERROR OCCURRED: {text} ", e)
 
