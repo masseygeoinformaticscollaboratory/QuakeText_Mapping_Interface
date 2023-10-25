@@ -175,8 +175,8 @@ def run_open_ai_embeddings(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'CompletedEmbeddings/NLP-071023-CompleteEmbeddings.csv'
-    tweet = 'tweet_text'
+    path = 'CompletedEmbeddings/Bio5000-071023-CompleteEmbeddings.csv'
+    tweet = 'text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
 
@@ -291,7 +291,7 @@ def run_bert_embeddings(conn_engine):
     data = data.dropna(subset=["bert"])
     data = data.astype({'geonames_id_bert': 'int'})
 
-    data.to_csv('LGLBertCompleted512.csv', index=False)
+    data.to_csv('LGL512-180923-CompletedEmbeddings.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
