@@ -164,7 +164,7 @@ def run_instuctor(conn_engine):
     data = data.dropna(subset=["instructor_3"])
     data = data.astype({'geonames_id_instructor_3': 'int'})
 
-    data.to_csv('LGL512-Instructor3-CompleteEmbeddings.csv', index=False)
+    data.to_csv('LGL512-071023-CompleteEmbeddings.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
@@ -175,7 +175,7 @@ def run_open_ai_embeddings(conn_engine):
     start = time.time()
 
     # Initialise data
-    path = 'CompletedEmbeddings/LGL50-071023-CompleteEmbeddings.csv'
+    path = 'CompletedEmbeddings/LGL512-071023-CompleteEmbeddings.csv'
     tweet = 'text'
     location = 'location'
     data = pd.read_csv(path, low_memory=False)
@@ -233,10 +233,10 @@ def run_open_ai_embeddings(conn_engine):
             end = time.time()
             print(f"Time taken: {end - start}")
 
-    data = data.dropna(subset=["bert"])
+    data = data.dropna(subset=["open_ai"])
     data = data.astype({'geonames_id_openai': 'int'})
 
-    data.to_csv('LGL-221023-CompletedEmbeddings.csv', index=False)
+    data.to_csv('LGL512-221023-CompletedEmbeddings.csv', index=False)
 
     end = time.time()
     print(f"Total time taken: {end - start}")
